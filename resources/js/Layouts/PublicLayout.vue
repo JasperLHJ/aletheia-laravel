@@ -6,7 +6,7 @@ const isScrolled = ref(false);
 const isMobileMenuOpen = ref(false);
 
 const navLinks = [
-    { label: 'About', href: '#about' },
+    { label: 'About', href: '/about' },
     { label: 'Programmes', href: '#highlights' },
     { label: 'Gallery', href: '#gallery' },
     { label: 'Contact', href: '#contact' },
