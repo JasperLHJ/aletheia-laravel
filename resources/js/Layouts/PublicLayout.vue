@@ -36,23 +36,23 @@ onUnmounted(() => {
         <header
             role="banner"
             :class="[
-                'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+                'fixed top-0 left-0 right-0 z-[60] transition-all duration-500',
                 isScrolled
                     ? 'bg-espresso shadow-lg shadow-espresso-dark/20'
                     : 'bg-transparent'
             ]"
         >
             <nav
-                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16"
+                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 h-16 min-w-0"
                 aria-label="Main navigation"
             >
-                <!-- Logo / Wordmark -->
+                <!-- Logo / Wordmark (truncate on narrow screens so the mobile menu control stays visible) -->
                 <a
                     href="/"
-                    class="flex flex-col leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso rounded-sm"
+                    class="min-w-0 flex-1 md:flex-initial flex flex-col leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso rounded-sm"
                     aria-label="Aletheia Resource Center — home"
                 >
-                    <span class="font-display text-xl font-bold text-cream-50 tracking-wide">Aletheia Resource Center</span>
+                    <span class="font-display text-lg sm:text-xl font-bold text-cream-50 tracking-wide truncate">Aletheia Resource Center</span>
                 </a>
 
                 <!-- Desktop Nav Links -->
@@ -80,7 +80,7 @@ onUnmounted(() => {
 
                 <!-- Mobile Menu Toggle -->
                 <button
-                    class="md:hidden flex items-center justify-center w-11 h-11 text-white/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso rounded-md transition-colors"
+                    class="md:hidden shrink-0 flex items-center justify-center w-11 h-11 text-white/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso rounded-md transition-colors"
                     :aria-expanded="isMobileMenuOpen"
                     aria-controls="mobile-menu"
                     aria-label="Toggle navigation menu"
@@ -99,7 +99,7 @@ onUnmounted(() => {
             <div
                 v-show="isMobileMenuOpen"
                 id="mobile-menu"
-                class="md:hidden bg-espresso border-t border-white/10 px-4 py-4"
+                class="md:hidden relative z-10 bg-espresso border-t border-white/10 px-4 py-4 shadow-lg"
             >
                 <ul class="flex flex-col gap-1" role="list">
                     <li v-for="link in navLinks" :key="link.label">

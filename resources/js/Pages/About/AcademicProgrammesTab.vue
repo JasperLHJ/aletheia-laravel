@@ -213,7 +213,7 @@ function handleDialogKeydown(event) {
             >
                 <div
                     v-if="activeDialogIndex !== null"
-                    class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-3 sm:p-6 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
+                    class="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-3 sm:p-6 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
                     style="background-color: rgba(0,0,0,0.55); backdrop-filter: blur(2px);"
                     @click="handleBackdropClick"
                     @keydown="handleDialogKeydown"

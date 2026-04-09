@@ -1,6 +1,12 @@
 <script setup>
 import { ref, onMounted, onUnmounted, nextTick, shallowRef, markRaw } from 'vue';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+/** ScrollTriggers for teacher grid cards (principal card animates without scroll). */
+let teacherCardScrollTriggers = [];
 import AcademicProgrammesTab from './AcademicProgrammesTab.vue';
 import TeacherProfilesTab from './TeacherProfilesTab.vue';
 import TestimonialsTab from './TestimonialsTab.vue';
@@ -108,12 +114,66 @@ function animateTabButton(index) {
     );
 }
 
+function killTeacherCardScrollTriggers() {
+    teacherCardScrollTriggers.forEach((st) => st.kill());
+    teacherCardScrollTriggers = [];
+}
+
+/** Principal spotlight: smooth intro; other teacher cards reveal on scroll. */
+function animateTeacherProfileCards(wrapper) {
+    killTeacherCardScrollTriggers();
+
+    const teacherCards = wrapper.querySelectorAll('.teacher-card');
+    if (!teacherCards.length) return;
+
+    const [firstCard, ...restCards] = teacherCards;
+
+    gsap.fromTo(
+        firstCard,
+        { opacity: 0, y: 28 },
+        {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: 'power2.out',
+        },
+    );
+
+    restCards.forEach((card) => {
+        gsap.set(card, { opacity: 0, y: 22 });
+        const st = ScrollTrigger.create({
+            trigger: card,
+            start: 'top 88%',
+            once: true,
+            onEnter: () => {
+                gsap.to(card, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.55,
+                    ease: 'power2.out',
+                });
+            },
+        });
+        teacherCardScrollTriggers.push(st);
+    });
+
+    nextTick(() => ScrollTrigger.refresh());
+}
+
 function animateCards() {
     if (prefersReducedMotion.value || !contentWrapperRef.value) return;
 
-    const cards = contentWrapperRef.value.querySelectorAll(
-        '.programme-card, .teacher-card, .testimonial-card',
-    );
+    const wrapper = contentWrapperRef.value;
+    const teacherCards = wrapper.querySelectorAll('.teacher-card');
+
+    if (teacherCards.length) {
+        animateTeacherProfileCards(wrapper);
+        return;
+    }
+
+    killTeacherCardScrollTriggers();
+
+    const cards = wrapper.querySelectorAll('.programme-card, .testimonial-card');
     if (!cards.length) return;
 
     gsap.fromTo(cards,
@@ -173,6 +233,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+    killTeacherCardScrollTriggers();
     resizeObserver?.disconnect();
 });
 </script>
@@ -186,44 +247,50 @@ onUnmounted(() => {
         <h2 id="about-tabs-heading" class="sr-only">About Aletheia Resource Center</h2>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Tab Navigation -->
-            <div class="flex justify-center mb-12 sm:mb-16">
+            <!-- Tab Navigation: scroll horizontally on narrow viewports so labels do not overflow -->
+            <div class="mb-12 sm:mb-16 w-full min-w-0 -mx-4 px-4 sm:mx-0 sm:px-0">
                 <div
-                    ref="tabListRef"
-                    role="tablist"
-                    aria-label="About sections"
-                    class="relative inline-flex items-center bg-espresso/8 border border-espresso/20 rounded-full p-1.5 shadow-inner"
-                    style="background-color: rgba(62,30,13,0.07);"
-                    @keydown="handleKeydown"
+                    class="w-full max-w-full overflow-x-auto overflow-y-visible overscroll-x-contain touch-pan-x [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5"
                 >
-                    <!-- Sliding Indicator -->
-                    <div
-                        ref="indicatorRef"
-                        class="absolute top-1.5 left-0 h-[calc(100%-12px)] bg-espresso rounded-full shadow-md pointer-events-none"
-                        aria-hidden="true"
-                    ></div>
+                    <div class="flex justify-center min-w-full w-max mx-auto pb-1">
+                        <div
+                            ref="tabListRef"
+                            role="tablist"
+                            aria-label="About sections"
+                            class="relative inline-flex shrink-0 items-center bg-espresso/8 border border-espresso/20 rounded-full p-1.5 shadow-inner"
+                            style="background-color: rgba(62,30,13,0.07);"
+                            @keydown="handleKeydown"
+                        >
+                            <!-- Sliding Indicator -->
+                            <div
+                                ref="indicatorRef"
+                                class="absolute top-1.5 left-0 h-[calc(100%-12px)] bg-espresso rounded-full shadow-md pointer-events-none"
+                                aria-hidden="true"
+                            ></div>
 
-                    <!-- Tab Buttons -->
-                    <button
-                        v-for="(tab, index) in tabs"
-                        :key="tab.id"
-                        :ref="(el) => setTabButtonRef(el, index)"
-                        role="tab"
-                        :id="`tab-${tab.id}`"
-                        :aria-selected="activeIndex === index"
-                        :aria-controls="`panel-${tab.id}`"
-                        :tabindex="activeIndex === index ? 0 : -1"
-                        :class="[
-                            'relative z-10 px-5 sm:px-7 py-2.5 sm:py-3 text-sm sm:text-base font-sans font-semibold rounded-full transition-colors duration-200 whitespace-nowrap select-none',
-                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2',
-                            activeIndex === index
-                                ? 'text-cream-50'
-                                : 'text-espresso/70 hover:text-espresso',
-                        ]"
-                        @click="switchTab(index)"
-                    >
-                        {{ tab.label }}
-                    </button>
+                            <!-- Tab Buttons -->
+                            <button
+                                v-for="(tab, index) in tabs"
+                                :key="tab.id"
+                                :ref="(el) => setTabButtonRef(el, index)"
+                                role="tab"
+                                :id="`tab-${tab.id}`"
+                                :aria-selected="activeIndex === index"
+                                :aria-controls="`panel-${tab.id}`"
+                                :tabindex="activeIndex === index ? 0 : -1"
+                                :class="[
+                                    'relative z-10 px-3.5 sm:px-5 md:px-7 py-2 sm:py-2.5 md:py-3 text-xs sm:text-sm md:text-base font-sans font-semibold rounded-full transition-colors duration-200 whitespace-nowrap select-none',
+                                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2',
+                                    activeIndex === index
+                                        ? 'text-cream-50'
+                                        : 'text-espresso/70 hover:text-espresso',
+                                ]"
+                                @click="switchTab(index)"
+                            >
+                                {{ tab.label }}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 

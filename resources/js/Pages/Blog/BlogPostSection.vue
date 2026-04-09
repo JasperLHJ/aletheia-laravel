@@ -321,8 +321,9 @@ async function copyLink() {
                     </Link>
 
                     <!-- Category pill -->
+                    
                     <span
-                        class="inline-block px-3 py-1 rounded-full text-xs font-medium text-white uppercase tracking-widest mb-5"
+                        class="inline-block ml-2 px-3 py-1 rounded-full text-xs font-medium text-white uppercase tracking-widest mb-5"
                         :style="`background-color: ${accentForCategory(post.category)};`"
                     >
                         {{ post.category }}
