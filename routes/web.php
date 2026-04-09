@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -14,6 +15,25 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return Inertia::render('About');
 })->name('about');
+
+Route::get('/gallery', function () {
+    return Inertia::render('Gallery');
+})->name('gallery');
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
+Route::get('/programmes', function () {
+    return Inertia::render('Programmes');
+})->name('programmes');
+
+Route::get('/blog', function () {
+    return Inertia::render('Blog');
+})->name('blog');
+
+Route::get('/blog/{slug}', function ($slug) {
+    return Inertia::render('BlogShow', ['slug' => $slug]);
+})->name('blog.show');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

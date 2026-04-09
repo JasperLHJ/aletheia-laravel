@@ -188,6 +188,19 @@ function handleDialogKeydown(event) {
             </article>
         </div>
 
+        <!-- View Full Programmes Page link -->
+        <div class="mt-10 text-center">
+            <a
+                href="/programmes"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-espresso/20 text-sm font-semibold font-sans text-espresso hover:bg-espresso hover:text-cream-50 hover:border-espresso transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 min-h-[44px]"
+            >
+                View Full Programmes Page
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+
         <!-- Dialogs -->
         <Teleport to="body">
             <Transition

@@ -7,9 +7,10 @@ const isMobileMenuOpen = ref(false);
 
 const navLinks = [
     { label: 'About', href: '/about' },
-    { label: 'Programmes', href: '#highlights' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Programmes', href: '/programmes' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contact', href: '/contact' },
 ];
 
 function handleScroll() {
