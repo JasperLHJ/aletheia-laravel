@@ -191,6 +191,10 @@ function handleKeydown(e) {
     if (e.key === 'ArrowLeft') lightboxPrev();
 }
 
+function getCardSpan(index) {
+    return index % 3 === 0 ? 'row-span-2' : 'row-span-1';
+}
+
 onMounted(() => {
     window.addEventListener('keydown', handleKeydown);
 
@@ -271,14 +275,20 @@ onUnmounted(() => {
             <!-- Masonry grid -->
             <div
                 ref="gridRef"
-                class="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-0"
+                class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4"
+                style="grid-auto-rows: 160px;"
                 aria-live="polite"
                 aria-label="Gallery photos"
             >
                 <div
                     v-for="(img, index) in filteredImages"
                     :key="img.src + img.caption + index"
-                    class="gallery-card group relative break-inside-avoid mb-4 rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300"
+                    :class="[
+                        'gallery-card group relative overflow-hidden cursor-pointer',
+                        'rounded-2xl shadow-md hover:shadow-xl',
+                        'transition-all duration-300',
+                        getCardSpan(index)
+                    ]"
                     @click="openLightbox(index)"
                     tabindex="0"
                     role="button"
@@ -289,9 +299,8 @@ onUnmounted(() => {
                     <img
                         :src="img.src"
                         :alt="img.alt"
-                        class="w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                        :loading="index < 3 ? 'eager' : 'lazy'"
-                        style="display: block;"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                        :loading="index < 4 ? 'eager' : 'lazy'"
                     />
 
                     <!-- Hover overlay -->
@@ -368,7 +377,7 @@ onUnmounted(() => {
             >
                 <div
                     v-if="lightboxOpen"
-                    class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8"
+                    class="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-8"
                     style="background: rgba(30, 13, 8, 0.92); backdrop-filter: blur(12px);"
                     role="dialog"
                     aria-modal="true"
