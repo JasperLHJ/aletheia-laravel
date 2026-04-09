@@ -18,25 +18,32 @@ let scrollTriggerInstances = [];
 onMounted(() => {
     prefersReducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (prefersReducedMotion.value) return;
+    if (prefersReducedMotion.value) {
+        gsap.set('.cta-card', { opacity: 1, y: 0 });
+        return;
+    }
+
+    // Pre-hide all scroll-animated elements so they don't flash before their trigger fires
+    gsap.set('.contact-hero-eyebrow, .contact-hero-title, .contact-hero-subtitle', { opacity: 0, y: 20 });
+    // .cta-card initial state is set via inline styles in CtaSection.vue to prevent flash
+    gsap.set('.visit-info-card', { opacity: 0, y: 30 });
+    gsap.set('#contact-map-section', { opacity: 0, y: 20 });
+    gsap.set('#contact-form-section', { opacity: 0, y: 30 });
 
     const heroTl = gsap.timeline({ delay: 0.1 });
     heroTl
-        .from('.contact-hero-eyebrow', { y: 20, opacity: 0, duration: 0.6, ease: 'power2.out' })
-        .from('.contact-hero-title', { y: 30, opacity: 0, duration: 0.7, ease: 'power2.out' }, '-=0.3')
-        .from('.contact-hero-subtitle', { y: 20, opacity: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4');
+        .to('.contact-hero-eyebrow', { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' })
+        .to('.contact-hero-title', { y: 0, opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.3')
+        .to('.contact-hero-subtitle', { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.4');
 
     const st1 = ScrollTrigger.create({
         trigger: '#contact-cta-section',
         start: 'top 80%',
         onEnter: () => {
-            gsap.from('.cta-card', {
-                y: 40,
-                opacity: 0,
-                duration: 0.7,
-                stagger: 0.15,
-                ease: 'power2.out',
-            });
+            gsap.fromTo('.cta-card',
+                { opacity: 0, y: 40 },
+                { opacity: 1, y: 0, duration: 0.7, stagger: 0.15, ease: 'power2.out' }
+            );
         },
         once: true,
     });
@@ -46,9 +53,9 @@ onMounted(() => {
         trigger: '#contact-visit-section',
         start: 'top 80%',
         onEnter: () => {
-            gsap.from('.visit-info-card', {
-                y: 30,
-                opacity: 0,
+            gsap.to('.visit-info-card', {
+                y: 0,
+                opacity: 1,
                 duration: 0.7,
                 stagger: 0.15,
                 ease: 'power2.out',
@@ -62,9 +69,9 @@ onMounted(() => {
         trigger: '#contact-map-section',
         start: 'top 85%',
         onEnter: () => {
-            gsap.from('#contact-map-section', {
-                opacity: 0,
-                y: 20,
+            gsap.to('#contact-map-section', {
+                opacity: 1,
+                y: 0,
                 duration: 0.7,
                 ease: 'power2.out',
             });
@@ -77,9 +84,9 @@ onMounted(() => {
         trigger: '#contact-form-section',
         start: 'top 80%',
         onEnter: () => {
-            gsap.from('#contact-form-section', {
-                opacity: 0,
-                y: 30,
+            gsap.to('#contact-form-section', {
+                opacity: 1,
+                y: 0,
                 duration: 0.8,
                 ease: 'power2.out',
             });

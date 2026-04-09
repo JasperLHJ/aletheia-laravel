@@ -27,6 +27,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="cta-card group relative flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso"
+                    style="opacity: 0; transform: translateY(40px);"
                     aria-label="Chat with us on WhatsApp"
                 >
                     <!-- Pulse ring for WhatsApp -->
@@ -62,6 +63,7 @@
                 <a
                     href="mailto:info@aletheia.edu.my?subject=Enquiry%20from%20Website"
                     class="cta-card group flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso"
+                    style="opacity: 0; transform: translateY(40px);"
                     aria-label="Send us an email"
                 >
                     <div class="relative mb-6 flex items-center justify-center">
@@ -95,6 +97,7 @@
                 <a
                     href="tel:+60312345678"
                     class="cta-card group flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso"
+                    style="opacity: 0; transform: translateY(40px);"
                     aria-label="Call us at +603 1234 5678"
                 >
                     <div class="relative mb-6 flex items-center justify-center">
