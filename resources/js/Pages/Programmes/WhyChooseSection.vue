@@ -75,13 +75,21 @@
             </div>
 
             <!-- Stats row -->
-            <div class="mt-14 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div
+                id="stats-row"
+                class="mt-14 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6"
+            >
                 <div
                     v-for="stat in stats"
                     :key="stat.label"
                     class="text-center"
                 >
-                    <p class="font-display font-bold text-gold" style="font-size: clamp(1.8rem, 3vw, 2.5rem);">
+                    <p
+                        class="stat-number font-display font-bold text-gold"
+                        style="font-size: clamp(1.8rem, 3vw, 2.5rem);"
+                        :data-target="stat.numericValue"
+                        :data-suffix="stat.suffix"
+                    >
                         {{ stat.value }}
                     </p>
                     <p class="text-xs text-white/50 uppercase tracking-wider mt-1">{{ stat.label }}</p>
@@ -92,6 +100,56 @@
 </template>
 
 <script setup>
+import { onMounted, onUnmounted } from 'vue';
+
+let statsObserver = null;
+
+function animateCounter(el, target, suffix, duration = 1600) {
+    const start = performance.now();
+    const isDecimal = target % 1 !== 0;
+
+    function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = isDecimal
+            ? (eased * target).toFixed(1)
+            : Math.round(eased * target);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+}
+
+onMounted(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    statsObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const numberEls = entry.target.querySelectorAll('.stat-number');
+                numberEls.forEach((el) => {
+                    const target = parseFloat(el.dataset.target);
+                    const suffix = el.dataset.suffix || '';
+                    animateCounter(el, target, suffix);
+                });
+                statsObserver.unobserve(entry.target);
+            });
+        },
+        { threshold: 0.4 },
+    );
+
+    const statsRow = document.getElementById('stats-row');
+    if (statsRow) statsObserver.observe(statsRow);
+});
+
+onUnmounted(() => {
+    statsObserver?.disconnect();
+});
+
 const features = [
     {
         title: 'Cambridge-Aligned Curriculum',
@@ -138,9 +196,9 @@ const features = [
 ];
 
 const stats = [
-    { value: '75+', label: 'Years of Excellence' },
-    { value: '98%', label: 'University Placement' },
-    { value: '12:1', label: 'Student-Teacher Ratio' },
-    { value: '30+', label: 'CCA Programmes' },
+    { value: '75+', label: 'Years of Excellence', numericValue: 75, suffix: '+' },
+    { value: '98%', label: 'University Placement', numericValue: 98, suffix: '%' },
+    { value: '12:1', label: 'Student-Teacher Ratio', numericValue: 12, suffix: ':1' },
+    { value: '30+', label: 'CCA Programmes', numericValue: 30, suffix: '+' },
 ];
 </script>

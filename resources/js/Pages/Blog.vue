@@ -48,7 +48,7 @@ onMounted(() => {
             gsap.to('.blog-card', {
                 y: 0,
                 opacity: 1,
-                duration: 0.7,
+                duration: 0.5,
                 stagger: 0.12,
                 ease: 'power2.out',
             });

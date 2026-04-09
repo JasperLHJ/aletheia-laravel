@@ -30,7 +30,7 @@ onMounted(() => {
             gsap.from('#about-tabs-section', {
                 opacity: 0,
                 y: 30,
-                duration: 0.7,
+                duration: 1.1,
                 ease: 'power2.out',
             });
         },
