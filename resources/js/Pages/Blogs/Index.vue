@@ -8,29 +8,29 @@ import DataTable from 'primevue/datatable';
 import Tag from 'primevue/tag';
 
 defineProps({
-    products: Array,
+    posts: Array,
 });
 </script>
 
 <template>
-    <Head title="Products" />
+    <Head title="Blog" />
 
     <AuthenticatedLayout>
         <template #header>
             <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                     <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-                        Products
+                        Blog
                     </h2>
                     <p class="mt-2 text-slate-600 dark:text-slate-400">
-                        SKUs, pricing, stock, and catalog status.
+                        Draft and published posts for the public site.
                     </p>
                 </div>
                 <Button
-                    label="Add Product"
+                    label="Add post"
                     icon="pi pi-plus"
                     class="shrink-0"
-                    @click="router.visit(route('products.create'))"
+                    @click="router.visit(route('blogs.create'))"
                 />
             </div>
         </template>
@@ -41,37 +41,50 @@ defineProps({
                     class="overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-sm dark:border-slate-700/80 dark:bg-slate-900/60"
                 >
                     <DataTable
-                        :value="products"
+                        :value="posts"
                         stripedRows
                         tableClass="min-w-full"
                     >
-                        <Column field="name" header="Name" sortable />
-                        <Column field="sku" header="SKU" />
-                        <Column field="price" header="Price">
-                            <template #body="{ data }">
-                                {{ Number(data.price).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) }}
-                            </template>
-                        </Column>
-                        <Column field="stock" header="Stock" />
+                        <Column field="title" header="Title" sortable />
                         <Column field="status" header="Status">
                             <template #body="{ data }">
                                 <Tag
                                     :value="data.status"
                                     :severity="
-                                        data.status === 'active' ? 'success' : 'warn'
+                                        data.status === 'published'
+                                            ? 'success'
+                                            : data.status === 'draft'
+                                              ? 'warn'
+                                              : 'secondary'
                                     "
                                 />
                             </template>
                         </Column>
-                        <Column field="category.name" header="Category" />
+                        <Column field="category" header="Category" />
+                        <Column field="is_featured" header="Featured">
+                            <template #body="{ data }">
+                                <Tag
+                                    v-if="data.is_featured"
+                                    value="Yes"
+                                    severity="info"
+                                />
+                                <span v-else class="text-slate-400">—</span>
+                            </template>
+                        </Column>
+                        <Column field="user.name" header="Author" />
+                        <Column field="created_at" header="Created">
+                            <template #body="{ data }">
+                                {{ new Date(data.created_at).toLocaleDateString() }}
+                            </template>
+                        </Column>
                         <Column header="Actions" style="min-width: 10.5rem">
                             <template #body="{ data }">
                                 <DataTableActions
-                                    :view-route="route('products.show', data.id)"
-                                    :edit-route="route('products.edit', data.id)"
-                                    :delete-route="route('products.destroy', data.id)"
+                                    :view-route="route('blogs.show', data.id)"
+                                    :edit-route="route('blogs.edit', data.id)"
+                                    :delete-route="route('blogs.destroy', data.id)"
                                     :item-id="data.id"
-                                    :item-name="data.name"
+                                    :item-name="data.title"
                                 />
                             </template>
                         </Column>

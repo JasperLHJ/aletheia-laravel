@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, Link, router } from '@inertiajs/vue3';
+import { Head, router } from '@inertiajs/vue3';
 import Button from 'primevue/button';
 import Card from 'primevue/card';
 import Tag from 'primevue/tag';
@@ -21,8 +21,8 @@ defineProps({
                         icon="pi pi-arrow-left"
                         text
                         rounded
-                        aria-label="Back to posts"
-                        @click="router.visit(route('posts.index'))"
+                        aria-label="Back to blog"
+                        @click="router.visit(route('blogs.index'))"
                     />
                     <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
                         {{ post.title }}
@@ -42,7 +42,7 @@ defineProps({
                     label="Edit"
                     icon="pi pi-pencil"
                     class="shrink-0"
-                    @click="router.visit(route('posts.edit', post.id))"
+                    @click="router.visit(route('blogs.edit', post.id))"
                 />
             </div>
         </template>
@@ -77,25 +77,39 @@ defineProps({
                             </div>
                             <div>
                                 <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Category</dt>
-                                <dd class="mt-2 text-slate-900 dark:text-slate-100">
-                                    <template v-if="post.category">
-                                        <Link
-                                            :href="route('categories.show', post.category.id)"
-                                            class="font-medium text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
-                                        >
-                                            {{ post.category.name }}
-                                        </Link>
-                                    </template>
-                                    <template v-else>—</template>
-                                </dd>
+                                <dd class="mt-2 text-slate-900 dark:text-slate-100">{{ post.category || '—' }}</dd>
+                            </div>
+                            <div>
+                                <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Featured</dt>
+                                <dd class="mt-2 text-slate-900 dark:text-slate-100">{{ post.is_featured ? 'Yes' : 'No' }}</dd>
                             </div>
                             <div>
                                 <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Author</dt>
                                 <dd class="mt-2 text-slate-900 dark:text-slate-100">{{ post.user?.name }}</dd>
                             </div>
                             <div>
-                                <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Body</dt>
-                                <dd class="mt-2 whitespace-pre-wrap leading-relaxed text-slate-900 dark:text-slate-100">{{ post.body }}</dd>
+                                <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Excerpt</dt>
+                                <dd class="mt-2 whitespace-pre-wrap leading-relaxed text-slate-900 dark:text-slate-100">{{ post.excerpt || '—' }}</dd>
+                            </div>
+                            <div>
+                                <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Featured image</dt>
+                                <dd class="mt-2 font-mono text-sm text-slate-900 dark:text-slate-100">{{ post.featured_image || '—' }}</dd>
+                            </div>
+                            <div>
+                                <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Reading time (minutes)</dt>
+                                <dd class="mt-2 text-slate-900 dark:text-slate-100">{{ post.reading_time_minutes ?? '—' }}</dd>
+                            </div>
+                            <div>
+                                <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Published at</dt>
+                                <dd class="mt-2 text-slate-900 dark:text-slate-100">
+                                    {{ post.published_at ? new Date(post.published_at).toLocaleString() : '—' }}
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Body preview (HTML)</dt>
+                                <dd class="mt-2 rounded-lg border border-slate-200 bg-white p-4 text-sm leading-relaxed text-slate-800 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-200">
+                                    <div class="blog-admin-body" v-html="post.body" />
+                                </dd>
                             </div>
                             <div>
                                 <dt class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Created</dt>

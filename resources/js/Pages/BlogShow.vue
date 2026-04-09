@@ -2,18 +2,24 @@
 import { Head } from '@inertiajs/vue3';
 import PublicLayout from '@/Layouts/PublicLayout.vue';
 import BlogPostSection from '@/Pages/Blog/BlogPostSection.vue';
-import { onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const props = defineProps({
-    slug: {
-        type: String,
-        default: '',
+    post: {
+        type: Object,
+        required: true,
+    },
+    relatedPosts: {
+        type: Array,
+        default: () => [],
     },
 });
+
+const pageTitle = computed(() => `${props.post.title} — Aletheia Resource Center`);
 
 const prefersReducedMotion = ref(false);
 let scrollTriggerInstances = [];
@@ -52,9 +58,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <Head title="Blog — Aletheia Resource Center" />
+    <Head :title="pageTitle" />
 
     <PublicLayout>
-        <BlogPostSection :slug="slug" />
+        <BlogPostSection :post="post" :related-posts="relatedPosts" />
     </PublicLayout>
 </template>

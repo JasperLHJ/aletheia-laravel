@@ -46,7 +46,7 @@
                             Book a Visit
                         </a>
                         <a
-                            href="mailto:admissions@ashfordacademy.edu.my"
+                            href="mailto:admissions@aletheiaacademy.edu.my"
                             class="btn-ghost-light w-full sm:w-auto"
                             aria-label="Email our admissions team"
                         >

@@ -9,6 +9,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+defineProps({
+    posts: {
+        type: Array,
+        default: () => [],
+    },
+});
+
 const prefersReducedMotion = ref(false);
 let scrollTriggerInstances = [];
 
@@ -69,6 +76,6 @@ onUnmounted(() => {
 
     <PublicLayout>
         <HeroSection />
-        <BlogListingSection />
+        <BlogListingSection :posts="posts" />
     </PublicLayout>
 </template>

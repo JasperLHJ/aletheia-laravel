@@ -115,7 +115,7 @@ onUnmounted(() => {
                         class="font-display font-semibold text-espresso"
                         style="font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2;"
                     >
-                        Life at Ashford
+                        Life at Aletheia
                     </h2>
                 </div>
                 <a

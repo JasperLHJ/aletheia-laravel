@@ -181,14 +181,14 @@ onUnmounted(() => {
                                 +603 1234 5678
                             </a>
                             <a
-                                href="mailto:info@ashfordacademy.edu.my"
+                                href="mailto:info@aletheiaacademy.edu.my"
                                 class="text-sm text-white/60 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm flex items-center gap-2"
-                                aria-label="Email us at info@ashfordacademy.edu.my"
+                                aria-label="Email us at info@aletheiaacademy.edu.my"
                             >
                                 <svg class="w-4 h-4 shrink-0 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                                 </svg>
-                                info@ashfordacademy.edu.my
+                                info@aletheiaacademy.edu.my
                             </a>
                         </address>
 

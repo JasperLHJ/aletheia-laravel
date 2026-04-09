@@ -66,25 +66,11 @@ const userMenuContentClass =
                         Dashboard
                     </SidebarNavLink>
                     <SidebarNavLink
-                        :href="route('categories.index')"
-                        :active="route().current('categories.*')"
-                        icon="pi pi-tags"
-                    >
-                        Categories
-                    </SidebarNavLink>
-                    <SidebarNavLink
-                        :href="route('posts.index')"
-                        :active="route().current('posts.*')"
+                        :href="route('blogs.index')"
+                        :active="route().current('blogs.*')"
                         icon="pi pi-file-edit"
                     >
-                        Posts
-                    </SidebarNavLink>
-                    <SidebarNavLink
-                        :href="route('products.index')"
-                        :active="route().current('products.*')"
-                        icon="pi pi-shopping-bag"
-                    >
-                        Products
+                        Blog
                     </SidebarNavLink>
 
                     <!-- User menu pinned to bottom of scroll area -->
@@ -241,28 +227,12 @@ const userMenuContentClass =
                                 Dashboard
                             </SidebarNavLink>
                             <SidebarNavLink
-                                :href="route('categories.index')"
-                                :active="route().current('categories.*')"
-                                icon="pi pi-tags"
-                                @click="closeMobileNav"
-                            >
-                                Categories
-                            </SidebarNavLink>
-                            <SidebarNavLink
-                                :href="route('posts.index')"
-                                :active="route().current('posts.*')"
+                                :href="route('blogs.index')"
+                                :active="route().current('blogs.*')"
                                 icon="pi pi-file-edit"
                                 @click="closeMobileNav"
                             >
-                                Posts
-                            </SidebarNavLink>
-                            <SidebarNavLink
-                                :href="route('products.index')"
-                                :active="route().current('products.*')"
-                                icon="pi pi-shopping-bag"
-                                @click="closeMobileNav"
-                            >
-                                Products
+                                Blog
                             </SidebarNavLink>
                         </nav>
                         <div class="border-t border-white/10 p-4">
