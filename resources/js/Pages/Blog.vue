@@ -24,13 +24,14 @@ onMounted(() => {
         .from('.blog-hero-subtitle', { y: 20, opacity: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4')
         .from('.blog-hero-pills', { y: 15, opacity: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3');
 
+    gsap.set('.blog-featured-post', { y: 40, opacity: 0 });
     const st1 = ScrollTrigger.create({
         trigger: '#blog-listing-section',
         start: 'top 80%',
         onEnter: () => {
-            gsap.from('.blog-featured-post', {
-                y: 40,
-                opacity: 0,
+            gsap.to('.blog-featured-post', {
+                y: 0,
+                opacity: 1,
                 duration: 0.8,
                 ease: 'power2.out',
             });
@@ -39,13 +40,14 @@ onMounted(() => {
     });
     scrollTriggerInstances.push(st1);
 
+    gsap.set('.blog-card', { y: 40, opacity: 0 });
     const st2 = ScrollTrigger.create({
         trigger: '.blog-card',
         start: 'top 85%',
         onEnter: () => {
-            gsap.from('.blog-card', {
-                y: 40,
-                opacity: 0,
+            gsap.to('.blog-card', {
+                y: 0,
+                opacity: 1,
                 duration: 0.7,
                 stagger: 0.12,
                 ease: 'power2.out',
