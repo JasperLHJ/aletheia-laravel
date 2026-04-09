@@ -88,6 +88,10 @@ function switchTab(index) {
             activeComponent.value = tabs[index].component;
 
             nextTick(() => {
+                // Pre-hide cards so they don't flash before their stagger animation
+                const cards = wrapper.querySelectorAll('.programme-card, .testimonial-card, .teacher-card');
+                gsap.set(cards, { opacity: 0, y: 16 });
+
                 gsap.set(wrapper, { opacity: 0, x: 30 * direction });
                 gsap.to(wrapper, {
                     opacity: 1,
@@ -221,6 +225,13 @@ onMounted(() => {
 
     nextTick(() => {
         updateIndicator(false);
+
+        // Pre-hide cards before the entrance animation so they don't flash
+        if (contentWrapperRef.value) {
+            const cards = contentWrapperRef.value.querySelectorAll('.programme-card, .testimonial-card, .teacher-card');
+            gsap.set(cards, { opacity: 0, y: 16 });
+        }
+
         animateCards();
     });
 
