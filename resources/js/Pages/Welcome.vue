@@ -29,6 +29,10 @@ onMounted(() => {
         return;
     }
 
+    // Pre-hide scroll-revealed blocks so they are not fully visible until ScrollTrigger runs.
+    gsap.set('#gallery-section', { opacity: 0, y: 30, willChange: 'opacity, transform' });
+    gsap.set('.cta-content', { opacity: 0, y: 25, willChange: 'opacity, transform' });
+
     const heroTl = gsap.timeline({ delay: 0.1 });
     heroTl
         .from('.hero-eyebrow', { y: 20, opacity: 0, duration: 0.6, ease: 'power2.out' })
@@ -86,11 +90,14 @@ onMounted(() => {
         trigger: '#gallery-section',
         start: 'top 80%',
         onEnter: () => {
-            gsap.from('#gallery-section', {
-                opacity: 0,
-                y: 30,
+            gsap.to('#gallery-section', {
+                opacity: 1,
+                y: 0,
                 duration: 0.8,
                 ease: 'power2.out',
+                onComplete() {
+                    gsap.set('#gallery-section', { clearProps: 'willChange' });
+                },
             });
         },
         once: true,
@@ -116,11 +123,14 @@ onMounted(() => {
         trigger: '#cta-section',
         start: 'top 80%',
         onEnter: () => {
-            gsap.from('.cta-content', {
-                y: 25,
-                opacity: 0,
+            gsap.to('.cta-content', {
+                opacity: 1,
+                y: 0,
                 duration: 0.6,
                 ease: 'power2.out',
+                onComplete() {
+                    gsap.set('.cta-content', { clearProps: 'willChange' });
+                },
             });
         },
         once: true,
