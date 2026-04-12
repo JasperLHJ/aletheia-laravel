@@ -1,6 +1,13 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
 import PublicLayout from '@/Layouts/PublicLayout.vue';
+
+const props = defineProps({
+    featuredTestimonials: {
+        type: Array,
+        default: () => [],
+    },
+});
 import HeroSection from '@/Pages/Welcome/HeroSection.vue';
 import StatsBarSection from '@/Pages/Welcome/StatsBarSection.vue';
 import HighlightsSection from '@/Pages/Welcome/HighlightsSection.vue';
@@ -171,7 +178,7 @@ onUnmounted(() => {
         <StatsBarSection ref="statsBarRef" />
         <HighlightsSection />
         <GallerySection />
-        <TestimonialsSection />
+        <TestimonialsSection :testimonials="props.featuredTestimonials" />
         <EnquiryCtaSection />
         <SocialSection />
     </PublicLayout>

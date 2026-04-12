@@ -72,6 +72,20 @@ const userMenuContentClass =
                     >
                         Blog
                     </SidebarNavLink>
+                    <SidebarNavLink
+                        :href="route('testimonials.index')"
+                        :active="route().current('testimonials.*')"
+                        icon="pi pi-comments"
+                    >
+                        Testimonials
+                    </SidebarNavLink>
+                    <SidebarNavLink
+                        :href="route('educators.index')"
+                        :active="route().current('educators.*')"
+                        icon="pi pi-users"
+                    >
+                        Educators
+                    </SidebarNavLink>
 
                     <!-- User menu pinned to bottom of scroll area -->
                     <div class="mt-auto flex flex-col gap-2 border-t border-white/10 pt-4">
@@ -233,6 +247,22 @@ const userMenuContentClass =
                                 @click="closeMobileNav"
                             >
                                 Blog
+                            </SidebarNavLink>
+                            <SidebarNavLink
+                                :href="route('testimonials.index')"
+                                :active="route().current('testimonials.*')"
+                                icon="pi pi-comments"
+                                @click="closeMobileNav"
+                            >
+                                Testimonials
+                            </SidebarNavLink>
+                            <SidebarNavLink
+                                :href="route('educators.index')"
+                                :active="route().current('educators.*')"
+                                icon="pi pi-users"
+                                @click="closeMobileNav"
+                            >
+                                Educators
                             </SidebarNavLink>
                         </nav>
                         <div class="border-t border-white/10 p-4">

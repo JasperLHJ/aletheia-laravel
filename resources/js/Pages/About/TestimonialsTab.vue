@@ -1,42 +1,10 @@
 <script setup>
-const testimonials = [
-    {
-        quote: 'Aletheia Resource Center gave my daughter not just an outstanding education, but the confidence and character to thrive wherever she goes. The teachers here truly know every child by name.',
-        author: 'Mrs. Priya Menon',
-        role: 'Parent, Year 10',
-        initials: 'PM',
+defineProps({
+    testimonials: {
+        type: Array,
+        default: () => [],
     },
-    {
-        quote: 'What sets this school apart is the genuine care for every student. My son has grown academically and personally in ways I never expected.',
-        author: 'Mr. David Tan',
-        role: 'Parent, Year 8',
-        initials: 'DT',
-    },
-    {
-        quote: 'From the moment we walked through the doors, we knew this was the right place for our family. The academic rigour combined with a nurturing environment is exactly what we were looking for.',
-        author: 'Mrs. Amira Hassan',
-        role: 'Parent, Year 6',
-        initials: 'AH',
-    },
-    {
-        quote: 'The teachers go above and beyond. My daughter\u2019s love for science was sparked by a teacher here who believed in her potential before she believed in herself.',
-        author: 'Mr. Kevin Loh',
-        role: 'Parent, Year 11',
-        initials: 'KL',
-    },
-    {
-        quote: 'I have never felt more prepared for university. The support from our teachers and the opportunities available here are truly exceptional.',
-        author: 'Adam Khalid',
-        role: 'Alumni, Class of 2024',
-        initials: 'AK',
-    },
-    {
-        quote: 'Three of our children have gone through Aletheia, and each one has had a unique, personalised experience. That speaks volumes about the quality of care here.',
-        author: 'Dr. & Mrs. Rajesh Kumar',
-        role: 'Parents, Years 7, 9 & 12',
-        initials: 'RK',
-    },
-];
+});
 </script>
 
 <template>
@@ -57,10 +25,20 @@ const testimonials = [
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+        <p
+            v-if="!testimonials.length"
+            class="text-center text-neutral-500 font-sans"
+        >
+            No testimonials published yet.
+        </p>
+
+        <div
+            v-else
+            class="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6"
+        >
             <article
                 v-for="testimonial in testimonials"
-                :key="testimonial.author"
+                :key="testimonial.id"
                 class="testimonial-card bg-white rounded-2xl border border-neutral-200 shadow-sm hover:shadow-lg transition-all duration-300 p-8 sm:p-10 relative flex flex-col"
             >
                 <!-- Decorative quote mark -->

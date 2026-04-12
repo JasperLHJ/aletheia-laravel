@@ -2,18 +2,17 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EducatorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicBlogController;
+use App\Http\Controllers\PublicPageController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome');
-})->name('home');
+Route::get('/', [PublicPageController::class, 'home'])->name('home');
 
-Route::get('/about', function () {
-    return Inertia::render('About');
-})->name('about');
+Route::get('/about', [PublicPageController::class, 'about'])->name('about');
 
 Route::get('/gallery', function () {
     return Inertia::render('Gallery');
@@ -41,6 +40,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('blogs', BlogController::class)->parameters([
         'blogs' => 'post',
     ]);
+
+    Route::resource('testimonials', TestimonialController::class);
+
+    Route::resource('educators', EducatorController::class);
 });
 
 require __DIR__.'/auth.php';

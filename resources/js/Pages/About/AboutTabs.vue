@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick, shallowRef, markRaw } from 'vue';
+import { computed, ref, onMounted, onUnmounted, nextTick, shallowRef, markRaw } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -17,6 +17,21 @@ const tabs = [
     { id: 'testimonials', label: 'Testimonials', component: markRaw(TestimonialsTab) },
 ];
 
+const props = defineProps({
+    testimonials: {
+        type: Array,
+        default: () => [],
+    },
+    principal: {
+        type: Object,
+        default: null,
+    },
+    teachers: {
+        type: Array,
+        default: () => [],
+    },
+});
+
 const activeIndex = ref(0);
 const isAnimating = ref(false);
 const prefersReducedMotion = ref(false);
@@ -27,6 +42,17 @@ const indicatorRef = ref(null);
 const contentWrapperRef = ref(null);
 
 const activeComponent = shallowRef(tabs[0].component);
+
+const activeTabProps = computed(() => {
+    const id = tabs[activeIndex.value].id;
+    if (id === 'testimonials') {
+        return { testimonials: props.testimonials };
+    }
+    if (id === 'teachers') {
+        return { principal: props.principal, teachers: props.teachers };
+    }
+    return {};
+});
 
 function setTabButtonRef(el, index) {
     if (el) tabButtonRefs.value[index] = el;
@@ -315,7 +341,7 @@ onUnmounted(() => {
                     ref="contentWrapperRef"
                     class="min-h-[50vh]"
                 >
-                    <component :is="activeComponent" />
+                    <component :is="activeComponent" v-bind="activeTabProps" />
                 </div>
             </div>
         </div>

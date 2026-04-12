@@ -5,23 +5,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-const testimonials = [
-    {
-        quote: 'Aletheia Resource Center gave my daughter not just an outstanding education, but the confidence and character to thrive wherever she goes. The teachers here truly know every child by name.',
-        author: 'Mrs. Priya Menon',
-        role: 'Parent, Year 10',
+const props = defineProps({
+    testimonials: {
+        type: Array,
+        default: () => [],
     },
-    {
-        quote: 'I have never felt more prepared for university. The support from our teachers and the opportunities available here are truly exceptional.',
-        author: 'Adam Khalid',
-        role: 'Alumni, Class of 2024',
-    },
-    {
-        quote: 'What sets this school apart is the genuine care for every student. My son has grown academically and personally in ways I never expected.',
-        author: 'Mr. David Tan',
-        role: 'Parent, Year 8',
-    },
-];
+});
 
 const swiperModules = [Autoplay, Pagination, EffectFade];
 </script>
@@ -52,6 +41,7 @@ const swiperModules = [Autoplay, Pagination, EffectFade];
             <h2 id="testimonial-heading" class="sr-only">Testimonials</h2>
 
             <Swiper
+                v-if="props.testimonials.length"
                 :modules="swiperModules"
                 :slides-per-view="1"
                 :space-between="40"
@@ -64,8 +54,8 @@ const swiperModules = [Autoplay, Pagination, EffectFade];
                 class="testimonial-swiper"
             >
                 <SwiperSlide
-                    v-for="(t, i) in testimonials"
-                    :key="i"
+                    v-for="t in props.testimonials"
+                    :key="t.id"
                 >
                     <div class="testimonial-content pb-4" aria-live="polite" aria-atomic="true">
                         <blockquote class="mb-8">
@@ -87,8 +77,14 @@ const swiperModules = [Autoplay, Pagination, EffectFade];
                     </div>
                 </SwiperSlide>
             </Swiper>
+            <p
+                v-else
+                class="font-sans text-white/50 text-sm"
+            >
+                Testimonials coming soon.
+            </p>
 
-            <div class="testimonial-pagination mt-8"></div>
+            <div v-if="props.testimonials.length" class="testimonial-pagination mt-8"></div>
         </div>
     </section>
 </template>

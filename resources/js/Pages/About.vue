@@ -1,6 +1,21 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
 import PublicLayout from '@/Layouts/PublicLayout.vue';
+
+const props = defineProps({
+    testimonials: {
+        type: Array,
+        default: () => [],
+    },
+    principal: {
+        type: Object,
+        default: null,
+    },
+    teachers: {
+        type: Array,
+        default: () => [],
+    },
+});
 import HeroSection from '@/Pages/About/HeroSection.vue';
 import AboutTabs from '@/Pages/About/AboutTabs.vue';
 import { onMounted, onUnmounted, ref } from 'vue';
@@ -50,6 +65,10 @@ onUnmounted(() => {
 
     <PublicLayout>
         <HeroSection />
-        <AboutTabs />
+        <AboutTabs
+            :testimonials="props.testimonials"
+            :principal="props.principal"
+            :teachers="props.teachers"
+        />
     </PublicLayout>
 </template>
