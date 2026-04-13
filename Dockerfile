@@ -30,6 +30,8 @@ COPY --from=frontend /app/public/build ./public/build
 RUN composer dump-autoload --optimize --classmap-authoritative --no-dev
 
 FROM php:8.3-fpm-bookworm AS php
+ARG WWWUSER=33
+ARG WWWGROUP=33
 WORKDIR /var/www/html
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -58,7 +60,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY docker/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 COPY --from=vendor /app /var/www/html
 COPY docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
+RUN groupmod -o -g "${WWWGROUP}" www-data \
+    && usermod -o -u "${WWWUSER}" -g www-data www-data \
+    && chmod +x /usr/local/bin/docker-entrypoint.sh \
     && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
