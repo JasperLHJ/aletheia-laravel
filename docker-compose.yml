@@ -24,6 +24,8 @@ services:
       DB_DATABASE: /var/www/html/storage/database.sqlite
     volumes:
       - storage_data:/var/www/html/storage
+      # Artisan (e.g. key:generate) reads/writes .env on disk; env_file alone does not create this file.
+      - ./.env:/var/www/html/.env
     restart: unless-stopped
     networks:
       - laravel
@@ -41,6 +43,7 @@ services:
     command: ["php", "artisan", "queue:work", "--sleep=3", "--tries=3"]
     volumes:
       - storage_data:/var/www/html/storage
+      - ./.env:/var/www/html/.env
     restart: unless-stopped
     networks:
       - laravel
