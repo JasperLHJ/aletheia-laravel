@@ -29,7 +29,7 @@ COPY . .
 COPY --from=frontend /app/public/build ./public/build
 RUN composer dump-autoload --optimize --classmap-authoritative --no-dev
 
-FROM php:8.3-fpm-bookworm AS php
+FROM php:8.4-fpm-bookworm AS app
 ARG WWWUSER=33
 ARG WWWGROUP=33
 WORKDIR /var/www/html
@@ -37,6 +37,8 @@ WORKDIR /var/www/html
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     unzip \
+    nginx \
+    supervisor \
     libsqlite3-dev \
     libzip-dev \
     libpng-dev \
@@ -55,19 +57,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         zip \
         opcache \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && rm /etc/nginx/sites-enabled/default
 
 COPY docker/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY --from=vendor /app /var/www/html
 COPY docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
 RUN groupmod -o -g "${WWWGROUP}" www-data \
     && usermod -o -u "${WWWUSER}" -g www-data www-data \
     && chmod +x /usr/local/bin/docker-entrypoint.sh \
     && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-CMD ["php-fpm"]
+EXPOSE 80
 
-FROM nginx:1.27-alpine AS nginx
-COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY --from=php /var/www/html/public /var/www/html/public
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

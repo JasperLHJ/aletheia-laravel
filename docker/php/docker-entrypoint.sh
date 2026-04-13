@@ -16,14 +16,13 @@ if [ "${DB_CONNECTION:-}" = "sqlite" ]; then
     fi
 fi
 
-if [ "$1" = "php-fpm" ] || [ "$1" = "php-fpm8.3" ]; then
-    if [ -n "${APP_KEY:-}" ]; then
-        php artisan package:discover --ansi 2>/dev/null || true
-        php artisan config:cache 2>/dev/null || true
-        php artisan route:cache 2>/dev/null || true
-        php artisan view:cache 2>/dev/null || true
-        chown -R www-data:www-data /var/www/html/bootstrap/cache
-    fi
+if [ -n "${APP_KEY:-}" ]; then
+    php artisan package:discover --ansi 2>/dev/null || true
+    php artisan config:cache 2>/dev/null || true
+    php artisan route:cache 2>/dev/null || true
+    php artisan view:cache 2>/dev/null || true
+    php artisan migrate --force 2>/dev/null || true
+    chown -R www-data:www-data /var/www/html/bootstrap/cache
 fi
 
-exec docker-php-entrypoint "$@"
+exec "$@"
