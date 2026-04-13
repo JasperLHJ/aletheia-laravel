@@ -35,6 +35,7 @@ WORKDIR /var/www/html
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     unzip \
+    libsqlite3-dev \
     libzip-dev \
     libpng-dev \
     libonig-dev \
