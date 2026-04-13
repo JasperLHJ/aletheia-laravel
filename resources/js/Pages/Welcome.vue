@@ -40,13 +40,7 @@ onMounted(() => {
     gsap.set('#gallery-section', { opacity: 0, y: 30, willChange: 'opacity, transform' });
     gsap.set('.cta-content', { opacity: 0, y: 25, willChange: 'opacity, transform' });
 
-    const heroTl = gsap.timeline({ delay: 0.1 });
-    heroTl
-        .from('.hero-eyebrow', { y: 20, opacity: 0, duration: 0.6, ease: 'power2.out' })
-        .from('.hero-title', { y: 30, opacity: 0, duration: 0.7, ease: 'power2.out' }, '-=0.3')
-        .from('.hero-subtitle', { y: 20, opacity: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4')
-        .from('.hero-ctas', { y: 20, opacity: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3')
-        .from('.hero-scroll-indicator', { opacity: 0, duration: 0.5 }, '-=0.1');
+    // Hero animations are handled inside HeroSection.vue
 
     const st1 = ScrollTrigger.create({
         trigger: '#stats-section',
