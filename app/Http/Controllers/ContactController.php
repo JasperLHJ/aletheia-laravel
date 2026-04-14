@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactFormRequest;
 use App\Mail\ContactEnquiryMail;
+use App\Services\SiteContentRepository;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
@@ -11,9 +12,11 @@ use Inertia\Response;
 
 class ContactController extends Controller
 {
-    public function index(): Response
+    public function index(SiteContentRepository $siteContent): Response
     {
-        return Inertia::render('Contact');
+        return Inertia::render('Contact', [
+            'pageContent' => $siteContent->page('contact'),
+        ]);
     }
 
     public function send(ContactFormRequest $request): \Illuminate\Http\RedirectResponse

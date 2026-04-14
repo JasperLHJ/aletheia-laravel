@@ -7,6 +7,10 @@ const props = defineProps({
         type: Array,
         default: () => [],
     },
+    listing: {
+        type: Object,
+        required: true,
+    },
 });
 
 const selectedCategory = ref('All');
@@ -43,16 +47,8 @@ function formatDate(dateStr) {
     return d.toLocaleDateString('en-MY', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-const categoryAccentColors = {
-    Events: '#A74B1A',
-    Achievements: '#CE7815',
-    'Campus Life': '#95B91F',
-    Academic: '#382016',
-    Community: '#D30C5F',
-};
-
 function accentForCategory(cat) {
-    return categoryAccentColors[cat] || '#A74B1A';
+    return props.listing.categoryAccentColors[cat] || '#A74B1A';
 }
 </script>
 
@@ -66,16 +62,16 @@ function accentForCategory(cat) {
 
             <!-- Section intro -->
             <div class="text-center max-w-2xl mx-auto mb-14">
-                <p class="section-eyebrow mb-3">Latest from our community</p>
+                <p class="section-eyebrow mb-3">{{ listing.eyebrow }}</p>
                 <h2
                     id="blog-listing-heading"
                     class="font-display font-semibold text-espresso mb-4"
                     style="font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.2;"
                 >
-                    What's Happening at Aletheia
+                    {{ listing.heading }}
                 </h2>
                 <p class="text-neutral-600 leading-relaxed">
-                    Stories of growth, achievement, and community — straight from our campus.
+                    {{ listing.intro }}
                 </p>
             </div>
 
@@ -89,8 +85,8 @@ function accentForCategory(cat) {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
                     </svg>
                 </div>
-                <p class="font-display text-espresso text-lg mb-2">No stories published yet</p>
-                <p class="text-neutral-500 text-sm">Check back soon for news from our community.</p>
+                <p class="font-display text-espresso text-lg mb-2">{{ listing.emptyTitle }}</p>
+                <p class="text-neutral-500 text-sm">{{ listing.emptyBody }}</p>
             </div>
 
             <template v-else>
@@ -98,7 +94,7 @@ function accentForCategory(cat) {
                 <article
                     v-if="featuredPost"
                     class="blog-featured-post group mb-16 bg-white rounded-2xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-xl transition-shadow duration-300"
-                    aria-label="Featured post"
+                    :aria-label="listing.featuredAria"
                 >
                     <Link :href="`/blog/${featuredPost.slug}`" class="block md:grid md:grid-cols-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-2xl">
                         <div class="relative h-64 md:h-auto overflow-hidden">
@@ -117,7 +113,7 @@ function accentForCategory(cat) {
                                 class="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-medium text-white uppercase tracking-widest"
                                 :style="`background-color: ${accentForCategory(featuredPost.category)};`"
                             >
-                                ★ Featured
+                                {{ listing.featuredBadge }}
                             </span>
                         </div>
 
@@ -142,12 +138,12 @@ function accentForCategory(cat) {
                                 <div class="flex items-center gap-3 text-xs text-neutral-400">
                                     <time :datetime="featuredPost.date">{{ formatDate(featuredPost.date) }}</time>
                                     <span aria-hidden="true">·</span>
-                                    <span>{{ featuredPost.readingTime }} min read</span>
+                                    <span>{{ featuredPost.readingTime }} {{ listing.readTimeSuffix }}</span>
                                 </div>
                                 <span
                                     class="inline-flex items-center gap-1.5 text-sm font-medium text-ember group-hover:gap-3 transition-all duration-200"
                                 >
-                                    Read more
+                                    {{ listing.readMore }}
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                     </svg>
@@ -162,7 +158,7 @@ function accentForCategory(cat) {
                     v-if="categoryTabs.length > 1"
                     class="flex flex-wrap items-center justify-center gap-2 mb-12"
                     role="group"
-                    aria-label="Filter posts by category"
+                    :aria-label="listing.filterAria"
                 >
                     <button
                         v-for="cat in categoryTabs"
@@ -226,12 +222,12 @@ function accentForCategory(cat) {
                                 <div class="flex items-center gap-2 text-xs text-neutral-400">
                                     <time :datetime="post.date">{{ formatDate(post.date) }}</time>
                                     <span aria-hidden="true">·</span>
-                                    <span>{{ post.readingTime }} min</span>
+                                    <span>{{ post.readingTime }} {{ listing.readTimeShort }}</span>
                                 </div>
                                 <span
                                     class="text-sm font-medium text-ember group-hover:gap-2 inline-flex items-center gap-1 transition-all duration-200"
                                 >
-                                    Read →
+                                    {{ listing.readArrow }}
                                 </span>
                             </div>
                         </Link>
@@ -248,14 +244,14 @@ function accentForCategory(cat) {
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
                         </svg>
                     </div>
-                    <p class="font-display text-espresso text-lg mb-2">No posts in this category yet</p>
-                    <p class="text-neutral-500 text-sm">Check back soon, or browse all posts.</p>
+                    <p class="font-display text-espresso text-lg mb-2">{{ listing.filteredEmptyTitle }}</p>
+                    <p class="text-neutral-500 text-sm">{{ listing.filteredEmptyBody }}</p>
                     <button
                         v-if="categoryTabs.length > 1"
                         class="mt-4 px-5 py-2 rounded-full text-sm font-medium bg-espresso text-cream-50 hover:bg-espresso-dark transition-colors"
                         @click="selectedCategory = 'All'"
                     >
-                        View all posts
+                        {{ listing.viewAll }}
                     </button>
                 </div>
             </template>

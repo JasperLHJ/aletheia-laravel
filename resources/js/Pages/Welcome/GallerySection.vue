@@ -2,12 +2,14 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { gsap } from 'gsap';
 
-const galleryImages = [
-    { src: '/images/class-4.jpg', alt: 'Modern classroom facilities at Aletheia Resource Center', caption: 'Modern Facilities' },
-    { src: '/images/sports-1.jpg', alt: 'Students participating in sports activities', caption: 'Sports & Athletics' },
-    { src: '/images/student-1.jpg', alt: 'Student studying at Aletheia Resource Center', caption: 'Focused Learning' },
-    { src: '/images/class-1.jpg', alt: 'Interactive learning environment', caption: 'Interactive Learning' },
-];
+const props = defineProps({
+    content: {
+        type: Object,
+        required: true,
+    },
+});
+
+const galleryImages = computed(() => props.content.images);
 
 const activeIndex = ref(0);
 const isTransitioning = ref(false);
@@ -17,7 +19,7 @@ let autoplayTimer = null;
 let touchStartX = 0;
 let touchDelta = 0;
 
-const totalSlides = galleryImages.length;
+const totalSlides = computed(() => galleryImages.value.length);
 
 function goTo(index, direction = null) {
     if (isTransitioning.value || index === activeIndex.value) return;
@@ -57,11 +59,11 @@ function goTo(index, direction = null) {
 }
 
 function next() {
-    goTo((activeIndex.value + 1) % totalSlides, 1);
+    goTo((activeIndex.value + 1) % totalSlides.value, 1);
 }
 
 function prev() {
-    goTo((activeIndex.value - 1 + totalSlides) % totalSlides, -1);
+    goTo((activeIndex.value - 1 + totalSlides.value) % totalSlides.value, -1);
 }
 
 function resetAutoplay() {
@@ -87,7 +89,7 @@ function onTouchEnd() {
 }
 
 const progressWidth = computed(() => {
-    return ((activeIndex.value + 1) / totalSlides) * 100;
+    return ((activeIndex.value + 1) / totalSlides.value) * 100;
 });
 
 onMounted(() => {
@@ -109,21 +111,21 @@ onUnmounted(() => {
         <div id="gallery-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12 gap-4">
                 <div>
-                    <p class="section-eyebrow mb-2">School Life</p>
+                    <p class="section-eyebrow mb-2">{{ content.eyebrow }}</p>
                     <h2
                         id="gallery-heading"
                         class="font-display font-semibold text-espresso"
                         style="font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2;"
                     >
-                        Life at Aletheia
+                        {{ content.heading }}
                     </h2>
                 </div>
                 <a
-                    href="/gallery"
+                    :href="content.galleryHref"
                     class="text-sm font-medium text-ember hover:text-ember-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-sm shrink-0"
-                    aria-label="View the full gallery"
+                    :aria-label="content.viewFullAriaLabel"
                 >
-                    View Full Gallery →
+                    {{ content.viewFullLabel }}
                 </a>
             </div>
 
@@ -142,7 +144,7 @@ onUnmounted(() => {
                 >
                     <div
                         v-for="(img, i) in galleryImages"
-                        :key="img.src"
+                        :key="img.src + i"
                         class="gallery-slide absolute inset-0 transition-none"
                         :class="{ 'z-20': i === activeIndex, 'z-10': i !== activeIndex }"
                         :style="{
@@ -182,7 +184,7 @@ onUnmounted(() => {
                     <button
                         @click="prev"
                         class="gallery-nav-btn group relative w-11 h-11 rounded-full border border-neutral-300 bg-white flex items-center justify-center transition-all duration-300 hover:bg-espresso hover:border-espresso focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson"
-                        aria-label="Previous image"
+                        :aria-label="content.navPrevAria"
                     >
                         <svg class="w-4 h-4 text-espresso group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
@@ -191,7 +193,7 @@ onUnmounted(() => {
                     <button
                         @click="next"
                         class="gallery-nav-btn group relative w-11 h-11 rounded-full border border-neutral-300 bg-white flex items-center justify-center transition-all duration-300 hover:bg-espresso hover:border-espresso focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson"
-                        aria-label="Next image"
+                        :aria-label="content.navNextAria"
                     >
                         <svg class="w-4 h-4 text-espresso group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -208,7 +210,7 @@ onUnmounted(() => {
                 </div>
 
                 <!-- Thumbnail strip -->
-                <div class="grid grid-cols-4 gap-3 mt-5" role="tablist" aria-label="Gallery image thumbnails">
+                <div class="grid grid-cols-4 gap-3 mt-5" role="tablist" :aria-label="content.thumbTablistAria">
                     <button
                         v-for="(img, i) in galleryImages"
                         :key="'thumb-' + i"

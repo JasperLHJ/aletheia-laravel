@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, onMounted, onUnmounted, nextTick, shallowRef, markRaw } from 'vue';
+import { computed, ref, onMounted, onUnmounted, nextTick, markRaw } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -11,13 +11,17 @@ import AcademicProgrammesTab from './AcademicProgrammesTab.vue';
 import TeacherProfilesTab from './TeacherProfilesTab.vue';
 import TestimonialsTab from './TestimonialsTab.vue';
 
-const tabs = [
-    { id: 'programmes', label: 'Academic Programmes', component: markRaw(AcademicProgrammesTab) },
-    { id: 'teachers', label: 'Our Educators', component: markRaw(TeacherProfilesTab) },
-    { id: 'testimonials', label: 'Testimonials', component: markRaw(TestimonialsTab) },
-];
+const componentById = {
+    programmes: markRaw(AcademicProgrammesTab),
+    teachers: markRaw(TeacherProfilesTab),
+    testimonials: markRaw(TestimonialsTab),
+};
 
 const props = defineProps({
+    pageContent: {
+        type: Object,
+        required: true,
+    },
     testimonials: {
         type: Array,
         default: () => [],
@@ -32,6 +36,14 @@ const props = defineProps({
     },
 });
 
+const tabs = computed(() =>
+    props.pageContent.tabs.map((t) => ({
+        id: t.id,
+        label: t.label,
+        component: componentById[t.id],
+    })),
+);
+
 const activeIndex = ref(0);
 const isAnimating = ref(false);
 const prefersReducedMotion = ref(false);
@@ -41,15 +53,22 @@ const tabButtonRefs = ref([]);
 const indicatorRef = ref(null);
 const contentWrapperRef = ref(null);
 
-const activeComponent = shallowRef(tabs[0].component);
+const activeComponent = computed(() => tabs.value[activeIndex.value]?.component ?? componentById.programmes);
 
 const activeTabProps = computed(() => {
-    const id = tabs[activeIndex.value].id;
+    const id = tabs.value[activeIndex.value]?.id;
     if (id === 'testimonials') {
-        return { testimonials: props.testimonials };
+        return { testimonials: props.testimonials, copy: props.pageContent.testimonialsTab };
     }
     if (id === 'teachers') {
-        return { principal: props.principal, teachers: props.teachers };
+        return {
+            principal: props.principal,
+            teachers: props.teachers,
+            copy: props.pageContent.educators,
+        };
+    }
+    if (id === 'programmes') {
+        return { content: props.pageContent.academicProgrammes };
     }
     return {};
 });
@@ -93,14 +112,12 @@ function switchTab(index) {
     animateTabButton(index);
 
     if (prefersReducedMotion.value) {
-        activeComponent.value = tabs[index].component;
         isAnimating.value = false;
         return;
     }
 
     const wrapper = contentWrapperRef.value;
     if (!wrapper) {
-        activeComponent.value = tabs[index].component;
         isAnimating.value = false;
         return;
     }
@@ -111,8 +128,6 @@ function switchTab(index) {
         duration: 0.2,
         ease: 'power2.in',
         onComplete() {
-            activeComponent.value = tabs[index].component;
-
             nextTick(() => {
                 // Pre-hide cards so they don't flash before their stagger animation
                 const cards = wrapper.querySelectorAll('.programme-card, .testimonial-card, .teacher-card');
@@ -224,16 +239,16 @@ function handleKeydown(event) {
 
     if (key === 'ArrowRight' || key === 'ArrowDown') {
         event.preventDefault();
-        newIndex = (activeIndex.value + 1) % tabs.length;
+        newIndex = (activeIndex.value + 1) % tabs.value.length;
     } else if (key === 'ArrowLeft' || key === 'ArrowUp') {
         event.preventDefault();
-        newIndex = (activeIndex.value - 1 + tabs.length) % tabs.length;
+        newIndex = (activeIndex.value - 1 + tabs.value.length) % tabs.value.length;
     } else if (key === 'Home') {
         event.preventDefault();
         newIndex = 0;
     } else if (key === 'End') {
         event.preventDefault();
-        newIndex = tabs.length - 1;
+        newIndex = tabs.value.length - 1;
     }
 
     if (newIndex !== activeIndex.value) {
@@ -333,9 +348,9 @@ onUnmounted(() => {
 
             <!-- Tab Content -->
             <div
-                :id="`panel-${tabs[activeIndex].id}`"
+                :id="`panel-${tabs[activeIndex]?.id}`"
                 role="tabpanel"
-                :aria-labelledby="`tab-${tabs[activeIndex].id}`"
+                :aria-labelledby="`tab-${tabs[activeIndex]?.id}`"
             >
                 <div
                     ref="contentWrapperRef"

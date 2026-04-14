@@ -12,6 +12,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+defineProps({
+    pageContent: {
+        type: Object,
+        required: true,
+    },
+});
+
 const prefersReducedMotion = ref(false);
 let scrollTriggerInstances = [];
 
@@ -103,13 +110,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <Head title="Contact — Aletheia Resource Center" />
+    <Head :title="pageContent.meta.title" />
 
     <PublicLayout>
-        <HeroSection />
-        <CtaSection />
-        <VisitInfoSection />
-        <MapSection />
-        <ContactFormSection />
+        <HeroSection :hero="pageContent.hero" />
+        <CtaSection :cta-section="pageContent.ctaSection" />
+        <VisitInfoSection :visit="pageContent.visit" />
+        <MapSection :map="pageContent.map" />
+        <ContactFormSection :form-content="pageContent.form" />
     </PublicLayout>
 </template>

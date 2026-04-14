@@ -1,0 +1,405 @@
+{
+    "meta": {
+        "title": "Academic Programmes — Aletheia Resource Center"
+    },
+    "hero": {
+        "image": "/images/class-1.jpg",
+        "eyebrow": "Our Academic Pathways",
+        "titleLine1": "Programmes Designed to",
+        "titleEmphasis": "Ignite Potential",
+        "subtitle": "From primary through pre-university, our Cambridge-aligned curriculum nurtures critical thinkers, confident communicators, and principled leaders ready for a rapidly changing world.",
+        "primaryCta": {
+            "href": "/contact",
+            "label": "Enquire Now"
+        },
+        "secondaryCta": {
+            "href": "#programme-overview",
+            "label": "Explore Programmes"
+        },
+        "jumpToLabel": "Jump to:",
+        "pills": [
+            {
+                "href": "#primary-programme",
+                "dotClass": "bg-sage",
+                "label": "Primary"
+            },
+            {
+                "href": "#secondary-programme",
+                "dotClass": "bg-ember",
+                "label": "Secondary"
+            },
+            {
+                "href": "#preuniversity-programme",
+                "dotClass": "bg-gold",
+                "label": "Pre-University"
+            }
+        ],
+        "scrollLabel": "Scroll"
+    },
+    "overview": {
+        "eyebrow": "Our Pathways",
+        "heading": "A Complete Education Journey",
+        "intro": "Three connected Cambridge-aligned programmes forming a seamless pathway from a child's first school years all the way to university admission.",
+        "connector": [
+            {
+                "dotClass": "bg-sage",
+                "label": "Ages 5–11",
+                "textClass": "text-sage"
+            },
+            {
+                "dotClass": "bg-ember",
+                "label": "Ages 12–16",
+                "textClass": "text-ember"
+            },
+            {
+                "dotClass": "bg-gold",
+                "label": "Ages 17–18",
+                "textClass": "text-gold"
+            }
+        ],
+        "exploreLabel": "Explore Programme",
+        "comparisonHeading": "At a glance — how the programmes compare",
+        "comparisonAriaLabel": "Programme comparison table",
+        "comparisonRowLabel": "",
+        "comparisonCols": [
+            { "title": "Primary", "headingClass": "text-sage-dark" },
+            { "title": "Secondary", "headingClass": "text-ember-dark" },
+            { "title": "Pre-University", "headingClass": "text-gold-dark" }
+        ],
+        "comparisonRows": [
+            {
+                "label": "Ages",
+                "cells": ["5–11", "12–16", "17–18"]
+            },
+            {
+                "label": "Qualification",
+                "cells": ["Cambridge Primary Checkpoint", "Cambridge IGCSE (up to 10 subjects)", "Cambridge A-Levels (AS & A2)"]
+            },
+            {
+                "label": "Key Focus",
+                "cells": ["Literacy, numeracy & inquiry foundations", "Critical thinking & subject breadth", "Subject specialisation & university entry"]
+            },
+            {
+                "label": "Class Size",
+                "cells": ["Max 20 students", "Max 20 students", "Max 15 students"]
+            },
+            {
+                "label": "Duration",
+                "cells": ["6 years", "5 years", "2 years"]
+            }
+        ],
+        "programmes": [
+            {
+                "eyebrow": "Ages 5–11",
+                "title": "Primary Programme",
+                "description": "A strong foundation in literacy, numeracy, and critical thinking through an inquiry-based Cambridge curriculum that nurtures curiosity and builds confidence in every child.",
+                "highlights": [
+                    "Cambridge Primary",
+                    "STEM Integration",
+                    "Character Education",
+                    "Portfolio Assessment"
+                ],
+                "image": "/images/class-3.jpg",
+                "imageAlt": "Young students engaged in hands-on learning activities",
+                "overlayColor": "#6B870F",
+                "accentBg": "bg-sage",
+                "accentText": "text-sage-dark",
+                "accentBorder": "border-sage",
+                "hoverRing": "hover:ring-2 hover:ring-offset-2 hover:ring-sage/60",
+                "anchor": "#primary-programme",
+                "icon": "<svg class=\"w-5 h-5\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25\" /></svg>"
+            },
+            {
+                "eyebrow": "Ages 12–16",
+                "title": "Secondary Programme",
+                "description": "Rigorous academic preparation aligned with Cambridge IGCSE, developing analytical skills and subject mastery to prepare students for advanced study and global opportunities.",
+                "highlights": [
+                    "Cambridge IGCSE",
+                    "Core Sciences",
+                    "Modern Languages",
+                    "Co-Curricular Activities"
+                ],
+                "image": "/images/class-1.jpg",
+                "imageAlt": "Secondary students in a science laboratory",
+                "overlayColor": "#7A3410",
+                "accentBg": "bg-ember",
+                "accentText": "text-ember-dark",
+                "accentBorder": "border-ember",
+                "hoverRing": "hover:ring-2 hover:ring-offset-2 hover:ring-ember/60",
+                "anchor": "#secondary-programme",
+                "icon": "<svg class=\"w-5 h-5\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5\" /></svg>"
+            },
+            {
+                "eyebrow": "Ages 17–18",
+                "title": "Pre-University",
+                "description": "Advanced Cambridge A-Level pathways with personalised mentorship, subject specialisation, and expert university counselling for admission to leading institutions worldwide.",
+                "highlights": [
+                    "Cambridge A-Levels",
+                    "University Counselling",
+                    "Research Projects",
+                    "Leadership"
+                ],
+                "image": "/images/class-2.jpg",
+                "imageAlt": "Pre-university students in a discussion seminar",
+                "overlayColor": "#9A5A0E",
+                "accentBg": "bg-gold",
+                "accentText": "text-gold-dark",
+                "accentBorder": "border-gold",
+                "hoverRing": "hover:ring-2 hover:ring-offset-2 hover:ring-gold/60",
+                "anchor": "#preuniversity-programme",
+                "icon": "<svg class=\"w-5 h-5\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z\" /></svg>"
+            }
+        ]
+    },
+    "deepDive": {
+        "eyebrow": "Inside the Classroom",
+        "heading": "What Each Programme Offers",
+        "intro": "Each stage of learning is carefully designed to build on the last, ensuring every student arrives at their next chapter prepared and confident.",
+        "qualificationLabel": "Qualification",
+        "curriculumHeading": "Curriculum Areas",
+        "outcomesHeading": "Student Outcomes",
+        "enquireCta": "Enquire About This Programme",
+        "programmes": [
+            {
+                "id": "primary-programme",
+                "contactHref": "/contact?programme=primary",
+                "eyebrow": "Primary · Ages 5–11",
+                "title": "Primary Programme",
+                "qualification": "Cambridge Primary Checkpoint",
+                "qualificationNote": "An internationally recognised milestone assessment at the end of primary school, used by schools worldwide.",
+                "overview": "Our Primary Programme is designed to instil a lifelong love of learning from the earliest years. Grounded in the Cambridge Primary framework, students explore the world through structured inquiry, collaborative projects, and discovery-based activities that build strong academic and social foundations.",
+                "image": "/images/class-3.jpg",
+                "imageAlt": "Young students engaged in hands-on learning activities in a bright classroom",
+                "overlayColor": "#95B91F",
+                "accentBg": "bg-sage",
+                "accentText": "text-sage-dark",
+                "subjects": [
+                    {
+                        "name": "English & Literacy",
+                        "desc": "Phonics, comprehension, and creative writing with differentiated support."
+                    },
+                    {
+                        "name": "Mathematics",
+                        "desc": "Conceptual understanding through Singapore Math and manipulative-based learning."
+                    },
+                    {
+                        "name": "Sciences",
+                        "desc": "Hands-on experiments and STEM projects that build scientific curiosity."
+                    },
+                    {
+                        "name": "Humanities",
+                        "desc": "Age-appropriate history, geography, and cultural studies."
+                    },
+                    {
+                        "name": "Arts & Music",
+                        "desc": "Expressive arts fostering creativity and emotional intelligence."
+                    },
+                    {
+                        "name": "Physical Education",
+                        "desc": "Structured sports, movement, and wellness routines."
+                    }
+                ],
+                "outcomes": [
+                    "Strong literacy and numeracy foundations",
+                    "Inquisitive, self-directed learners",
+                    "Collaborative social and emotional skills",
+                    "Cambridge Primary Checkpoint qualification"
+                ],
+                "icon": "<svg fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" style=\"width:14px;height:14px;\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25\" /></svg>"
+            },
+            {
+                "id": "secondary-programme",
+                "contactHref": "/contact?programme=secondary",
+                "eyebrow": "Secondary · Ages 12–16",
+                "title": "Secondary Programme",
+                "qualification": "Cambridge IGCSE (up to 10 subjects)",
+                "qualificationNote": "The Cambridge IGCSE is a globally recognised qualification taken at around age 16, accepted by universities and employers in over 160 countries.",
+                "overview": "The Secondary Programme prepares students for Cambridge IGCSE examinations while cultivating deep analytical thinking, independent research, and a breadth of academic interests. Students are challenged to think critically, communicate effectively, and engage with global issues across disciplines.",
+                "image": "/images/class-1.jpg",
+                "imageAlt": "Secondary students working in a well-equipped science laboratory",
+                "overlayColor": "#A74B1A",
+                "accentBg": "bg-ember",
+                "accentText": "text-ember-dark",
+                "subjects": [
+                    {
+                        "name": "Core Sciences",
+                        "desc": "Biology, Chemistry, and Physics with dedicated laboratory sessions."
+                    },
+                    {
+                        "name": "Mathematics",
+                        "desc": "Rigorous problem-solving and algebraic reasoning through Additional Mathematics."
+                    },
+                    {
+                        "name": "English Language & Literature",
+                        "desc": "Critical textual analysis and academic writing skills."
+                    },
+                    {
+                        "name": "Humanities",
+                        "desc": "History, Geography, and Economics with global case studies."
+                    },
+                    {
+                        "name": "Modern Languages",
+                        "desc": "Mandarin, Malay, and French language programmes."
+                    },
+                    {
+                        "name": "Co-Curricular Activities (CCA)",
+                        "desc": "Structured extra-curricular portfolio — sports, arts, clubs — supporting holistic development."
+                    }
+                ],
+                "outcomes": [
+                    "Cambridge IGCSE qualifications across up to 10 subjects",
+                    "Strong analytical and independent research skills",
+                    "Leadership and communication capabilities",
+                    "A breadth of academic and co-curricular achievements"
+                ],
+                "icon": "<svg fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" style=\"width:14px;height:14px;\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5\" /></svg>"
+            },
+            {
+                "id": "preuniversity-programme",
+                "contactHref": "/contact?programme=preuniversity",
+                "eyebrow": "Pre-University · Ages 17–18",
+                "title": "Pre-University Programme",
+                "qualification": "Cambridge A-Levels (AS & A2)",
+                "qualificationNote": "Cambridge A-Levels are among the most respected pre-university qualifications in the world, accepted for admission by universities across the UK, US, Australia, and Asia.",
+                "overview": "Our Pre-University Programme is a focused two-year track designed to maximise Cambridge A-Level results and secure admission to top universities worldwide. Students receive individualised mentorship, subject specialisation across three structured tracks, and expert university counselling throughout their final school years.",
+                "image": "/images/class-2.jpg",
+                "imageAlt": "Pre-university students engaged in a seminar discussion",
+                "overlayColor": "#CE7815",
+                "accentBg": "bg-gold",
+                "accentText": "text-gold-dark",
+                "subjects": [
+                    {
+                        "name": "Sciences Track",
+                        "desc": "Mathematics, Physics, Chemistry, and Biology combinations."
+                    },
+                    {
+                        "name": "Humanities & Social Sciences",
+                        "desc": "Economics, Literature, History, and Psychology."
+                    },
+                    {
+                        "name": "Business & Commerce Track",
+                        "desc": "Business Studies, Economics, and Accounting."
+                    },
+                    {
+                        "name": "General Paper",
+                        "desc": "Critical thinking, essay writing, and current affairs analysis."
+                    },
+                    {
+                        "name": "Project Work",
+                        "desc": "Collaborative research and presentation skills across disciplines."
+                    },
+                    {
+                        "name": "University Counselling",
+                        "desc": "Dedicated guidance for local and international university applications."
+                    }
+                ],
+                "outcomes": [
+                    "Cambridge A-Level qualifications (AS and A2)",
+                    "University admission to local and overseas institutions",
+                    "Scholarship application support and portfolio preparation",
+                    "Leadership credentials and independent research experience"
+                ],
+                "icon": "<svg fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" style=\"width:14px;height:14px;\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z\" /></svg>"
+            }
+        ]
+    },
+    "whyChoose": {
+        "eyebrow": "Why Aletheia Resource Center",
+        "heading": "The Aletheia Difference",
+        "intro": "We don't just teach — we shape the whole child. Here is what sets our programmes apart from the rest.",
+        "features": [
+            {
+                "title": "Cambridge-Aligned Curriculum",
+                "body": "All three programmes are built on the globally recognised Cambridge framework, ensuring our qualifications are accepted and respected by universities worldwide.",
+                "iconBg": "bg-sage",
+                "accentLine": "bg-sage",
+                "icon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25\" /></svg>"
+            },
+            {
+                "title": "Small Class Sizes",
+                "body": "With intentionally small class sizes, every student receives focused attention and personalised guidance — never just a face in the crowd.",
+                "iconBg": "bg-ember",
+                "accentLine": "bg-ember",
+                "icon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z\" /></svg>"
+            },
+            {
+                "title": "Experienced Educators",
+                "body": "Our faculty comprises qualified, passionate teachers with deep subject expertise and a genuine commitment to each student's growth and wellbeing.",
+                "iconBg": "bg-gold",
+                "accentLine": "bg-gold",
+                "icon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5\" /></svg>"
+            },
+            {
+                "title": "Holistic Co-Curricular",
+                "body": "From orchestra and debate to robotics and competitive sports, our rich CCA programme ensures every child discovers and develops their unique talents.",
+                "iconBg": "bg-crimson",
+                "accentLine": "bg-crimson",
+                "icon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z\" /></svg>"
+            },
+            {
+                "title": "University Counselling",
+                "body": "Our dedicated university counsellors guide every pre-university student through applications to local and international universities, including scholarship opportunities.",
+                "iconBg": "bg-espresso-light",
+                "accentLine": "bg-espresso-light",
+                "icon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z\" /></svg>"
+            },
+            {
+                "title": "Pastoral Care & Character",
+                "body": "Every student is known by name. Our pastoral system ensures emotional wellbeing, character formation, and a strong sense of belonging throughout their school journey.",
+                "iconBg": "bg-gold-dark",
+                "accentLine": "bg-gold-dark",
+                "icon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z\" /></svg>"
+            }
+        ],
+        "stats": [
+            {
+                "value": "75+",
+                "label": "Years of Excellence",
+                "numericValue": 75,
+                "suffix": "+"
+            },
+            {
+                "value": "98%",
+                "label": "University Placement",
+                "numericValue": 98,
+                "suffix": "%"
+            },
+            {
+                "value": "12:1",
+                "label": "Student-Teacher Ratio",
+                "numericValue": 12,
+                "suffix": ":1"
+            },
+            {
+                "value": "30+",
+                "label": "CCA Programmes",
+                "numericValue": 30,
+                "suffix": "+"
+            }
+        ]
+    },
+    "enquiryCta": {
+        "eyebrow": "Take the Next Step",
+        "titleLine1": "Ready to Begin Your Child's",
+        "titleEmphasis": "Journey With Us?",
+        "body": "Our admissions team is here to answer your questions, arrange a campus visit, and guide you through every step of the enrolment process. We would love to hear from you.",
+        "whatsapp": {
+            "href": "https://wa.me/60312345678",
+            "label": "Chat on WhatsApp",
+            "ariaLabel": "Chat with us on WhatsApp"
+        },
+        "contact": {
+            "href": "/contact",
+            "label": "Send an Enquiry"
+        },
+        "about": {
+            "href": "/about",
+            "label": "Meet Our Educators"
+        },
+        "trust": [
+            "Registered Cambridge International School since 1947",
+            "Campus visits welcome — no obligation",
+            "Our team replies within one working day"
+        ]
+    }
+}

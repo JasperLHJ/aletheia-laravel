@@ -7,6 +7,10 @@ const props = defineProps({
         type: Array,
         default: () => [],
     },
+    pageContent: {
+        type: Object,
+        required: true,
+    },
 });
 import HeroSection from '@/Pages/Welcome/HeroSection.vue';
 import StatsBarSection from '@/Pages/Welcome/StatsBarSection.vue';
@@ -165,15 +169,18 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <Head title="Welcome — Aletheia Resource Center" />
+    <Head :title="props.pageContent.meta.title" />
 
     <PublicLayout>
-        <HeroSection />
-        <StatsBarSection ref="statsBarRef" />
-        <HighlightsSection />
-        <GallerySection />
-        <TestimonialsSection :testimonials="props.featuredTestimonials" />
-        <EnquiryCtaSection />
-        <SocialSection />
+        <HeroSection :content="props.pageContent.hero" />
+        <StatsBarSection ref="statsBarRef" :content="props.pageContent.stats" />
+        <HighlightsSection :content="props.pageContent.highlights" />
+        <GallerySection :content="props.pageContent.galleryTeaser" />
+        <TestimonialsSection
+            :testimonials="props.featuredTestimonials"
+            :copy="props.pageContent.testimonials"
+        />
+        <EnquiryCtaSection :content="props.pageContent.enquiryCta" />
+        <SocialSection :content="props.pageContent.social" />
     </PublicLayout>
 </template>

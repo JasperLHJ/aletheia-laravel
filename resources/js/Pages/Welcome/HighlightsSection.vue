@@ -1,33 +1,10 @@
 <script setup>
-const highlights = [
-    {
-        eyebrow: 'Academic Excellence',
-        title: 'World-Class Curriculum',
-        body: 'A rigorous programme designed to nurture critical thinkers, equipping students for leading universities worldwide.',
-        image: '/images/class-1.jpg',
-        imageAlt: 'Students engaged in classroom learning',
-        accentColor: '#382016',
-        linkText: 'Explore Academics',
+defineProps({
+    content: {
+        type: Object,
+        required: true,
     },
-    {
-        eyebrow: 'Achievements',
-        title: 'A Legacy of Success',
-        body: 'Our students consistently rank among the top in national and international examinations, earning merit scholarships year after year.',
-        image: '/images/class-2.jpg',
-        imageAlt: 'Students celebrating academic achievements',
-        accentColor: '#9A5A0E',
-        linkText: 'Our Achievements',
-    },
-    {
-        eyebrow: 'Co-curricular',
-        title: 'Holistic Environment',
-        body: 'From orchestra and debate to robotics and sports, our campus fosters well-rounded growth beyond the classroom.',
-        image: '/images/class-3.jpg',
-        imageAlt: 'Students participating in co-curricular activities',
-        accentColor: '#6B870F',
-        linkText: 'Discover Campus Life',
-    },
-];
+});
 </script>
 
 <template>
@@ -38,22 +15,22 @@ const highlights = [
     >
         <div id="highlights-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14">
-                <p class="section-eyebrow mb-3">Why Aletheia Resource Center</p>
+                <p class="section-eyebrow mb-3">{{ content.eyebrow }}</p>
                 <h2
                     id="highlights-heading"
                     class="font-display font-semibold text-espresso mb-4"
                     style="font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.2;"
                 >
-                    An Education That Stays With You
+                    {{ content.heading }}
                 </h2>
                 <p class="text-neutral-600 leading-relaxed">
-                    We believe education is more than examination results. It is character, curiosity, and the courage to lead.
+                    {{ content.intro }}
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                 <article
-                    v-for="card in highlights"
+                    v-for="card in content.cards"
                     :key="card.title"
                     class="highlight-card group bg-white rounded-xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col"
                 >

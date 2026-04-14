@@ -1,5 +1,9 @@
 <script setup>
 defineProps({
+    copy: {
+        type: Object,
+        required: true,
+    },
     testimonials: {
         type: Array,
         default: () => [],
@@ -11,17 +15,16 @@ defineProps({
     <div>
         <div class="text-center max-w-2xl mx-auto mb-12">
             <p class="text-xs font-sans font-medium text-ember uppercase tracking-widest mb-3">
-                Voices of Our Community
+                {{ copy.introEyebrow }}
             </p>
             <h3
                 class="font-display font-semibold text-espresso mb-4"
                 style="font-size: clamp(1.6rem, 2.8vw, 2.1rem); line-height: 1.2;"
             >
-                Parent Testimonials
+                {{ copy.introHeading }}
             </h3>
             <p class="text-neutral-600 leading-relaxed">
-                Hear from the families who have entrusted us with their children's education
-                and watched them flourish.
+                {{ copy.introBody }}
             </p>
         </div>
 
@@ -29,7 +32,7 @@ defineProps({
             v-if="!testimonials.length"
             class="text-center text-neutral-500 font-sans"
         >
-            No testimonials published yet.
+            {{ copy.empty }}
         </p>
 
         <div

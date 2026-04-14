@@ -1,0 +1,59 @@
+{
+  "brand": {
+    "wordmark": "Aletheia Resource Center",
+    "homeAriaLabel": "Aletheia Resource Center — home"
+  },
+  "nav": {
+    "ariaLabel": "Main navigation",
+    "links": [
+      { "label": "About", "href": "/about" },
+      { "label": "Programmes", "href": "/programmes" },
+      { "label": "Gallery", "href": "/gallery" },
+      { "label": "Blog", "href": "/blog" },
+      { "label": "Contact", "href": "/contact" }
+    ],
+    "ctaEnquire": "Enquire Now",
+    "mobileMenuToggleAriaLabel": "Toggle navigation menu"
+  },
+  "footer": {
+    "tagline": "Est. MCMXLVII · Excellence in Education",
+    "blurb": "Nurturing curious minds and principled leaders. Every student is known by name and guided by dedicated educators.",
+    "quickLinksHeading": "Quick Links",
+    "enquireLink": "Enquire Now →",
+    "connectHeading": "Connect",
+    "phone": {
+      "href": "tel:+60312345678",
+      "display": "+603 1234 5678",
+      "ariaLabel": "Call us at +603 1234 5678"
+    },
+    "email": {
+      "href": "mailto:info@aletheiaacademy.edu.my",
+      "display": "info@aletheiaacademy.edu.my",
+      "ariaLabel": "Email us at info@aletheiaacademy.edu.my"
+    },
+    "social": [
+      {
+        "href": "https://facebook.com",
+        "ariaLabel": "Aletheia Resource Center on Facebook"
+      },
+      {
+        "href": "https://instagram.com",
+        "ariaLabel": "Aletheia Resource Center on Instagram"
+      },
+      {
+        "href": "https://wa.me/60312345678",
+        "ariaLabel": "Contact Aletheia Resource Center on WhatsApp"
+      }
+    ],
+    "copyrightName": "Aletheia Resource Center",
+    "legal": [
+      { "label": "Privacy Policy", "href": "#" },
+      { "label": "Terms of Use", "href": "#" }
+    ]
+  },
+  "floatingWhatsapp": {
+    "href": "https://wa.me/60312345678",
+    "ariaLabel": "Chat with us on WhatsApp"
+  },
+  "enquiryAnchor": "#enquiry"
+}

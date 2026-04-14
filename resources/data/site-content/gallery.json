@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "title": "Gallery — Aletheia Resource Center"
+  },
+  "hero": {
+    "image": "/images/class-4.jpg",
+    "eyebrow": "School Life",
+    "titleHtml": "A Window into Our <em class=\"text-gold not-italic\">World</em>",
+    "subtitle": "Explore the vibrant life at Aletheia Resource Center — from the energy of our classrooms and sports fields to the warmth of community events and our world-class facilities."
+  },
+  "grid": {
+    "eyebrow": "Browse & Explore",
+    "heading": "Our School in Pictures",
+    "photoWordOne": "photo",
+    "photoWordMany": "photos",
+    "filterTablistAria": "Filter gallery by category",
+    "filterTabAriaShow": "Show {category} photos ({count})",
+    "gridAria": "Gallery photos",
+    "viewPhotoAria": "View photo: {caption}",
+    "emptyTitle": "No photos yet",
+    "emptyBody": "Photos in this category will appear here soon.",
+    "ctaText": "Want to experience Aletheia in person?",
+    "ctaButton": "Book a School Tour",
+    "ctaHref": "/contact",
+    "lightboxCloseAria": "Close lightbox",
+    "lightboxPrevAria": "Previous photo",
+    "lightboxNextAria": "Next photo",
+    "lightboxDialogAria": "Lightbox: {caption}",
+    "categories": ["All", "Events", "Facilities", "Classrooms", "Sports"],
+    "images": [
+      { "src": "/images/class-1.jpg", "category": "Classrooms", "caption": "Interactive Learning", "alt": "Students engaged in interactive learning in a modern classroom" },
+      { "src": "/images/class-2.jpg", "category": "Classrooms", "caption": "Collaborative Spaces", "alt": "Students collaborating in a well-designed classroom environment" },
+      { "src": "/images/class-4.jpg", "category": "Facilities", "caption": "Modern Facilities", "alt": "State-of-the-art facilities at Aletheia Resource Center" },
+      { "src": "/images/sports-1.jpg", "category": "Sports", "caption": "Sports & Athletics", "alt": "Students participating in sports and athletic activities" },
+      { "src": "/images/student-1.jpg", "category": "Events", "caption": "Student Life", "alt": "Students enjoying school life and community events" },
+      { "src": "/images/class-2.jpg", "category": "Events", "caption": "School Celebrations", "alt": "Students and staff celebrating at a school event" },
+      { "src": "/images/sports-1.jpg", "category": "Facilities", "caption": "Sports Complex", "alt": "The school sports complex and outdoor facilities" },
+      { "src": "/images/student-1.jpg", "category": "Classrooms", "caption": "Focused Study", "alt": "A student deeply focused during a study session" },
+      { "src": "/images/class-1.jpg", "category": "Sports", "caption": "Team Spirit", "alt": "Students demonstrating teamwork and sportsmanship" },
+      { "src": "/images/class-4.jpg", "category": "Events", "caption": "Annual Showcase", "alt": "Students presenting their work at the annual school showcase" },
+      { "src": "/images/student-1.jpg", "category": "Facilities", "caption": "Learning Commons", "alt": "The school learning commons and library area" },
+      { "src": "/images/class-2.jpg", "category": "Sports", "caption": "Active Lifestyle", "alt": "Students enjoying an active and healthy school lifestyle" }
+    ]
+  }
+}

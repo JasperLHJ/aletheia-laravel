@@ -1,80 +1,14 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
-const programmes = [
-    {
-        icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>`,
-        eyebrow: 'Ages 5–11',
-        title: 'Primary Programme',
-        description: 'A strong foundation in literacy, numeracy, and critical thinking through an inquiry-based curriculum that nurtures curiosity and confidence in every child.',
-        highlights: ['Cambridge Primary', 'STEM Integration', 'Character Education'],
-        accentColor: 'bg-sage',
-        accentText: 'text-sage',
-        accentBorder: 'border-sage',
-        hoverRing: 'hover:ring-sage',
-        detail: {
-            overview: 'Our Primary Programme is designed to instil a lifelong love of learning from the earliest years. Grounded in the Cambridge Primary framework, students explore the world through structured inquiry, collaborative projects, and discovery-based activities.',
-            curriculum: [
-                { subject: 'English & Literacy', desc: 'Phonics, comprehension, and creative writing with differentiated support.' },
-                { subject: 'Mathematics', desc: 'Conceptual understanding through Singapore Math and manipulative-based learning.' },
-                { subject: 'Sciences', desc: 'Hands-on experiments and STEM projects that build scientific curiosity.' },
-                { subject: 'Humanities', desc: 'Age-appropriate history, geography, and cultural studies.' },
-                { subject: 'Arts & Music', desc: 'Expressive arts fostering creativity and emotional intelligence.' },
-                { subject: 'Physical Education', desc: 'Structured sports, movement, and wellness routines.' },
-            ],
-            assessment: 'Continuous portfolio-based assessment complemented by termly Cambridge-aligned examinations.',
-            outcomes: ['Strong literacy and numeracy foundations', 'Inquisitive, self-directed learners', 'Collaborative social skills', 'Cambridge Primary Checkpoint qualification'],
-        },
+const props = defineProps({
+    content: {
+        type: Object,
+        required: true,
     },
-    {
-        icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg>`,
-        eyebrow: 'Ages 12–16',
-        title: 'Secondary Programme',
-        description: 'Rigorous academic preparation aligned with Cambridge IGCSE, developing analytical skills and subject mastery to prepare students for advanced study.',
-        highlights: ['Cambridge IGCSE', 'Sciences & Humanities', 'Co-Curricular Excellence'],
-        accentColor: 'bg-ember',
-        accentText: 'text-ember',
-        accentBorder: 'border-ember',
-        hoverRing: 'hover:ring-ember',
-        detail: {
-            overview: 'The Secondary Programme prepares students for Cambridge IGCSE examinations while cultivating deep analytical thinking, independent research, and a breadth of academic interests.',
-            curriculum: [
-                { subject: 'Core Sciences', desc: 'Biology, Chemistry, and Physics with dedicated laboratory sessions.' },
-                { subject: 'Mathematics & Additional Mathematics', desc: 'Rigorous problem-solving and algebraic reasoning.' },
-                { subject: 'English Language & Literature', desc: 'Critical textual analysis and academic writing.' },
-                { subject: 'Humanities', desc: 'History, Geography, and Economics with global case studies.' },
-                { subject: 'Modern Languages', desc: 'Mandarin, Malay, and French language programmes.' },
-                { subject: 'Co-Curricular Activities', desc: 'Structured CCA portfolio supporting holistic development.' },
-            ],
-            assessment: 'Cambridge IGCSE examinations at the end of Year 10/11, supplemented by internal termly assessments and project-based evaluations.',
-            outcomes: ['Cambridge IGCSE qualifications (up to 10 subjects)', 'Strong university preparation', 'Leadership and communication skills', 'Breadth of academic and co-curricular achievements'],
-        },
-    },
-    {
-        icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>`,
-        eyebrow: 'Ages 17–18',
-        title: 'Pre-University',
-        description: 'Advanced pathways including Cambridge A-Levels, preparing students for admission to leading universities with personalised guidance and mentorship.',
-        highlights: ['Cambridge A-Levels', 'University Counselling', 'Leadership Programmes'],
-        accentColor: 'bg-gold',
-        accentText: 'text-gold',
-        accentBorder: 'border-gold',
-        hoverRing: 'hover:ring-gold',
-        detail: {
-            overview: 'Our Pre-University Programme is a focused two-year track designed to maximise Cambridge A-Level results and secure admission to top universities worldwide. Students receive individualised mentorship, subject specialisation, and expert university counselling.',
-            curriculum: [
-                { subject: 'Sciences Track', desc: 'Mathematics, Physics, Chemistry, and Biology combinations.' },
-                { subject: 'Humanities & Social Sciences Track', desc: 'Economics, Literature, History, and Psychology.' },
-                { subject: 'Business & Commerce Track', desc: 'Business Studies, Economics, and Accounting.' },
-                { subject: 'General Paper', desc: 'Critical thinking, essay writing, and current affairs analysis.' },
-                { subject: 'Project Work', desc: 'Collaborative research and presentation skills.' },
-                { subject: 'University Counselling', desc: 'Dedicated guidance for local and international university applications.' },
-            ],
-            assessment: 'Cambridge A-Level examinations (AS and A2), with internal mock examinations each semester and a dedicated university application portfolio.',
-            outcomes: ['Cambridge A-Level qualifications', 'University admission to local and overseas institutions', 'Scholarship application support', 'Leadership and independent research credentials'],
-        },
-    },
-];
+});
+
+const programmes = computed(() => props.content.programmes);
 
 const activeDialogIndex = ref(null);
 
@@ -101,17 +35,16 @@ function handleDialogKeydown(event) {
     <div>
         <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
             <p class="text-xs font-sans font-medium text-ember uppercase tracking-widest mb-3">
-                Our Curriculum
+                {{ content.introEyebrow }}
             </p>
             <h3
                 class="font-display font-semibold text-espresso mb-4"
                 style="font-size: clamp(1.6rem, 2.8vw, 2.1rem); line-height: 1.2;"
             >
-                Academic Programmes
+                {{ content.introHeading }}
             </h3>
             <p class="text-neutral-600 leading-relaxed">
-                From primary through pre-university, our Cambridge-aligned programmes
-                develop critical thinkers prepared for a changing world.
+                {{ content.introBody }}
             </p>
         </div>
 
@@ -172,7 +105,7 @@ function handleDialogKeydown(event) {
                         <span
                             :class="['text-sm font-semibold font-sans tracking-tight', programme.accentText]"
                         >
-                            View programme details
+                            {{ content.viewDetailsCta }}
                         </span>
                         <span
                             class="inline-flex items-center justify-center rounded-full p-1.5 text-neutral-400 transition-all duration-300 group-hover:text-current"
@@ -191,10 +124,10 @@ function handleDialogKeydown(event) {
         <!-- View Full Programmes Page link -->
         <div class="mt-10 text-center">
             <a
-                href="/programmes"
+                :href="content.fullPageLink.href"
                 class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-espresso/20 text-sm font-semibold font-sans text-espresso hover:bg-espresso hover:text-cream-50 hover:border-espresso transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 min-h-[44px]"
             >
-                View Full Programmes Page
+                {{ content.fullPageLink.label }}
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -259,7 +192,7 @@ function handleDialogKeydown(event) {
                                     <button
                                         class="shrink-0 w-9 h-9 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                                         @click="closeDialog"
-                                        aria-label="Close dialogue"
+                                        :aria-label="content.dialog.closeDialogAria"
                                     >
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -280,7 +213,7 @@ function handleDialogKeydown(event) {
                                 <!-- Subjects -->
                                 <div class="space-y-3 sm:space-y-4">
                                     <h5 class="font-display font-semibold text-espresso" style="font-size: 1.05rem;">
-                                        Curriculum Areas
+                                        {{ content.dialog.curriculumAreasHeading }}
                                     </h5>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
                                         <div
@@ -300,7 +233,7 @@ function handleDialogKeydown(event) {
                                 <!-- Assessment -->
                                 <div class="bg-neutral-50 rounded-xl border border-neutral-100 p-4 sm:p-5 space-y-2">
                                     <h5 class="font-display font-semibold text-espresso" style="font-size: 1rem;">
-                                        Assessment
+                                        {{ content.dialog.assessmentHeading }}
                                     </h5>
                                     <p class="text-sm text-neutral-600 leading-relaxed">
                                         {{ programmes[activeDialogIndex].detail.assessment }}
@@ -310,7 +243,7 @@ function handleDialogKeydown(event) {
                                 <!-- Outcomes -->
                                 <div class="space-y-3 sm:space-y-4 pb-1">
                                     <h5 class="font-display font-semibold text-espresso" style="font-size: 1.05rem;">
-                                        Student Outcomes
+                                        {{ content.dialog.outcomesHeading }}
                                     </h5>
                                     <ul class="space-y-2 sm:space-y-2.5" role="list">
                                         <li
@@ -336,13 +269,13 @@ function handleDialogKeydown(event) {
                                     class="btn-cta w-full sm:w-auto text-center"
                                     @click="closeDialog"
                                 >
-                                    Enquire About This Programme
+                                    {{ content.dialog.enquireCta }}
                                 </a>
                                 <button
                                     class="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-neutral-300 text-sm font-semibold font-sans text-neutral-700 hover:bg-neutral-100 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-espresso focus-visible:ring-offset-2"
                                     @click="closeDialog"
                                 >
-                                    Close
+                                    {{ content.dialog.close }}
                                 </button>
                             </div>
                         </div>

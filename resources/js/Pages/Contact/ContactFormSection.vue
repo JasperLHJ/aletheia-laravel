@@ -2,6 +2,13 @@
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
+defineProps({
+    formContent: {
+        type: Object,
+        required: true,
+    },
+});
+
 const submitted = ref(false);
 
 const form = useForm({
@@ -11,22 +18,6 @@ const form = useForm({
     year_level: '',
     message: '',
 });
-
-const yearLevels = [
-    'Pre-School (Age 3–5)',
-    'Year 1',
-    'Year 2',
-    'Year 3',
-    'Year 4',
-    'Year 5',
-    'Year 6',
-    'Form 1',
-    'Form 2',
-    'Form 3',
-    'Form 4',
-    'Form 5',
-    'Not sure yet',
-];
 
 function submit() {
     form.post(route('contact.send'), {
@@ -57,59 +48,66 @@ function resetForm() {
                 <!-- Left: Sidebar copy -->
                 <div class="lg:col-span-2 lg:sticky lg:top-28">
                     <p class="text-xs font-sans font-medium uppercase tracking-widest text-gold mb-3" aria-hidden="true">
-                        Get in Touch
+                        {{ formContent.sidebarEyebrow }}
                     </p>
                     <h2
                         id="contact-form-heading"
                         class="font-display font-bold text-espresso mb-4"
                         style="font-size: clamp(1.6rem, 3vw, 2.2rem);"
                     >
-                        Send Us a Message
+                        {{ formContent.heading }}
                     </h2>
-                    <p class="text-neutral-600 text-sm sm:text-base leading-relaxed mb-8">
-                        Fill in the form and a member of our admissions team will be in touch with you shortly.
-                        All fields marked with <span class="text-crimson font-medium" aria-label="required">*</span> are required.
-                    </p>
+                    <p class="text-neutral-600 text-sm sm:text-base leading-relaxed mb-8" v-html="formContent.introHtml"></p>
 
-                    <!-- Trust signals -->
                     <div class="space-y-4">
-                        <div class="flex items-start gap-3">
+                        <div
+                            v-for="(item, ti) in formContent.trust"
+                            :key="ti"
+                            class="flex items-start gap-3"
+                        >
                             <div class="flex-shrink-0 mt-0.5 w-8 h-8 rounded-full bg-espresso/10 flex items-center justify-center">
-                                <svg class="w-4 h-4 text-espresso" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <svg
+                                    v-if="ti === 0"
+                                    class="w-4 h-4 text-espresso"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    aria-hidden="true"
+                                >
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                            </div>
-                            <div>
-                                <p class="text-sm font-medium text-neutral-700">We respond within 1 business day</p>
-                                <p class="text-xs text-neutral-500 mt-0.5">Enquiries submitted after hours are answered the next school day.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="flex-shrink-0 mt-0.5 w-8 h-8 rounded-full bg-espresso/10 flex items-center justify-center">
-                                <svg class="w-4 h-4 text-espresso" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <svg
+                                    v-else-if="ti === 1"
+                                    class="w-4 h-4 text-espresso"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    aria-hidden="true"
+                                >
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                                 </svg>
-                            </div>
-                            <div>
-                                <p class="text-sm font-medium text-neutral-700">Your data is safe with us</p>
-                                <p class="text-xs text-neutral-500 mt-0.5">We do not share your information with third parties.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="flex-shrink-0 mt-0.5 w-8 h-8 rounded-full bg-espresso/10 flex items-center justify-center">
-                                <svg class="w-4 h-4 text-espresso" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <svg
+                                    v-else
+                                    class="w-4 h-4 text-espresso"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    aria-hidden="true"
+                                >
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
                                 </svg>
                             </div>
                             <div>
-                                <p class="text-sm font-medium text-neutral-700">Prefer to chat?</p>
+                                <p class="text-sm font-medium text-neutral-700">{{ item.title }}</p>
+                                <p v-if="item.body" class="text-xs text-neutral-500 mt-0.5">{{ item.body }}</p>
                                 <a
-                                    href="https://wa.me/60312345678"
+                                    v-if="item.whatsappHref"
+                                    :href="item.whatsappHref"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="text-xs text-gold hover:text-gold-dark font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm"
+                                    class="text-xs text-gold hover:text-gold-dark font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm mt-0.5 inline-block"
                                 >
-                                    Message us on WhatsApp →
+                                    {{ item.whatsappText }}
                                 </a>
                             </div>
                         </div>
@@ -131,16 +129,16 @@ function resetForm() {
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
-                        <h3 class="font-display font-bold text-espresso text-xl mb-2">Message Sent!</h3>
+                        <h3 class="font-display font-bold text-espresso text-xl mb-2">{{ formContent.successTitle }}</h3>
                         <p class="text-neutral-600 text-sm leading-relaxed max-w-sm mb-6">
-                            Thank you for reaching out. A member of our admissions team will be in touch with you within one business day.
+                            {{ formContent.successBody }}
                         </p>
                         <button
                             type="button"
                             class="btn-primary text-sm px-5 py-2.5"
                             @click="resetForm"
                         >
-                            Send Another Message
+                            {{ formContent.sendAnother }}
                         </button>
                     </div>
 
@@ -162,7 +160,7 @@ function resetForm() {
                             <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                             </svg>
-                            <p>Please correct the errors below and try again.</p>
+                            <p>{{ formContent.generalError }}</p>
                         </div>
 
                         <!-- Row: Name + Email -->
@@ -173,7 +171,7 @@ function resetForm() {
                                     for="contact-name"
                                     class="block text-sm font-medium text-neutral-700 mb-1.5"
                                 >
-                                    Your Name <span class="text-crimson" aria-label="required">*</span>
+                                    {{ formContent.labels.name }} <span class="text-crimson" aria-label="required">*</span>
                                 </label>
                                 <input
                                     id="contact-name"
@@ -181,7 +179,7 @@ function resetForm() {
                                     type="text"
                                     name="name"
                                     autocomplete="name"
-                                    placeholder="e.g. Sarah Abdullah"
+                                    :placeholder="formContent.placeholders.name"
                                     required
                                     :aria-invalid="!!form.errors.name"
                                     :aria-describedby="form.errors.name ? 'name-error' : undefined"
@@ -206,7 +204,7 @@ function resetForm() {
                                     for="contact-email"
                                     class="block text-sm font-medium text-neutral-700 mb-1.5"
                                 >
-                                    Email Address <span class="text-crimson" aria-label="required">*</span>
+                                    {{ formContent.labels.email }} <span class="text-crimson" aria-label="required">*</span>
                                 </label>
                                 <input
                                     id="contact-email"
@@ -214,7 +212,7 @@ function resetForm() {
                                     type="email"
                                     name="email"
                                     autocomplete="email"
-                                    placeholder="e.g. sarah@example.com"
+                                    :placeholder="formContent.placeholders.email"
                                     required
                                     :aria-invalid="!!form.errors.email"
                                     :aria-describedby="form.errors.email ? 'email-error' : undefined"
@@ -242,8 +240,8 @@ function resetForm() {
                                     for="contact-phone"
                                     class="block text-sm font-medium text-neutral-700 mb-1.5"
                                 >
-                                    Phone Number
-                                    <span class="text-neutral-400 font-normal text-xs ml-1">(optional)</span>
+                                    {{ formContent.labels.phone }}
+                                    <span class="text-neutral-400 font-normal text-xs ml-1">{{ formContent.labels.phoneOptional }}</span>
                                 </label>
                                 <input
                                     id="contact-phone"
@@ -251,7 +249,7 @@ function resetForm() {
                                     type="tel"
                                     name="phone"
                                     autocomplete="tel"
-                                    placeholder="e.g. 012 345 6789"
+                                    :placeholder="formContent.placeholders.phone"
                                     :aria-invalid="!!form.errors.phone"
                                     :aria-describedby="form.errors.phone ? 'phone-error' : undefined"
                                     class="block w-full rounded-lg border px-4 py-3 text-sm text-neutral-800 placeholder-neutral-400 transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-crimson focus:border-transparent min-h-[44px]"
@@ -275,8 +273,8 @@ function resetForm() {
                                     for="contact-year-level"
                                     class="block text-sm font-medium text-neutral-700 mb-1.5"
                                 >
-                                    Child's Year Level
-                                    <span class="text-neutral-400 font-normal text-xs ml-1">(optional)</span>
+                                    {{ formContent.labels.yearLevel }}
+                                    <span class="text-neutral-400 font-normal text-xs ml-1">{{ formContent.labels.yearLevelOptional }}</span>
                                 </label>
                                 <select
                                     id="contact-year-level"
@@ -289,9 +287,9 @@ function resetForm() {
                                         ? 'border-crimson bg-crimson/5'
                                         : 'border-neutral-300 bg-white hover:border-neutral-400'"
                                 >
-                                    <option value="" disabled>Select year level…</option>
+                                    <option value="" disabled>{{ formContent.placeholders.yearLevel }}</option>
                                     <option
-                                        v-for="level in yearLevels"
+                                        v-for="level in formContent.yearLevels"
                                         :key="level"
                                         :value="level"
                                     >
@@ -315,14 +313,14 @@ function resetForm() {
                                 for="contact-message"
                                 class="block text-sm font-medium text-neutral-700 mb-1.5"
                             >
-                                Message <span class="text-crimson" aria-label="required">*</span>
+                                {{ formContent.labels.message }} <span class="text-crimson" aria-label="required">*</span>
                             </label>
                             <textarea
                                 id="contact-message"
                                 v-model="form.message"
                                 name="message"
                                 rows="5"
-                                placeholder="Tell us how we can help — questions about enrolment, a visit request, or anything else on your mind."
+                                :placeholder="formContent.placeholders.message"
                                 required
                                 :aria-invalid="!!form.errors.message"
                                 :aria-describedby="form.errors.message ? 'message-error' : undefined"
@@ -343,25 +341,22 @@ function resetForm() {
 
                         <!-- Submit -->
                         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
-                            <p class="text-xs text-neutral-400 leading-relaxed max-w-xs">
-                                By submitting this form you agree to our
-                                <a href="#" class="underline hover:text-neutral-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm">Privacy Policy</a>.
-                            </p>
+                            <p class="text-xs text-neutral-400 leading-relaxed max-w-xs" v-html="formContent.privacyHtml"></p>
                             <button
                                 type="submit"
                                 :disabled="form.processing"
                                 class="btn-cta min-w-[160px] relative"
-                                :aria-label="form.processing ? 'Sending message…' : 'Send message'"
+                                :aria-label="form.processing ? formContent.submitAriaSending : formContent.submitAriaIdle"
                             >
                                 <span v-if="form.processing" class="flex items-center gap-2">
                                     <svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
                                     </svg>
-                                    Sending…
+                                    {{ formContent.submitting }}
                                 </span>
                                 <span v-else class="flex items-center gap-2">
-                                    Send Message
+                                    {{ formContent.submit }}
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
                                     </svg>

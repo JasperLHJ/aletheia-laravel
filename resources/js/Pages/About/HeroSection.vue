@@ -1,3 +1,12 @@
+<script setup>
+defineProps({
+    hero: {
+        type: Object,
+        required: true,
+    },
+});
+</script>
+
 <template>
     <section
         class="relative flex items-center bg-espresso overflow-hidden"
@@ -6,7 +15,7 @@
     >
         <div class="absolute inset-0" aria-hidden="true">
             <img
-                src="/images/class-2.jpg"
+                :src="hero.image"
                 alt=""
                 class="w-full h-full object-cover object-center"
                 loading="eager"
@@ -24,23 +33,22 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
             <div class="max-w-2xl">
                 <p class="about-hero-eyebrow section-eyebrow mb-4" aria-hidden="true">
-                    About Us
+                    {{ hero.eyebrow }}
                 </p>
 
                 <h1
                     id="about-hero-heading"
                     class="about-hero-title font-display font-bold text-neutral-50 leading-tight mb-5"
                     style="font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15;"
+                    v-html="hero.titleHtml"
                 >
-                    Our Story, <em class="text-gold not-italic">Our People</em>
                 </h1>
 
                 <p
                     class="about-hero-subtitle text-base sm:text-lg text-white/70 leading-relaxed max-w-xl"
                     style="font-size: clamp(0.95rem, 1.8vw, 1.1rem);"
                 >
-                    Discover our academic programmes, meet the educators who shape young minds,
-                    and hear from the families who have entrusted us with their children's futures.
+                    {{ hero.subtitle }}
                 </p>
             </div>
         </div>

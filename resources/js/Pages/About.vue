@@ -15,6 +15,10 @@ const props = defineProps({
         type: Array,
         default: () => [],
     },
+    pageContent: {
+        type: Object,
+        required: true,
+    },
 });
 import HeroSection from '@/Pages/About/HeroSection.vue';
 import AboutTabs from '@/Pages/About/AboutTabs.vue';
@@ -61,11 +65,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <Head title="About — Aletheia Resource Center" />
+    <Head :title="props.pageContent.meta.title" />
 
     <PublicLayout>
-        <HeroSection />
+        <HeroSection :hero="props.pageContent.hero" />
         <AboutTabs
+            :page-content="props.pageContent"
             :testimonials="props.testimonials"
             :principal="props.principal"
             :teachers="props.teachers"

@@ -1,3 +1,12 @@
+<script setup>
+defineProps({
+    hero: {
+        type: Object,
+        required: true,
+    },
+});
+</script>
+
 <template>
     <section
         class="relative flex items-center bg-espresso overflow-hidden"
@@ -6,7 +15,7 @@
     >
         <div class="absolute inset-0" aria-hidden="true">
             <img
-                src="/images/class-1.jpg"
+                :src="hero.image"
                 alt=""
                 class="w-full h-full object-cover object-center"
                 loading="eager"
@@ -30,42 +39,31 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
             <div class="max-w-2xl">
                 <p class="blog-hero-eyebrow section-eyebrow mb-4" aria-hidden="true">
-                    Our Blog
+                    {{ hero.eyebrow }}
                 </p>
 
                 <h1
                     id="blog-hero-heading"
                     class="blog-hero-title font-display font-bold text-neutral-50 leading-tight mb-5"
                     style="font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15;"
-                >
-                    Stories, <em class="text-gold not-italic">Insights & Updates</em>
-                </h1>
+                    v-html="hero.titleHtml"
+                ></h1>
 
                 <p
                     class="blog-hero-subtitle text-base sm:text-lg text-white/70 leading-relaxed max-w-xl"
                     style="font-size: clamp(0.95rem, 1.8vw, 1.1rem);"
                 >
-                    Stay connected with campus life, academic achievements, events, and everything that makes our school community thrive.
+                    {{ hero.subtitle }}
                 </p>
 
                 <div class="blog-hero-pills mt-6 flex flex-wrap gap-2">
                     <span
+                        v-for="(pill, pi) in hero.pills"
+                        :key="pi"
                         class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white/10 text-white/70 border border-white/20"
                     >
-                        <span class="w-1.5 h-1.5 rounded-full bg-sage shrink-0" aria-hidden="true"></span>
-                        Campus Life
-                    </span>
-                    <span
-                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white/10 text-white/70 border border-white/20"
-                    >
-                        <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0" aria-hidden="true"></span>
-                        Achievements
-                    </span>
-                    <span
-                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-white/10 text-white/70 border border-white/20"
-                    >
-                        <span class="w-1.5 h-1.5 rounded-full bg-ember shrink-0" aria-hidden="true"></span>
-                        Events
+                        <span :class="['w-1.5 h-1.5 rounded-full shrink-0', pill.dotClass]" aria-hidden="true"></span>
+                        {{ pill.label }}
                     </span>
                 </div>
             </div>

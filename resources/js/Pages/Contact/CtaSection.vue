@@ -1,3 +1,12 @@
+<script setup>
+defineProps({
+    ctaSection: {
+        type: Object,
+        required: true,
+    },
+});
+</script>
+
 <template>
     <section
         id="contact-cta-section"
@@ -6,31 +15,29 @@
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <p class="section-eyebrow mb-3" aria-hidden="true">Reach Out</p>
+                <p class="section-eyebrow mb-3" aria-hidden="true">{{ ctaSection.eyebrow }}</p>
                 <h2
                     id="contact-cta-heading"
                     class="font-display font-bold text-neutral-50"
                     style="font-size: clamp(1.6rem, 3vw, 2.2rem);"
                 >
-                    Choose How You'd Like to Connect
+                    {{ ctaSection.heading }}
                 </h2>
                 <p class="mt-3 text-white/60 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
-                    We're available via WhatsApp, email, or phone. Pick what works best for you.
+                    {{ ctaSection.intro }}
                 </p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-4xl mx-auto">
 
-                <!-- WhatsApp Card -->
                 <a
-                    href="https://wa.me/60312345678?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20Aletheia%20Resource%20Center."
+                    :href="ctaSection.cards.whatsapp.href"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="cta-card group relative flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso"
                     style="opacity: 0; transform: translateY(40px);"
-                    aria-label="Chat with us on WhatsApp"
+                    :aria-label="ctaSection.cards.whatsapp.ariaLabel"
                 >
-                    <!-- Pulse ring for WhatsApp -->
                     <div class="relative mb-6 flex items-center justify-center">
                         <div
                             class="absolute inset-0 rounded-full opacity-30 group-hover:opacity-50 transition-opacity"
@@ -44,27 +51,26 @@
                         </div>
                     </div>
 
-                    <h3 class="font-display font-semibold text-neutral-50 text-lg mb-2">WhatsApp</h3>
+                    <h3 class="font-display font-semibold text-neutral-50 text-lg mb-2">{{ ctaSection.cards.whatsapp.title }}</h3>
                     <p class="text-white/60 text-sm leading-relaxed mb-6">
-                        Chat with us directly for a quick response. Available during school hours.
+                        {{ ctaSection.cards.whatsapp.body }}
                     </p>
                     <span
                         class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white transition-all duration-200 group-hover:gap-3"
                         style="background-color: #25D366;"
                     >
-                        Chat Now
+                        {{ ctaSection.cards.whatsapp.button }}
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </span>
                 </a>
 
-                <!-- Email Card -->
                 <a
-                    href="mailto:info@aletheia.edu.my?subject=Enquiry%20from%20Website"
+                    :href="ctaSection.cards.email.href"
                     class="cta-card group flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso"
                     style="opacity: 0; transform: translateY(40px);"
-                    aria-label="Send us an email"
+                    :aria-label="ctaSection.cards.email.ariaLabel"
                 >
                     <div class="relative mb-6 flex items-center justify-center">
                         <div
@@ -79,26 +85,25 @@
                         </div>
                     </div>
 
-                    <h3 class="font-display font-semibold text-neutral-50 text-lg mb-2">Email</h3>
+                    <h3 class="font-display font-semibold text-neutral-50 text-lg mb-2">{{ ctaSection.cards.email.title }}</h3>
                     <p class="text-white/60 text-sm leading-relaxed mb-6">
-                        Send us a detailed message and we'll get back to you within one business day.
+                        {{ ctaSection.cards.email.body }}
                     </p>
                     <span
                         class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-espresso bg-gold transition-all duration-200 group-hover:bg-gold-light group-hover:gap-3"
                     >
-                        Send Email
+                        {{ ctaSection.cards.email.button }}
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </span>
                 </a>
 
-                <!-- Call Card -->
                 <a
-                    href="tel:+60312345678"
+                    :href="ctaSection.cards.phone.href"
                     class="cta-card group flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso"
                     style="opacity: 0; transform: translateY(40px);"
-                    aria-label="Call us at +603 1234 5678"
+                    :aria-label="ctaSection.cards.phone.ariaLabel"
                 >
                     <div class="relative mb-6 flex items-center justify-center">
                         <div
@@ -113,14 +118,14 @@
                         </div>
                     </div>
 
-                    <h3 class="font-display font-semibold text-neutral-50 text-lg mb-2">Call Us</h3>
+                    <h3 class="font-display font-semibold text-neutral-50 text-lg mb-2">{{ ctaSection.cards.phone.title }}</h3>
                     <p class="text-white/60 text-sm leading-relaxed mb-6">
-                        Speak directly with our admissions team. Tap to dial on your mobile device.
+                        {{ ctaSection.cards.phone.body }}
                     </p>
                     <span
                         class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white bg-crimson transition-all duration-200 group-hover:bg-crimson-light group-hover:gap-3"
                     >
-                        +603 1234 5678
+                        {{ ctaSection.cards.phone.displayNumber }}
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>

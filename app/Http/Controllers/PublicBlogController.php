@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Services\SiteContentRepository;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -10,7 +11,7 @@ class PublicBlogController extends Controller
 {
     private const FALLBACK_IMAGE = '/images/class-2.jpg';
 
-    public function index(): Response
+    public function index(SiteContentRepository $siteContent): Response
     {
         $rows = Post::published()
             ->with('user')
@@ -23,6 +24,7 @@ class PublicBlogController extends Controller
 
         return Inertia::render('Blog', [
             'posts' => $posts,
+            'pageContent' => $siteContent->page('blog'),
         ]);
     }
 

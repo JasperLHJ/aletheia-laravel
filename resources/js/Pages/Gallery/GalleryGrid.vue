@@ -1,83 +1,16 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue';
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
 import { gsap } from 'gsap';
 
-const allImages = [
-    {
-        src: '/images/class-1.jpg',
-        category: 'Classrooms',
-        caption: 'Interactive Learning',
-        alt: 'Students engaged in interactive learning in a modern classroom',
+const props = defineProps({
+    grid: {
+        type: Object,
+        required: true,
     },
-    {
-        src: '/images/class-2.jpg',
-        category: 'Classrooms',
-        caption: 'Collaborative Spaces',
-        alt: 'Students collaborating in a well-designed classroom environment',
-    },
-    {
-        src: '/images/class-4.jpg',
-        category: 'Facilities',
-        caption: 'Modern Facilities',
-        alt: 'State-of-the-art facilities at Aletheia Resource Center',
-    },
-    {
-        src: '/images/sports-1.jpg',
-        category: 'Sports',
-        caption: 'Sports & Athletics',
-        alt: 'Students participating in sports and athletic activities',
-    },
-    {
-        src: '/images/student-1.jpg',
-        category: 'Events',
-        caption: 'Student Life',
-        alt: 'Students enjoying school life and community events',
-    },
-    {
-        src: '/images/class-2.jpg',
-        category: 'Events',
-        caption: 'School Celebrations',
-        alt: 'Students and staff celebrating at a school event',
-    },
-    {
-        src: '/images/sports-1.jpg',
-        category: 'Facilities',
-        caption: 'Sports Complex',
-        alt: 'The school sports complex and outdoor facilities',
-    },
-    {
-        src: '/images/student-1.jpg',
-        category: 'Classrooms',
-        caption: 'Focused Study',
-        alt: 'A student deeply focused during a study session',
-    },
-    {
-        src: '/images/class-1.jpg',
-        category: 'Sports',
-        caption: 'Team Spirit',
-        alt: 'Students demonstrating teamwork and sportsmanship',
-    },
-    {
-        src: '/images/class-4.jpg',
-        category: 'Events',
-        caption: 'Annual Showcase',
-        alt: 'Students presenting their work at the annual school showcase',
-    },
-    {
-        src: '/images/student-1.jpg',
-        category: 'Facilities',
-        caption: 'Learning Commons',
-        alt: 'The school learning commons and library area',
-    },
-    {
-        src: '/images/class-2.jpg',
-        category: 'Sports',
-        caption: 'Active Lifestyle',
-        alt: 'Students enjoying an active and healthy school lifestyle',
-    },
-];
+});
 
-const categories = ['All', 'Events', 'Facilities', 'Classrooms', 'Sports'];
+const allImages = computed(() => props.grid.images);
+const categories = computed(() => props.grid.categories);
 const activeCategory = ref('All');
 const gridRef = ref(null);
 const isFiltering = ref(false);
@@ -88,18 +21,33 @@ const prefersReducedMotion = typeof window !== 'undefined'
 
 const categoryCounts = computed(() => {
     const counts = {};
-    categories.forEach(cat => {
+    categories.value.forEach((cat) => {
         counts[cat] = cat === 'All'
-            ? allImages.length
-            : allImages.filter(img => img.category === cat).length;
+            ? allImages.value.length
+            : allImages.value.filter(img => img.category === cat).length;
     });
     return counts;
 });
 
 const filteredImages = computed(() => {
-    if (activeCategory.value === 'All') return allImages;
-    return allImages.filter(img => img.category === activeCategory.value);
+    if (activeCategory.value === 'All') return allImages.value;
+    return allImages.value.filter(img => img.category === activeCategory.value);
 });
+
+function filterTabAriaLabel(cat) {
+    return props.grid.filterTabAriaShow
+        .replace('{category}', cat)
+        .replace('{count}', String(categoryCounts.value[cat]));
+}
+
+function viewPhotoAriaLabel(caption) {
+    return props.grid.viewPhotoAria.replace('{caption}', caption);
+}
+
+function lightboxAriaLabel(caption) {
+    if (!caption) return '';
+    return props.grid.lightboxDialogAria.replace('{caption}', caption);
+}
 
 async function setCategory(cat) {
     if (cat === activeCategory.value || isFiltering.value) return;
@@ -224,17 +172,17 @@ onUnmounted(() => {
             <!-- Section header -->
             <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-10 gap-4">
                 <div>
-                    <p class="section-eyebrow mb-2">Browse & Explore</p>
+                    <p class="section-eyebrow mb-2">{{ grid.eyebrow }}</p>
                     <h2
                         id="gallery-grid-heading"
                         class="font-display font-semibold text-espresso"
                         style="font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2;"
                     >
-                        Our School in Pictures
+                        {{ grid.heading }}
                     </h2>
                 </div>
                 <p class="text-sm text-neutral-500 shrink-0">
-                    {{ filteredImages.length }} {{ filteredImages.length === 1 ? 'photo' : 'photos' }}
+                    {{ filteredImages.length }} {{ filteredImages.length === 1 ? grid.photoWordOne : grid.photoWordMany }}
                 </p>
             </div>
 
@@ -242,14 +190,14 @@ onUnmounted(() => {
             <div
                 class="flex flex-wrap gap-2 mb-10"
                 role="tablist"
-                aria-label="Filter gallery by category"
+                :aria-label="grid.filterTablistAria"
             >
                 <button
                     v-for="cat in categories"
                     :key="cat"
                     role="tab"
                     :aria-selected="activeCategory === cat"
-                    :aria-label="`Show ${cat} photos (${categoryCounts[cat]})`"
+                    :aria-label="filterTabAriaLabel(cat)"
                     @click="setCategory(cat)"
                     :class="[
                         'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 min-h-[40px]',
@@ -278,7 +226,7 @@ onUnmounted(() => {
                 class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4"
                 style="grid-auto-rows: 160px;"
                 aria-live="polite"
-                aria-label="Gallery photos"
+                :aria-label="grid.gridAria"
             >
                 <div
                     v-for="(img, index) in filteredImages"
@@ -292,7 +240,7 @@ onUnmounted(() => {
                     @click="openLightbox(index)"
                     tabindex="0"
                     role="button"
-                    :aria-label="`View photo: ${img.caption}`"
+                    :aria-label="viewPhotoAriaLabel(img.caption)"
                     @keydown.enter="openLightbox(index)"
                     @keydown.space.prevent="openLightbox(index)"
                 >
@@ -346,21 +294,21 @@ onUnmounted(() => {
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                     </svg>
                 </div>
-                <p class="font-display text-espresso text-lg font-semibold mb-1">No photos yet</p>
-                <p class="text-sm text-neutral-500">Photos in this category will appear here soon.</p>
+                <p class="font-display text-espresso text-lg font-semibold mb-1">{{ grid.emptyTitle }}</p>
+                <p class="text-sm text-neutral-500">{{ grid.emptyBody }}</p>
             </div>
 
             <!-- CTA nudge -->
             <div class="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
                 <p class="text-neutral-600 text-sm">
-                    Want to experience Aletheia in person?
+                    {{ grid.ctaText }}
                 </p>
                 <a
-                    href="/contact"
+                    :href="grid.ctaHref"
                     class="btn-cta text-sm px-5 py-2.5"
                     style="min-height: 40px;"
                 >
-                    Book a School Tour
+                    {{ grid.ctaButton }}
                 </a>
             </div>
         </div>
@@ -381,7 +329,7 @@ onUnmounted(() => {
                     style="background: rgba(30, 13, 8, 0.92); backdrop-filter: blur(12px);"
                     role="dialog"
                     aria-modal="true"
-                    :aria-label="`Lightbox: ${lightboxImage?.caption}`"
+                    :aria-label="lightboxAriaLabel(lightboxImage?.caption)"
                     @touchstart.passive="onLbTouchStart"
                     @touchmove.passive="onLbTouchMove"
                     @touchend="onLbTouchEnd"
@@ -392,7 +340,7 @@ onUnmounted(() => {
                         id="lightbox-close"
                         @click="closeLightbox"
                         class="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                        aria-label="Close lightbox"
+                        :aria-label="grid.lightboxCloseAria"
                     >
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -411,7 +359,7 @@ onUnmounted(() => {
                         v-if="filteredImages.length > 1"
                         @click="lightboxPrev"
                         class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full border border-white/20 bg-white/10 hover:bg-espresso hover:border-espresso flex items-center justify-center text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                        aria-label="Previous photo"
+                        :aria-label="grid.lightboxPrevAria"
                     >
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
@@ -455,7 +403,7 @@ onUnmounted(() => {
                         v-if="filteredImages.length > 1"
                         @click="lightboxNext"
                         class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full border border-white/20 bg-white/10 hover:bg-espresso hover:border-espresso flex items-center justify-center text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                        aria-label="Next photo"
+                        :aria-label="grid.lightboxNextAria"
                     >
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />

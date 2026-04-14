@@ -2,11 +2,15 @@
 
 namespace App\Http\Middleware;
 
+use App\Services\SiteContentRepository;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
 {
+    public function __construct(
+        private readonly SiteContentRepository $siteContentRepository,
+    ) {}
     /**
      * The root template that is loaded on the first page visit.
      *
@@ -37,6 +41,7 @@ class HandleInertiaRequests extends Middleware
             'flash' => [
                 'success' => $request->session()->get('success'),
             ],
+            'siteContent' => $this->siteContentRepository->site(),
         ];
     }
 }

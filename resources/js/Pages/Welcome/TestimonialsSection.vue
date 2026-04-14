@@ -10,6 +10,10 @@ const props = defineProps({
         type: Array,
         default: () => [],
     },
+    copy: {
+        type: Object,
+        required: true,
+    },
 });
 
 const swiperModules = [Autoplay, Pagination, EffectFade];
@@ -33,12 +37,9 @@ const swiperModules = [Autoplay, Pagination, EffectFade];
         ></div>
 
         <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="section-eyebrow text-gold mb-4">
-                <span aria-hidden="true">★★★★★</span>
-                <span class="sr-only">5 stars</span>
-                &nbsp;What Our Community Says
+            <p class="section-eyebrow text-gold mb-4" v-html="props.copy.eyebrowHtml">
             </p>
-            <h2 id="testimonial-heading" class="sr-only">Testimonials</h2>
+            <h2 id="testimonial-heading" class="sr-only">{{ props.copy.headingSrOnly }}</h2>
 
             <Swiper
                 v-if="props.testimonials.length"
@@ -81,7 +82,7 @@ const swiperModules = [Autoplay, Pagination, EffectFade];
                 v-else
                 class="font-sans text-white/50 text-sm"
             >
-                Testimonials coming soon.
+                {{ props.copy.emptyMessage }}
             </p>
 
             <div v-if="props.testimonials.length" class="testimonial-pagination mt-8"></div>

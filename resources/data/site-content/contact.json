@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "title": "Contact — Aletheia Resource Center"
+  },
+  "hero": {
+    "image": "/images/class-2.jpg",
+    "eyebrow": "Contact Us",
+    "titleHtml": "We'd Love to <em class=\"text-gold not-italic\">Hear From You</em>",
+    "subtitle": "Whether you'd like to schedule a visit, ask about our programmes, or simply say hello — our team is here and happy to help."
+  },
+  "ctaSection": {
+    "eyebrow": "Reach Out",
+    "heading": "Choose How You'd Like to Connect",
+    "intro": "We're available via WhatsApp, email, or phone. Pick what works best for you.",
+    "cards": {
+      "whatsapp": {
+        "href": "https://wa.me/60312345678?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20Aletheia%20Resource%20Center.",
+        "ariaLabel": "Chat with us on WhatsApp",
+        "title": "WhatsApp",
+        "body": "Chat with us directly for a quick response. Available during school hours.",
+        "button": "Chat Now"
+      },
+      "email": {
+        "href": "mailto:info@aletheia.edu.my?subject=Enquiry%20from%20Website",
+        "ariaLabel": "Send us an email",
+        "title": "Email",
+        "body": "Send us a detailed message and we'll get back to you within one business day.",
+        "button": "Send Email"
+      },
+      "phone": {
+        "href": "tel:+60312345678",
+        "ariaLabel": "Call us at +603 1234 5678",
+        "title": "Call Us",
+        "body": "Speak directly with our admissions team. Tap to dial on your mobile device.",
+        "displayNumber": "+603 1234 5678"
+      }
+    }
+  },
+  "visit": {
+    "eyebrow": "Find Us",
+    "heading": "Visit Our Campus",
+    "intro": "We welcome prospective families to tour our campus. Come see where learning comes to life.",
+    "addressCard": {
+      "title": "Our Address",
+      "lines": [
+        "Aletheia Resource Center",
+        "No. 12, Jalan Pendidikan 3/4",
+        "Taman Ilmu, 50480",
+        "Kuala Lumpur, Malaysia"
+      ],
+      "directionsHref": "https://maps.google.com/?q=Kuala+Lumpur+Malaysia",
+      "directionsLabel": "Get Directions",
+      "directionsAria": "Open address in Google Maps"
+    },
+    "hoursCard": {
+      "title": "Office Hours",
+      "rows": [
+        { "day": "Monday – Friday", "hours": "7:30 am – 4:30 pm" },
+        { "day": "Saturday", "hours": "8:00 am – 12:00 pm" },
+        { "day": "Sunday & Public Holidays", "hours": "Closed", "hoursMuted": true }
+      ],
+      "footnote": "WhatsApp enquiries are monitored during office hours."
+    },
+    "socialCard": {
+      "title": "Follow Us",
+      "body": "Stay connected for school updates, events, and student life highlights.",
+      "links": [
+        { "href": "https://facebook.com", "label": "Facebook", "ariaLabel": "Aletheia Resource Center on Facebook" },
+        { "href": "https://instagram.com", "label": "Instagram", "ariaLabel": "Aletheia Resource Center on Instagram" },
+        { "href": "https://wa.me/60312345678", "label": "WhatsApp", "ariaLabel": "WhatsApp Aletheia Resource Center" }
+      ]
+    }
+  },
+  "map": {
+    "eyebrow": "Location",
+    "heading": "How to Find Us",
+    "openMapsHref": "https://maps.google.com/?q=Kuala+Lumpur+Malaysia",
+    "openMapsLabel": "Open in Google Maps",
+    "openMapsAria": "Open location in Google Maps",
+    "iframeTitle": "Aletheia Resource Center location on Google Maps",
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127484.35779745167!2d101.59274993835938!3d3.1385035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc362abd08e7d3%3A0x232e1b1f14a3a16f!2sKuala%20Lumpur%2C%20Federal%20Territory%20of%20Kuala%20Lumpur%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1712650000000",
+    "pinTitle": "Aletheia Resource Center",
+    "pinLinesHtml": "No. 12, Jalan Pendidikan 3/4<br>Kuala Lumpur"
+  },
+  "form": {
+    "sidebarEyebrow": "Get in Touch",
+    "heading": "Send Us a Message",
+    "introHtml": "Fill in the form and a member of our admissions team will be in touch with you shortly. All fields marked with <span class=\"text-crimson font-medium\" aria-label=\"required\">*</span> are required.",
+    "trust": [
+      {
+        "title": "We respond within 1 business day",
+        "body": "Enquiries submitted after hours are answered the next school day."
+      },
+      {
+        "title": "Your data is safe with us",
+        "body": "We do not share your information with third parties."
+      },
+      {
+        "title": "Prefer to chat?",
+        "whatsappText": "Message us on WhatsApp →",
+        "whatsappHref": "https://wa.me/60312345678"
+      }
+    ],
+    "successTitle": "Message Sent!",
+    "successBody": "Thank you for reaching out. A member of our admissions team will be in touch with you within one business day.",
+    "sendAnother": "Send Another Message",
+    "generalError": "Please correct the errors below and try again.",
+    "labels": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "phoneOptional": "(optional)",
+      "yearLevel": "Child's Year Level",
+      "yearLevelOptional": "(optional)",
+      "message": "Message"
+    },
+    "placeholders": {
+      "name": "e.g. Sarah Abdullah",
+      "email": "e.g. sarah@example.com",
+      "phone": "e.g. 012 345 6789",
+      "yearLevel": "Select year level…",
+      "message": "Tell us how we can help — questions about enrolment, a visit request, or anything else on your mind."
+    },
+    "privacyHtml": "By submitting this form you agree to our <a href=\"#\" class=\"underline hover:text-neutral-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm\">Privacy Policy</a>.",
+    "submit": "Send Message",
+    "submitting": "Sending…",
+    "submitAriaSending": "Sending message…",
+    "submitAriaIdle": "Send message",
+    "yearLevels": [
+      "Pre-School (Age 3–5)",
+      "Year 1",
+      "Year 2",
+      "Year 3",
+      "Year 4",
+      "Year 5",
+      "Year 6",
+      "Form 1",
+      "Form 2",
+      "Form 3",
+      "Form 4",
+      "Form 5",
+      "Not sure yet"
+    ]
+  }
+}

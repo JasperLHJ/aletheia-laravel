@@ -6,6 +6,7 @@ use App\Http\Controllers\EducatorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicBlogController;
 use App\Http\Controllers\PublicPageController;
+use App\Services\SiteContentRepository;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -14,15 +15,19 @@ Route::get('/', [PublicPageController::class, 'home'])->name('home');
 
 Route::get('/about', [PublicPageController::class, 'about'])->name('about');
 
-Route::get('/gallery', function () {
-    return Inertia::render('Gallery');
+Route::get('/gallery', function (SiteContentRepository $siteContent) {
+    return Inertia::render('Gallery', [
+        'pageContent' => $siteContent->page('gallery'),
+    ]);
 })->name('gallery');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
-Route::get('/programmes', function () {
-    return Inertia::render('Programmes');
+Route::get('/programmes', function (SiteContentRepository $siteContent) {
+    return Inertia::render('Programmes', [
+        'pageContent' => $siteContent->page('programmes'),
+    ]);
 })->name('programmes');
 
 Route::get('/blog', [PublicBlogController::class, 'index'])->name('blog');

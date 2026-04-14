@@ -14,6 +14,10 @@ defineProps({
         type: Array,
         default: () => [],
     },
+    pageContent: {
+        type: Object,
+        required: true,
+    },
 });
 
 const prefersReducedMotion = ref(false);
@@ -72,10 +76,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <Head title="Blog — Aletheia Resource Center" />
+    <Head :title="pageContent.meta.title" />
 
     <PublicLayout>
-        <HeroSection />
-        <BlogListingSection :posts="posts" />
+        <HeroSection :hero="pageContent.hero" />
+        <BlogListingSection :posts="posts" :listing="pageContent.listing" />
     </PublicLayout>
 </template>

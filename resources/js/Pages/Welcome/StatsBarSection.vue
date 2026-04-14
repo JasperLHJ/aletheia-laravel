@@ -1,27 +1,41 @@
 <script setup>
-import { reactive } from 'vue';
+import { reactive, watch } from 'vue';
 
-const stats = [
-    { numericValue: 500, suffix: '+', label: 'Students Enrolled', description: 'Across all year levels' },
-    { numericValue: 98, suffix: '%', label: 'University Placement', description: 'Class of 2025' },
-    { numericValue: 60, suffix: '+', label: 'Co-curricular Clubs', description: 'Arts, sports & more' },
-];
+const props = defineProps({
+    content: {
+        type: Object,
+        required: true,
+    },
+});
 
-const display = reactive(stats.map(() => ({ value: 0 })));
+const display = reactive([]);
 
-defineExpose({ stats, display });
+watch(
+    () => props.content.items,
+    (items) => {
+        display.splice(0, display.length, ...items.map(() => ({ value: 0 })));
+    },
+    { immediate: true },
+);
+
+defineExpose({
+    get stats() {
+        return props.content.items;
+    },
+    display,
+});
 </script>
 
 <template>
     <section
         id="stats-section"
         class="bg-neutral-100 border-y border-neutral-200"
-        aria-label="School statistics"
+        :aria-label="content.sectionAriaLabel"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <dl class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-4 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200">
                 <div
-                    v-for="(stat, i) in stats"
+                    v-for="(stat, i) in content.items"
                     :key="stat.label"
                     class="stat-item flex flex-col items-center text-center pt-8 sm:pt-0 first:pt-0 sm:px-8"
                 >

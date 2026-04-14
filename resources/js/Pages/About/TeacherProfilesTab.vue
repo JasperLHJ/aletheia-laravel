@@ -4,6 +4,10 @@ import Dialog from 'primevue/dialog';
 import Button from 'primevue/button';
 
 defineProps({
+    copy: {
+        type: Object,
+        required: true,
+    },
     principal: {
         type: Object,
         default: null,
@@ -31,17 +35,16 @@ function onDialogAfterHide() {
     <div>
         <div class="text-center max-w-2xl mx-auto mb-12">
             <p class="text-xs font-sans font-medium text-ember uppercase tracking-widest mb-3">
-                Meet Our Educators
+                {{ copy.introEyebrow }}
             </p>
             <h3
                 class="font-display font-semibold text-espresso mb-4"
                 style="font-size: clamp(1.6rem, 2.8vw, 2.1rem); line-height: 1.2;"
             >
-                Principal &amp; Teacher Profiles
+                {{ copy.introHeading }}
             </h3>
             <p class="text-neutral-600 leading-relaxed">
-                Our dedicated educators bring expertise, compassion, and a shared commitment
-                to helping every student reach their full potential.
+                {{ copy.introBody }}
             </p>
         </div>
 
@@ -63,7 +66,7 @@ function onDialogAfterHide() {
                         v-else
                         class="flex h-64 w-full items-center justify-center bg-neutral-200 text-sm text-neutral-500 md:h-full md:min-h-[20rem]"
                     >
-                        No photo
+                        {{ copy.noPhoto }}
                     </div>
                     <div
                         v-if="principal.image"
@@ -87,7 +90,7 @@ function onDialogAfterHide() {
                     <div>
                         <Button
                             type="button"
-                            label="Full profile"
+                            :label="copy.fullProfile"
                             icon="pi pi-arrow-right"
                             iconPos="right"
                             severity="secondary"
@@ -122,7 +125,7 @@ function onDialogAfterHide() {
                         v-else
                         class="flex h-full w-full items-center justify-center bg-neutral-200 text-sm text-neutral-500"
                     >
-                        No photo
+                        {{ copy.noPhoto }}
                     </div>
                     <div
                         v-if="teacher.image"
@@ -146,7 +149,7 @@ function onDialogAfterHide() {
                     <div class="mt-auto">
                         <Button
                             type="button"
-                            label="Full profile"
+                            :label="copy.fullProfile"
                             icon="pi pi-arrow-right"
                             iconPos="right"
                             severity="secondary"
@@ -198,7 +201,7 @@ function onDialogAfterHide() {
                         v-else
                         class="flex h-56 w-full items-center justify-center bg-espresso/40 text-sm text-white/80 md:h-full md:min-h-[20rem]"
                     >
-                        No photo
+                        {{ copy.noPhoto }}
                     </div>
                     <!-- Scrim so name badge reads cleanly over any photo -->
                     <div
