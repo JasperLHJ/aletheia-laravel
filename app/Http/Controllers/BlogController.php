@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
@@ -72,6 +73,17 @@ class BlogController extends Controller
         $post->delete();
 
         return Redirect::route('blogs.index')->with('success', 'Blog post deleted.');
+    }
+
+    public function scrape(): RedirectResponse
+    {
+        $exitCode = Artisan::call('instagram:scrape');
+
+        if ($exitCode === 0) {
+            return Redirect::route('blogs.index')->with('success', 'Instagram posts synced successfully.');
+        }
+
+        return Redirect::route('blogs.index')->with('error', 'Instagram sync failed. Check the logs for details.');
     }
 
     /**
