@@ -85,5 +85,13 @@ export default {
         },
     },
 
+    safelist: [
+        'group-hover:bg-sage',
+        'group-hover:bg-ember',
+        'group-hover:bg-gold',
+        'group-hover:bg-crimson',
+        'group-hover:bg-espresso',
+    ],
+
     plugins: [forms],
 };

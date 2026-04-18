@@ -1,2 +1,16 @@
 User-agent: *
-Disallow:
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /login
+Disallow: /register
+Disallow: /password
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /confirm-password
+Disallow: /verify-email
+Disallow: /logout
+Disallow: /blogs
+Disallow: /testimonials
+Disallow: /educators
+
+Sitemap: https://aletheiaresourcecenter.com/sitemap.xml

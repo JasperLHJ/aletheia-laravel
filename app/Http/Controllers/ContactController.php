@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContactFormRequest;
 use App\Mail\ContactEnquiryMail;
 use App\Services\SiteContentRepository;
+use App\Support\Seo\SeoBuilder;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
@@ -12,11 +13,11 @@ use Inertia\Response;
 
 class ContactController extends Controller
 {
-    public function index(SiteContentRepository $siteContent): Response
+    public function index(SiteContentRepository $siteContent, SeoBuilder $seo): Response
     {
         return Inertia::render('Contact', [
             'pageContent' => $siteContent->page('contact'),
-        ]);
+        ])->withViewData('seo', $seo->forPage('contact')->toArray());
     }
 
     public function send(ContactFormRequest $request): \Illuminate\Http\RedirectResponse

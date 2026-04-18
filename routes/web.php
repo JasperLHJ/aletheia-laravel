@@ -6,7 +6,9 @@ use App\Http\Controllers\EducatorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicBlogController;
 use App\Http\Controllers\PublicPageController;
+use App\Http\Controllers\SitemapController;
 use App\Services\SiteContentRepository;
+use App\Support\Seo\SeoBuilder;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,32 +17,36 @@ Route::get('/', [PublicPageController::class, 'home'])->name('home');
 
 Route::get('/about', [PublicPageController::class, 'about'])->name('about');
 
-Route::get('/gallery', function (SiteContentRepository $siteContent) {
+Route::get('/gallery', function (SiteContentRepository $siteContent, SeoBuilder $seo) {
     return Inertia::render('Gallery', [
         'pageContent' => $siteContent->page('gallery'),
-    ]);
+    ])->withViewData('seo', $seo->forPage('gallery')->toArray());
 })->name('gallery');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
-Route::get('/programmes', function (SiteContentRepository $siteContent) {
+Route::get('/programmes', function (SiteContentRepository $siteContent, SeoBuilder $seo) {
     return Inertia::render('Programmes', [
         'pageContent' => $siteContent->page('programmes'),
-    ]);
+    ])->withViewData('seo', $seo->forPage('programmes')->toArray());
 })->name('programmes');
 
 Route::get('/blog', [PublicBlogController::class, 'index'])->name('blog');
 Route::get('/blog/{slug}', [PublicBlogController::class, 'show'])->name('blog.show');
 
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'noindex'])->name('dashboard');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'noindex'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::post('blogs/scrape', [BlogController::class, 'scrape'])->name('blogs.scrape');
 
     Route::resource('blogs', BlogController::class)->parameters([
         'blogs' => 'post',

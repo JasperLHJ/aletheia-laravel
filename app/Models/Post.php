@@ -23,6 +23,11 @@ class Post extends Model
         'published_at',
         'status',
         'user_id',
+        'source',
+        'external_id',
+        'source_url',
+        'video_url',
+        'media_type',
     ];
 
     protected function casts(): array
@@ -37,6 +42,19 @@ class Post extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function metaDescription(int $length = 160): string
+    {
+        $source = $this->excerpt ?: (string) $this->body;
+
+        $clean = trim(preg_replace('/\s+/', ' ', strip_tags($source)) ?? '');
+
+        if (mb_strlen($clean) <= $length) {
+            return $clean;
+        }
+
+        return rtrim(mb_substr($clean, 0, $length - 1)).'…';
     }
 
     /**

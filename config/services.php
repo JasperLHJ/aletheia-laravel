@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'instagram' => [
+        'username' => env('INSTAGRAM_USERNAME', 'aletheiaresourcecenter'),
+    ],
+
 ];

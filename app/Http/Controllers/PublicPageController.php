@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Educator;
 use App\Models\Testimonial;
 use App\Services\SiteContentRepository;
+use App\Support\Seo\SeoBuilder;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class PublicPageController extends Controller
 {
-    public function home(SiteContentRepository $siteContent): Response
+    public function home(SiteContentRepository $siteContent, SeoBuilder $seo): Response
     {
         $featuredTestimonials = Testimonial::query()
             ->published()
@@ -21,10 +22,10 @@ class PublicPageController extends Controller
         return Inertia::render('Welcome', [
             'featuredTestimonials' => $featuredTestimonials,
             'pageContent' => $siteContent->page('welcome'),
-        ]);
+        ])->withViewData('seo', $seo->forPage('welcome')->toArray());
     }
 
-    public function about(SiteContentRepository $siteContent): Response
+    public function about(SiteContentRepository $siteContent, SeoBuilder $seo): Response
     {
         $testimonials = Testimonial::query()
             ->published()
@@ -48,6 +49,6 @@ class PublicPageController extends Controller
             'principal' => $principal,
             'teachers' => $teachers,
             'pageContent' => $siteContent->page('about'),
-        ]);
+        ])->withViewData('seo', $seo->forPage('about')->toArray());
     }
 }
