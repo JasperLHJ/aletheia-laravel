@@ -1,7 +1,8 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import DataTableActions from '@/Components/DataTableActions.vue';
-import { Head, router } from '@inertiajs/vue3';
+import { Head, router, usePage } from '@inertiajs/vue3';
+import { computed, ref } from 'vue';
 import Button from 'primevue/button';
 import Column from 'primevue/column';
 import DataTable from 'primevue/datatable';
@@ -10,6 +11,17 @@ import Tag from 'primevue/tag';
 defineProps({
     posts: Array,
 });
+
+const page = usePage();
+const flash = computed(() => page.props.flash ?? {});
+const syncing = ref(false);
+
+function syncInstagram() {
+    syncing.value = true;
+    router.post(route('blogs.scrape'), {}, {
+        onFinish: () => { syncing.value = false; },
+    });
+}
 </script>
 
 <template>
@@ -26,12 +38,27 @@ defineProps({
                         Draft and published posts for the public site.
                     </p>
                 </div>
-                <Button
-                    label="Add post"
-                    icon="pi pi-plus"
-                    class="shrink-0"
-                    @click="router.visit(route('blogs.create'))"
-                />
+                <div class="flex shrink-0 gap-3">
+                    <Button
+                        label="Sync Instagram"
+                        icon="pi pi-instagram"
+                        severity="secondary"
+                        :loading="syncing"
+                        @click="syncInstagram"
+                    />
+                    <Button
+                        label="Add post"
+                        icon="pi pi-plus"
+                        @click="router.visit(route('blogs.create'))"
+                    />
+                </div>
+            </div>
+
+            <div v-if="flash.success" class="mt-4 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800 dark:border-green-800 dark:bg-green-950 dark:text-green-300">
+                {{ flash.success }}
+            </div>
+            <div v-if="flash.error" class="mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-800 dark:bg-red-950 dark:text-red-300">
+                {{ flash.error }}
             </div>
         </template>
 
@@ -61,6 +88,17 @@ defineProps({
                             </template>
                         </Column>
                         <Column field="category" header="Category" />
+                        <Column header="Source">
+                            <template #body="{ data }">
+                                <Tag
+                                    v-if="data.source === 'instagram'"
+                                    value="Instagram"
+                                    icon="pi pi-instagram"
+                                    severity="info"
+                                />
+                                <span v-else class="text-slate-400">—</span>
+                            </template>
+                        </Column>
                         <Column field="is_featured" header="Featured">
                             <template #body="{ data }">
                                 <Tag
@@ -71,7 +109,12 @@ defineProps({
                                 <span v-else class="text-slate-400">—</span>
                             </template>
                         </Column>
-                        <Column field="user.name" header="Author" />
+                        <Column field="user.name" header="Author">
+                            <template #body="{ data }">
+                                <span v-if="data.user">{{ data.user.name }}</span>
+                                <span v-else class="text-slate-400">—</span>
+                            </template>
+                        </Column>
                         <Column field="created_at" header="Created">
                             <template #body="{ data }">
                                 {{ new Date(data.created_at).toLocaleDateString() }}

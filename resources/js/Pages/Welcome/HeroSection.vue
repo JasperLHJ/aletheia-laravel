@@ -151,6 +151,8 @@ onUnmounted(() => {
                 alt=""
                 class="w-full h-full object-cover object-center opacity-20"
                 loading="eager"
+                fetchpriority="high"
+                decoding="async"
             />
             <!-- Deep vignette -->
             <div class="absolute inset-0"
@@ -315,6 +317,7 @@ onUnmounted(() => {
                                 :alt="content.portrait.alt"
                                 class="w-full aspect-[3/4] object-cover object-top scale-[1.04]"
                                 loading="eager"
+                                decoding="async"
                                 style="transform-origin: center top;"
                             />
                             <!-- Colour grade overlay -->

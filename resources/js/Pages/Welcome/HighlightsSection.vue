@@ -1,4 +1,6 @@
 <script setup>
+import { Link } from '@inertiajs/vue3';
+
 defineProps({
     content: {
         type: Object,
@@ -10,11 +12,11 @@ defineProps({
 <template>
     <section
         id="highlights"
-        class="bg-neutral-50 py-20 sm:py-28"
+        class="bg-neutral-50 py-14 sm:py-20"
         aria-labelledby="highlights-heading"
     >
         <div id="highlights-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-14">
+            <div class="mb-10 lg:mb-12">
                 <p class="section-eyebrow mb-3">{{ content.eyebrow }}</p>
                 <h2
                     id="highlights-heading"
@@ -23,55 +25,63 @@ defineProps({
                 >
                     {{ content.heading }}
                 </h2>
-                <p class="text-neutral-600 leading-relaxed">
+                <p class="text-neutral-600 leading-relaxed max-w-xl">
                     {{ content.intro }}
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            <div class="border-t border-neutral-200 divide-y divide-neutral-200">
                 <article
-                    v-for="card in content.cards"
+                    v-for="(card, index) in content.cards"
                     :key="card.title"
-                    class="highlight-card group bg-white rounded-xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col"
+                    class="highlight-card grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 py-8 lg:py-10"
                 >
-                    <div class="relative h-48 overflow-hidden">
+                    <div
+                        class="relative overflow-hidden rounded-lg aspect-[16/9] lg:aspect-auto lg:min-h-[300px]"
+                        :class="index % 2 === 1 ? 'lg:order-2' : ''"
+                    >
                         <img
                             :src="card.image"
                             :alt="card.imageAlt"
-                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            class="absolute inset-0 w-full h-full object-cover"
                             loading="lazy"
                         />
                         <div
-                            class="absolute inset-0"
-                            :style="`background: linear-gradient(to top, ${card.accentColor}cc 0%, transparent 60%);`"
+                            class="absolute inset-0 pointer-events-none"
+                            :style="`background: linear-gradient(to top, ${card.accentColor}cc 0%, transparent 55%);`"
                             aria-hidden="true"
                         ></div>
                     </div>
 
-                    <div class="p-6 flex flex-col flex-1">
-                        <p class="text-xs font-sans font-medium text-ember uppercase tracking-widest mb-2">
+                    <div
+                        class="flex flex-col justify-center"
+                        :class="index % 2 === 1 ? 'lg:order-1' : ''"
+                    >
+                        <p
+                            class="text-xs font-medium uppercase tracking-wider mb-4"
+                            :style="`color: ${card.accentColor}`"
+                        >
                             {{ card.eyebrow }}
                         </p>
                         <h3
-                            class="font-display font-semibold text-espresso mb-3"
-                            style="font-size: 1.25rem; line-height: 1.3;"
+                            class="font-display font-semibold text-espresso mb-4"
+                            style="font-size: clamp(1.25rem, 2.2vw, 1.875rem); line-height: 1.25;"
                         >
                             {{ card.title }}
                         </h3>
-                        <p class="text-sm text-neutral-600 leading-relaxed flex-1">
+                        <p class="text-neutral-600 leading-relaxed mb-6">
                             {{ card.body }}
                         </p>
-                    </div>
-
-                    <div class="px-6 pb-5 border-t border-neutral-100 pt-4 flex items-center justify-between">
-                        <a
-                            href="#"
-                            class="text-sm font-medium text-ember hover:text-ember-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-sm"
-                            :aria-label="`${card.linkText} — ${card.title}`"
-                        >
-                            {{ card.linkText }} →
-                        </a>
-                        <div class="w-2 h-2 rounded-full bg-sage" aria-hidden="true"></div>
+                        <div v-if="card.href">
+                            <Link
+                                :href="card.href"
+                                class="inline-flex items-center gap-2 text-sm font-medium text-ember hover:text-ember-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-sm"
+                                :aria-label="`${card.linkText} — ${card.title}`"
+                            >
+                                {{ card.linkText }}
+                                <span aria-hidden="true">→</span>
+                            </Link>
+                        </div>
                     </div>
                 </article>
             </div>

@@ -91,19 +91,31 @@ function accentForCategory(cat) {
 
             <template v-else>
                 <!-- Featured Post -->
-                <article
-                    v-if="featuredPost"
-                    class="blog-featured-post group mb-16 bg-white rounded-2xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-xl transition-shadow duration-300"
-                    :aria-label="listing.featuredAria"
-                >
-                    <Link :href="`/blog/${featuredPost.slug}`" class="block md:grid md:grid-cols-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-2xl">
-                        <div class="relative h-64 md:h-auto overflow-hidden">
-                            <img
-                                :src="featuredPost.image"
-                                :alt="featuredPost.title"
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                loading="lazy"
-                            />
+                    <article
+                        v-if="featuredPost"
+                        class="blog-featured-post group mb-16 bg-white rounded-2xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-xl transition-shadow duration-300"
+                        :aria-label="listing.featuredAria"
+                    >
+                        <Link :href="`/blog/${featuredPost.slug}`" class="block md:grid md:grid-cols-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-2xl">
+                            <div class="relative h-64 md:h-auto overflow-hidden">
+                                <img
+                                    :src="featuredPost.image"
+                                    :alt="featuredPost.title"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    loading="lazy"
+                                    @error="(e) => e.target.src = '/images/class-2.jpg'"
+                                />
+                                <div
+                                    v-if="featuredPost.mediaType === 'video'"
+                                    class="absolute inset-0 flex items-center justify-center"
+                                    aria-hidden="true"
+                                >
+                                    <div class="flex items-center justify-center w-14 h-14 rounded-full bg-black/50 backdrop-blur-sm">
+                                        <svg class="w-6 h-6 text-white translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </div>
+                                </div>
                             <div
                                 class="absolute inset-0"
                                 style="background: linear-gradient(to top, rgba(56,32,22,0.5) 0%, transparent 60%);"
@@ -186,17 +198,38 @@ function accentForCategory(cat) {
                     >
                         <Link :href="`/blog/${post.slug}`" class="flex flex-col flex-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-xl">
                             <div class="relative h-48 overflow-hidden">
+                                <video
+                                    v-if="post.mediaType === 'video' && post.videoUrl"
+                                    :src="post.videoUrl"
+                                    muted
+                                    preload="metadata"
+                                    playsinline
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
                                 <img
+                                    v-else
                                     :src="post.image"
                                     :alt="post.title"
                                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                     loading="lazy"
+                                    @error="(e) => e.target.src = '/images/class-2.jpg'"
                                 />
                                 <div
                                     class="absolute inset-0"
                                     :style="`background: linear-gradient(to top, ${accentForCategory(post.category)}cc 0%, transparent 60%);`"
                                     aria-hidden="true"
                                 ></div>
+                                <div
+                                    v-if="post.mediaType === 'video'"
+                                    class="absolute inset-0 flex items-center justify-center"
+                                    aria-hidden="true"
+                                >
+                                    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm">
+                                        <svg class="w-5 h-5 text-white translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="p-6 flex flex-col flex-1">

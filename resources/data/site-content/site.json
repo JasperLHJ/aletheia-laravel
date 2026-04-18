@@ -1,4 +1,24 @@
 {
+  "seo": {
+    "siteName": "Aletheia Resource Center",
+    "defaultTitle": "Aletheia Resource Center — Excellence in Education",
+    "defaultDescription": "Aletheia Resource Center nurtures curious minds and principled leaders through rigorous academics, dedicated educators, and a close-knit community.",
+    "defaultImage": "/images/og-default.jpg",
+    "twitterHandle": "",
+    "locale": "en_US",
+    "themeColor": "#0f172a",
+    "organization": {
+      "name": "Aletheia Resource Center",
+      "legalName": "Aletheia Resource Center",
+      "logo": "/images/aletheia-logo.svg",
+      "telephone": "+60312345678",
+      "email": "info@aletheiaacademy.edu.my",
+      "sameAs": [
+        "https://facebook.com",
+        "https://instagram.com"
+      ]
+    }
+  },
   "brand": {
     "wordmark": "Aletheia Resource Center",
     "homeAriaLabel": "Aletheia Resource Center — home"

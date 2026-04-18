@@ -115,13 +115,26 @@ async function copyLink() {
                         </div>
                     </div>
 
-                    <!-- Hero image -->
+                    <!-- Hero media -->
                     <div class="rounded-xl overflow-hidden mb-10 shadow-md">
+                        <video
+                            v-if="post.mediaType === 'video' && post.videoUrl"
+                            :src="post.videoUrl"
+                            :poster="post.image"
+                            autoplay
+                            muted
+                            controls
+                            playsinline
+                            class="w-full max-h-[32rem] bg-black"
+                            :aria-label="post.title"
+                        />
                         <img
+                            v-else
                             :src="post.image"
                             :alt="post.title"
                             class="w-full h-64 sm:h-80 object-cover"
                             loading="lazy"
+                            @error="(e) => e.target.src = '/images/class-2.jpg'"
                         />
                     </div>
 
@@ -188,6 +201,7 @@ async function copyLink() {
                                                 :alt="related.title"
                                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                                 loading="lazy"
+                                                @error="(e) => e.target.src = '/images/class-2.jpg'"
                                             />
                                         </div>
                                         <div class="flex-1 min-w-0">

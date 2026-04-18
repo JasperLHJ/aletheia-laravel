@@ -1,6 +1,8 @@
 {
   "meta": {
-    "title": "Welcome — Aletheia Resource Center"
+    "title": "Welcome — Aletheia Resource Center",
+    "description": "Aletheia Resource Center is a close-knit school where every student is known by name. Explore our programmes, values, and community — enrolment open for 2026.",
+    "image": "/images/student-1.jpg"
   },
   "hero": {
     "backgroundImage": "/images/student-1.jpg",
@@ -54,25 +56,28 @@
         "image": "/images/class-1.jpg",
         "imageAlt": "Students engaged in classroom learning",
         "accentColor": "#382016",
-        "linkText": "Explore Academics"
+        "href": "/programmes",
+        "linkText": "Explore Programmes"
       },
       {
-        "eyebrow": "Achievements",
-        "title": "A Legacy of Success",
-        "body": "Our students consistently rank among the top in national and international examinations, earning merit scholarships year after year.",
-        "image": "/images/class-2.jpg",
-        "imageAlt": "Students celebrating academic achievements",
+        "eyebrow": "Our Community",
+        "title": "People at the Heart of It",
+        "body": "Meet the educators who shape young minds and hear from the families who have entrusted us with their children's futures.",
+        "image": "/images/people.jpg",
+        "imageAlt": "Students and educators at Aletheia Resource Center",
         "accentColor": "#9A5A0E",
-        "linkText": "Our Achievements"
+        "href": "/about",
+        "linkText": "Meet Our Team"
       },
       {
-        "eyebrow": "Co-curricular",
-        "title": "Holistic Environment",
+        "eyebrow": "School Life",
+        "title": "A Campus Full of Life",
         "body": "From orchestra and debate to robotics and sports, our campus fosters well-rounded growth beyond the classroom.",
-        "image": "/images/class-3.jpg",
+        "image": "/images/photo-day.JPG",
         "imageAlt": "Students participating in co-curricular activities",
         "accentColor": "#6B870F",
-        "linkText": "Discover Campus Life"
+        "href": "/gallery",
+        "linkText": "View Gallery"
       }
     ]
   },

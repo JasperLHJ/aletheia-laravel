@@ -1,6 +1,8 @@
 {
   "meta": {
-    "title": "Gallery — Aletheia Resource Center"
+    "title": "Gallery — Aletheia Resource Center",
+    "description": "A visual tour of life at Aletheia Resource Center — classrooms, co-curricular activities, events, and the people who make our community.",
+    "image": "/images/photo-day.JPG"
   },
   "hero": {
     "image": "/images/class-4.jpg",

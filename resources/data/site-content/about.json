@@ -1,6 +1,8 @@
 {
     "meta": {
-        "title": "About — Aletheia Resource Center"
+        "title": "About — Aletheia Resource Center",
+        "description": "Learn about Aletheia Resource Center's mission, educators, and traditions — a school committed to academic excellence and character formation since 1947.",
+        "image": "/images/people.jpg"
     },
     "hero": {
         "image": "/images/class-2.jpg",
@@ -50,6 +52,7 @@
                     "STEM Integration",
                     "Character Education"
                 ],
+                "href": "/programmes#primary-programme",
                 "accentColor": "bg-sage",
                 "accentText": "text-sage",
                 "accentBorder": "border-sage",
@@ -101,6 +104,7 @@
                     "Sciences & Humanities",
                     "Co-Curricular Excellence"
                 ],
+                "href": "/programmes#secondary-programme",
                 "accentColor": "bg-ember",
                 "accentText": "text-ember",
                 "accentBorder": "border-ember",
@@ -152,6 +156,7 @@
                     "University Counselling",
                     "Leadership Programmes"
                 ],
+                "href": "/programmes#preuniversity-programme",
                 "accentColor": "bg-gold",
                 "accentText": "text-gold",
                 "accentBorder": "border-gold",
