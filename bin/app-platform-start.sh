@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # DigitalOcean App Platform: single web container (SQLite) — same filesystem for HTTP and scheduler.
 set -euo pipefail
-cd "${APP_PATH:-$PWD}" || exit 1
+# PWD is not always the app root (run_command can start in /, etc.); do not use $PWD alone.
+APP_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "${APP_PATH:-$APP_ROOT}" || exit 1
 
 mkdir -p \
   database \
