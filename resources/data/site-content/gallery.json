@@ -7,7 +7,7 @@
   "hero": {
     "image": "/images/class-4.jpg",
     "eyebrow": "School Life",
-    "titleHtml": "A Window into Our <em class=\"text-gold not-italic\">World</em>",
+    "titleHtml": "A Window into Our <em class=\"text-purple-gray-400 not-italic\">World</em>",
     "subtitle": "Explore the vibrant life at Aletheia Resource Center — from the energy of our classrooms and sports fields to the warmth of community events and our world-class facilities."
   },
   "grid": {

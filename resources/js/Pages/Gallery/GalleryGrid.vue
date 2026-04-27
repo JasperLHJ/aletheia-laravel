@@ -164,7 +164,7 @@ onUnmounted(() => {
 <template>
     <section
         id="gallery-grid-section"
-        class="bg-neutral-50 py-20 sm:py-24"
+        class="bg-purple-gray-50 py-20 sm:py-24"
         aria-labelledby="gallery-grid-heading"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -175,13 +175,13 @@ onUnmounted(() => {
                     <p class="section-eyebrow mb-2">{{ grid.eyebrow }}</p>
                     <h2
                         id="gallery-grid-heading"
-                        class="font-display font-semibold text-espresso"
+                        class="font-display font-semibold text-purple-gray-800"
                         style="font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2;"
                     >
                         {{ grid.heading }}
                     </h2>
                 </div>
-                <p class="text-sm text-neutral-500 shrink-0">
+                <p class="text-sm text-purple-gray-500 shrink-0">
                     {{ filteredImages.length }} {{ filteredImages.length === 1 ? grid.photoWordOne : grid.photoWordMany }}
                 </p>
             </div>
@@ -200,10 +200,10 @@ onUnmounted(() => {
                     :aria-label="filterTabAriaLabel(cat)"
                     @click="setCategory(cat)"
                     :class="[
-                        'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 min-h-[40px]',
+                        'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 focus-visible:ring-offset-2 min-h-[40px]',
                         activeCategory === cat
-                            ? 'bg-espresso text-neutral-50 shadow-sm'
-                            : 'bg-white text-espresso border border-neutral-200 hover:border-espresso/40 hover:bg-neutral-100'
+                            ? 'bg-purple-gray-800 text-purple-gray-50 shadow-sm'
+                            : 'bg-white text-purple-gray-800 border border-purple-gray-200 hover:border-purple-gray-800/40 hover:bg-purple-gray-100'
                     ]"
                 >
                     {{ cat }}
@@ -212,7 +212,7 @@ onUnmounted(() => {
                             'text-xs px-1.5 py-0.5 rounded-full font-sans tabular-nums transition-colors',
                             activeCategory === cat
                                 ? 'bg-white/20 text-white'
-                                : 'bg-neutral-100 text-neutral-500'
+                                : 'bg-purple-gray-100 text-purple-gray-500'
                         ]"
                     >
                         {{ categoryCounts[cat] }}
@@ -253,13 +253,13 @@ onUnmounted(() => {
 
                     <!-- Hover overlay -->
                     <div
-                        class="absolute inset-0 bg-gradient-to-t from-espresso/75 via-espresso/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        class="absolute inset-0 bg-gradient-to-t from-purple-gray-800/75 via-purple-gray-800/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         aria-hidden="true"
                     ></div>
 
                     <!-- Category badge -->
                     <div class="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
-                        <span class="inline-block px-2.5 py-1 rounded-full text-xs font-medium bg-gold/90 text-espresso-dark backdrop-blur-sm">
+                        <span class="inline-block px-2.5 py-1 rounded-full text-xs font-medium bg-purple-gray-400/90 text-purple-gray-950 backdrop-blur-sm">
                             {{ img.category }}
                         </span>
                     </div>
@@ -289,18 +289,18 @@ onUnmounted(() => {
                 class="flex flex-col items-center justify-center py-24 text-center"
                 aria-live="polite"
             >
-                <div class="w-16 h-16 rounded-full bg-neutral-100 flex items-center justify-center mb-4">
-                    <svg class="w-8 h-8 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <div class="w-16 h-16 rounded-full bg-purple-gray-100 flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-purple-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                     </svg>
                 </div>
-                <p class="font-display text-espresso text-lg font-semibold mb-1">{{ grid.emptyTitle }}</p>
-                <p class="text-sm text-neutral-500">{{ grid.emptyBody }}</p>
+                <p class="font-display text-purple-gray-800 text-lg font-semibold mb-1">{{ grid.emptyTitle }}</p>
+                <p class="text-sm text-purple-gray-500">{{ grid.emptyBody }}</p>
             </div>
 
             <!-- CTA nudge -->
             <div class="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
-                <p class="text-neutral-600 text-sm">
+                <p class="text-purple-gray-600 text-sm">
                     {{ grid.ctaText }}
                 </p>
                 <a
@@ -326,7 +326,7 @@ onUnmounted(() => {
                 <div
                     v-if="lightboxOpen"
                     class="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-8"
-                    style="background: rgba(30, 13, 8, 0.92); backdrop-filter: blur(12px);"
+                    style="background: rgba(9, 8, 12, 0.92); backdrop-filter: blur(12px);"
                     role="dialog"
                     aria-modal="true"
                     :aria-label="lightboxAriaLabel(lightboxImage?.caption)"
@@ -349,7 +349,7 @@ onUnmounted(() => {
 
                     <!-- Image counter -->
                     <div class="absolute top-4 left-4 z-10">
-                        <span class="text-xs font-sans font-medium uppercase tracking-widest text-gold/80">
+                        <span class="text-xs font-sans font-medium uppercase tracking-widest text-purple-gray-400/80">
                             {{ String(lightboxIndex + 1).padStart(2, '0') }} / {{ String(filteredImages.length).padStart(2, '0') }}
                         </span>
                     </div>
@@ -358,7 +358,7 @@ onUnmounted(() => {
                     <button
                         v-if="filteredImages.length > 1"
                         @click="lightboxPrev"
-                        class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full border border-white/20 bg-white/10 hover:bg-espresso hover:border-espresso flex items-center justify-center text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                        class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full border border-white/20 bg-white/10 hover:bg-purple-gray-800 hover:border-purple-gray-800 flex items-center justify-center text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                         :aria-label="grid.lightboxPrevAria"
                     >
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -389,7 +389,7 @@ onUnmounted(() => {
 
                         <!-- Caption & category -->
                         <div v-if="lightboxImage" class="mt-5 flex flex-col items-center gap-1.5 text-center">
-                            <span class="inline-block px-2.5 py-1 rounded-full text-xs font-medium bg-gold/20 text-gold border border-gold/30">
+                            <span class="inline-block px-2.5 py-1 rounded-full text-xs font-medium bg-purple-gray-400/20 text-purple-gray-400 border border-purple-gray-400/30">
                                 {{ lightboxImage.category }}
                             </span>
                             <p class="font-display text-white text-xl font-semibold">
@@ -402,7 +402,7 @@ onUnmounted(() => {
                     <button
                         v-if="filteredImages.length > 1"
                         @click="lightboxNext"
-                        class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full border border-white/20 bg-white/10 hover:bg-espresso hover:border-espresso flex items-center justify-center text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                        class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full border border-white/20 bg-white/10 hover:bg-purple-gray-800 hover:border-purple-gray-800 flex items-center justify-center text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                         :aria-label="grid.lightboxNextAria"
                     >
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

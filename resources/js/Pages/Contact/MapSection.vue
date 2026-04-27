@@ -10,17 +10,17 @@ defineProps({
 <template>
     <section
         id="contact-map-section"
-        class="bg-neutral-50"
+        class="bg-purple-gray-50"
         aria-label="School location map"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
             <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
                 <div>
-                    <p class="text-xs font-sans font-medium uppercase tracking-widest text-gold mb-2" aria-hidden="true">
+                    <p class="text-xs font-sans font-medium uppercase tracking-widest text-purple-gray-400 mb-2" aria-hidden="true">
                         {{ map.eyebrow }}
                     </p>
                     <h2
-                        class="font-display font-bold text-espresso"
+                        class="font-display font-bold text-purple-gray-800"
                         style="font-size: clamp(1.4rem, 2.5vw, 1.8rem);"
                     >
                         {{ map.heading }}
@@ -30,7 +30,7 @@ defineProps({
                     :href="map.openMapsHref"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-sm shrink-0"
+                    class="inline-flex items-center gap-2 text-sm font-medium text-purple-gray-400 hover:text-purple-gray-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 rounded-sm shrink-0"
                     :aria-label="map.openMapsAria"
                 >
                     {{ map.openMapsLabel }}
@@ -66,8 +66,8 @@ defineProps({
                     </div>
                 </div>
                 <div>
-                    <p class="text-xs font-semibold text-neutral-800 font-sans">{{ map.pinTitle }}</p>
-                    <p class="text-xs text-neutral-500 leading-snug mt-0.5" v-html="map.pinLinesHtml"></p>
+                    <p class="text-xs font-semibold text-purple-gray-800 font-sans">{{ map.pinTitle }}</p>
+                    <p class="text-xs text-purple-gray-500 leading-snug mt-0.5" v-html="map.pinLinesHtml"></p>
                 </div>
             </div>
         </div>

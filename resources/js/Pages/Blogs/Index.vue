@@ -1,24 +1,40 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import DataTableActions from '@/Components/DataTableActions.vue';
+import InputError from '@/Components/InputError.vue';
 import { Head, router, usePage } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
 import Button from 'primevue/button';
 import Column from 'primevue/column';
 import DataTable from 'primevue/datatable';
+import InputNumber from 'primevue/inputnumber';
 import Tag from 'primevue/tag';
 
-defineProps({
+const props = defineProps({
     posts: Array,
+    instagramScrapeLimitDefault: {
+        type: Number,
+        default: 24,
+    },
 });
 
 const page = usePage();
 const flash = computed(() => page.props.flash ?? {});
+const scrapeErrors = computed(() => page.props.errors ?? {});
+const scrapeLimitError = computed(() => {
+    const e = scrapeErrors.value.limit;
+    if (! e) {
+        return '';
+    }
+    return Array.isArray(e) ? e[0] : e;
+});
 const syncing = ref(false);
+const scrapeLimit = ref(props.instagramScrapeLimitDefault);
 
 function syncInstagram() {
     syncing.value = true;
-    router.post(route('blogs.scrape'), {}, {
+    const limit = scrapeLimit.value ?? props.instagramScrapeLimitDefault;
+    router.post(route('blogs.scrape'), { limit }, {
         onFinish: () => { syncing.value = false; },
     });
 }
@@ -38,7 +54,24 @@ function syncInstagram() {
                         Draft and published posts for the public site.
                     </p>
                 </div>
-                <div class="flex shrink-0 gap-3">
+                <div class="flex shrink-0 flex-col gap-3 sm:flex-row sm:items-end">
+                    <div class="flex flex-col gap-1">
+                        <label for="instagram-scrape-limit" class="text-xs font-medium text-slate-600 dark:text-slate-400">
+                            Posts to sync
+                        </label>
+                        <InputNumber
+                            id="instagram-scrape-limit"
+                            v-model="scrapeLimit"
+                            :min="1"
+                            :max="100"
+                            :show-buttons="false"
+                            input-class="w-full min-w-[5rem] text-center sm:w-24"
+                            class="w-full sm:w-auto"
+                            :disabled="syncing"
+                            :class="{ 'p-invalid': !!scrapeLimitError }"
+                        />
+                        <InputError :message="scrapeLimitError" />
+                    </div>
                     <Button
                         label="Sync Instagram"
                         icon="pi pi-instagram"

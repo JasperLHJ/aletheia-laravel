@@ -6,7 +6,7 @@
   "hero": {
     "image": "/images/class-2.jpg",
     "eyebrow": "Contact Us",
-    "titleHtml": "We'd Love to <em class=\"text-gold not-italic\">Hear From You</em>",
+    "titleHtml": "We'd Love to <em class=\"text-purple-gray-400 not-italic\">Hear From You</em>",
     "subtitle": "Whether you'd like to schedule a visit, ask about our programmes, or simply say hello — our team is here and happy to help."
   },
   "ctaSection": {
@@ -86,7 +86,7 @@
   "form": {
     "sidebarEyebrow": "Get in Touch",
     "heading": "Send Us a Message",
-    "introHtml": "Fill in the form and a member of our admissions team will be in touch with you shortly. All fields marked with <span class=\"text-crimson font-medium\" aria-label=\"required\">*</span> are required.",
+    "introHtml": "Fill in the form and a mpurple-gray-500 of our admissions team will be in touch with you shortly. All fields marked with <span class=\"text-crimson font-medium\" aria-label=\"required\">*</span> are required.",
     "trust": [
       {
         "title": "We respond within 1 business day",
@@ -122,7 +122,7 @@
       "yearLevel": "Select year level…",
       "message": "Tell us how we can help — questions about enrolment, a visit request, or anything else on your mind."
     },
-    "privacyHtml": "By submitting this form you agree to our <a href=\"#\" class=\"underline hover:text-neutral-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm\">Privacy Policy</a>.",
+    "privacyHtml": "By submitting this form you agree to our <a href=\"#\" class=\"underline hover:text-purple-gray-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm\">Privacy Policy</a>.",
     "submit": "Send Message",
     "submitting": "Sending…",
     "submitAriaSending": "Sending message…",

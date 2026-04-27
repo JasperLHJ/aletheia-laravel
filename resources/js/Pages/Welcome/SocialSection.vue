@@ -10,19 +10,19 @@ defineProps({
 <template>
     <section
         id="social-section"
-        class="bg-neutral-100 border-t border-neutral-200 py-14"
+        class="bg-purple-gray-100 border-t border-purple-gray-200 py-14"
         aria-labelledby="social-heading"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p class="section-eyebrow mb-3">{{ content.eyebrow }}</p>
             <h2
                 id="social-heading"
-                class="font-display font-semibold text-espresso mb-2"
+                class="font-display font-semibold text-purple-gray-800 mb-2"
                 style="font-size: 1.5rem;"
             >
                 {{ content.heading }}
             </h2>
-            <p class="text-neutral-600 text-sm mb-8 max-w-md mx-auto">
+            <p class="text-purple-gray-600 text-sm mb-8 max-w-md mx-auto">
                 {{ content.intro }}
             </p>
 
@@ -33,13 +33,13 @@ defineProps({
                     :href="link.href"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="social-icon-link group flex items-center gap-3 px-5 py-3 rounded-full border border-neutral-300 bg-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson text-espresso min-h-[44px]"
+                    class="social-icon-link group flex items-center gap-3 px-5 py-3 rounded-full border border-purple-gray-300 bg-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 text-purple-gray-800 min-h-[44px]"
                     :class="[
                         li === 2
                             ? 'hover:border-[#25D366] hover:bg-[#25D366] hover:text-white'
                             : li === 3
                                 ? 'hover:border-red-600 hover:bg-red-600 hover:text-white'
-                                : 'hover:border-espresso hover:bg-espresso hover:text-white',
+                                : 'hover:border-purple-gray-800 hover:bg-purple-gray-800 hover:text-white',
                     ]"
                     :aria-label="link.ariaLabel"
                     role="listitem"

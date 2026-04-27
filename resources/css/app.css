@@ -4,21 +4,21 @@
 
 @layer base {
     :root {
-        --espresso: #382016;
-        --espresso-light: #6B4535;
-        --espresso-dark: #1E0D08;
-        --ember: #A74B1A;
-        --gold: #CE7815;
-        --gold-dark: #9A5A0E;
+        --primary: #27262b;
+        --primary-light: #3f3d48;
+        --primary-dark: #09080c;
+        --accent-mid: #63616e;
+        --accent-light: #a09ead;
+        --accent-muted: #514f5e;
         --crimson: #D30C5F;
         --sage: #95B91F;
         --sage-dark: #6B870F;
         --slate: #63616E;
-        --neutral-50: #FAF9F7;
-        --neutral-100: #F3F1EC;
-        --neutral-200: #E8E5DC;
-        --neutral-300: #D1CDBC;
-        --neutral-600: #5A5650;
+        --neutral-50: #fafafa;
+        --neutral-100: #f4f4f5;
+        --neutral-200: #e4e3e8;
+        --neutral-300: #d4d3d9;
+        --neutral-600: #514f5e;
     }
 
     html {
@@ -27,12 +27,12 @@
 
     body {
         font-family: 'DM Sans', system-ui, sans-serif;
-        color: #25231E;
-        background-color: #FAF9F7;
+        color: #27262b;
+        background-color: #fafafa;
     }
 
     *:focus-visible {
-        outline: 2px solid #D30C5F;
+        outline: 2px solid #63616e;
         outline-offset: 2px;
     }
 
@@ -54,24 +54,24 @@
     }
 
     .btn-primary {
-        @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-espresso text-neutral-50 font-sans font-medium text-sm rounded-md transition-all duration-200 hover:bg-espresso-light focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 min-h-[44px];
+        @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-purple-gray-800 text-purple-gray-50 font-sans font-medium text-sm rounded-md transition-all duration-200 hover:bg-purple-gray-700 focus-visible:ring-2 focus-visible:ring-purple-gray-500 focus-visible:ring-offset-2 min-h-[44px];
     }
 
     .btn-cta {
-        @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-crimson text-neutral-50 font-sans font-medium text-sm rounded-md transition-all duration-200 hover:bg-crimson-dark focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 min-h-[44px];
+        @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-crimson text-purple-gray-50 font-sans font-medium text-sm rounded-md transition-all duration-200 hover:bg-crimson-dark focus-visible:ring-2 focus-visible:ring-purple-gray-500 focus-visible:ring-offset-2 min-h-[44px];
     }
 
     .btn-ghost-light {
-        @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-transparent text-neutral-50 border border-white/30 font-sans font-medium text-sm rounded-md transition-all duration-200 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 min-h-[44px];
+        @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-transparent text-purple-gray-50 border border-white/30 font-sans font-medium text-sm rounded-md transition-all duration-200 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 min-h-[44px];
     }
 
     .section-eyebrow {
-        @apply text-xs font-sans font-medium uppercase tracking-widest text-cream-50;
+        @apply text-xs font-sans font-medium uppercase tracking-widest text-purple-gray-50;
     }
 
     .section-heading {
         font-family: 'Playfair Display', Georgia, serif;
-        @apply text-xl-school text-espresso;
+        @apply text-xl-school text-purple-gray-800;
     }
 }
 

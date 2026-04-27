@@ -26,12 +26,12 @@
             },
             {
                 "href": "#secondary-programme",
-                "dotClass": "bg-ember",
+                "dotClass": "bg-purple-gray-500",
                 "label": "Secondary"
             },
             {
                 "href": "#preuniversity-programme",
-                "dotClass": "bg-gold",
+                "dotClass": "bg-purple-gray-400",
                 "label": "Pre-University"
             }
         ],
@@ -48,14 +48,14 @@
                 "textClass": "text-sage"
             },
             {
-                "dotClass": "bg-ember",
+                "dotClass": "bg-purple-gray-500",
                 "label": "Ages 12–16",
-                "textClass": "text-ember"
+                "textClass": "text-purple-gray-500"
             },
             {
-                "dotClass": "bg-gold",
+                "dotClass": "bg-purple-gray-400",
                 "label": "Ages 17–18",
-                "textClass": "text-gold"
+                "textClass": "text-purple-gray-400"
             }
         ],
         "exploreLabel": "Explore Programme",
@@ -64,8 +64,8 @@
         "comparisonRowLabel": "",
         "comparisonCols": [
             { "title": "Primary", "headingClass": "text-sage-dark" },
-            { "title": "Secondary", "headingClass": "text-ember-dark" },
-            { "title": "Pre-University", "headingClass": "text-gold-dark" }
+            { "title": "Secondary", "headingClass": "text-purple-gray-600" },
+            { "title": "Pre-University", "headingClass": "text-purple-gray-600" }
         ],
         "comparisonRows": [
             {
@@ -102,7 +102,7 @@
                 ],
                 "image": "/images/class-3.jpg",
                 "imageAlt": "Young students engaged in hands-on learning activities",
-                "overlayColor": "#6B870F",
+                "overlayColor": "#63616e",
                 "accentBg": "bg-sage",
                 "accentText": "text-sage-dark",
                 "accentBorder": "border-sage",
@@ -122,11 +122,11 @@
                 ],
                 "image": "/images/class-1.jpg",
                 "imageAlt": "Secondary students in a science laboratory",
-                "overlayColor": "#7A3410",
-                "accentBg": "bg-ember",
-                "accentText": "text-ember-dark",
-                "accentBorder": "border-ember",
-                "hoverRing": "hover:ring-2 hover:ring-offset-2 hover:ring-ember/60",
+                "overlayColor": "#514f5e",
+                "accentBg": "bg-purple-gray-500",
+                "accentText": "text-purple-gray-600",
+                "accentBorder": "border-purple-gray-500",
+                "hoverRing": "hover:ring-2 hover:ring-offset-2 hover:ring-purple-gray-500/60",
                 "anchor": "#secondary-programme",
                 "icon": "<svg class=\"w-5 h-5\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5\" /></svg>"
             },
@@ -142,11 +142,11 @@
                 ],
                 "image": "/images/class-2.jpg",
                 "imageAlt": "Pre-university students in a discussion seminar",
-                "overlayColor": "#9A5A0E",
-                "accentBg": "bg-gold",
-                "accentText": "text-gold-dark",
-                "accentBorder": "border-gold",
-                "hoverRing": "hover:ring-2 hover:ring-offset-2 hover:ring-gold/60",
+                "overlayColor": "#514f5e",
+                "accentBg": "bg-purple-gray-400",
+                "accentText": "text-purple-gray-600",
+                "accentBorder": "border-purple-gray-400",
+                "hoverRing": "hover:ring-2 hover:ring-offset-2 hover:ring-purple-gray-400/60",
                 "anchor": "#preuniversity-programme",
                 "icon": "<svg class=\"w-5 h-5\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z\" /></svg>"
             }
@@ -218,9 +218,9 @@
                 "overview": "The Secondary Programme prepares students for Cambridge IGCSE examinations while cultivating deep analytical thinking, independent research, and a breadth of academic interests. Students are challenged to think critically, communicate effectively, and engage with global issues across disciplines.",
                 "image": "/images/class-1.jpg",
                 "imageAlt": "Secondary students working in a well-equipped science laboratory",
-                "overlayColor": "#A74B1A",
-                "accentBg": "bg-ember",
-                "accentText": "text-ember-dark",
+                "overlayColor": "#63616e",
+                "accentBg": "bg-purple-gray-500",
+                "accentText": "text-purple-gray-600",
                 "subjects": [
                     {
                         "name": "Core Sciences",
@@ -265,9 +265,9 @@
                 "overview": "Our Pre-University Programme is a focused two-year track designed to maximise Cambridge A-Level results and secure admission to top universities worldwide. Students receive individualised mentorship, subject specialisation across three structured tracks, and expert university counselling throughout their final school years.",
                 "image": "/images/class-2.jpg",
                 "imageAlt": "Pre-university students engaged in a seminar discussion",
-                "overlayColor": "#CE7815",
-                "accentBg": "bg-gold",
-                "accentText": "text-gold-dark",
+                "overlayColor": "#a09ead",
+                "accentBg": "bg-purple-gray-400",
+                "accentText": "text-purple-gray-600",
                 "subjects": [
                     {
                         "name": "Sciences Track",
@@ -319,15 +319,15 @@
             {
                 "title": "Small Class Sizes",
                 "body": "With intentionally small class sizes, every student receives focused attention and personalised guidance — never just a face in the crowd.",
-                "iconBg": "bg-ember",
-                "accentLine": "bg-ember",
+                "iconBg": "bg-purple-gray-500",
+                "accentLine": "bg-purple-gray-500",
                 "icon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z\" /></svg>"
             },
             {
                 "title": "Experienced Educators",
                 "body": "Our faculty comprises qualified, passionate teachers with deep subject expertise and a genuine commitment to each student's growth and wellbeing.",
-                "iconBg": "bg-gold",
-                "accentLine": "bg-gold",
+                "iconBg": "bg-purple-gray-400",
+                "accentLine": "bg-purple-gray-400",
                 "icon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5\" /></svg>"
             },
             {
@@ -340,15 +340,15 @@
             {
                 "title": "University Counselling",
                 "body": "Our dedicated university counsellors guide every pre-university student through applications to local and international universities, including scholarship opportunities.",
-                "iconBg": "bg-espresso-light",
-                "accentLine": "bg-espresso-light",
+                "iconBg": "bg-purple-gray-700",
+                "accentLine": "bg-purple-gray-700",
                 "icon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z\" /></svg>"
             },
             {
                 "title": "Pastoral Care & Character",
                 "body": "Every student is known by name. Our pastoral system ensures emotional wellbeing, character formation, and a strong sense of belonging throughout their school journey.",
-                "iconBg": "bg-gold-dark",
-                "accentLine": "bg-gold-dark",
+                "iconBg": "bg-purple-gray-600",
+                "accentLine": "bg-purple-gray-600",
                 "icon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z\" /></svg>"
             }
         ],

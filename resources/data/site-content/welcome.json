@@ -5,7 +5,7 @@
     "image": "/images/student-1.jpg"
   },
   "hero": {
-    "backgroundImage": "/images/student-1.jpg",
+    "backgroundImage": "/images/group-photo.JPG",
     "eyebrow": "Welcome to Aletheia Resource Center",
     "titleLine1": "Shaping minds.",
     "titleLine2Em": "Inspiring futures.",
@@ -27,7 +27,7 @@
       { "href": "https://youtube.com", "ariaLabel": "Watch us on YouTube" }
     ],
     "portrait": {
-      "src": "/images/student-1.jpg",
+      "src": "/images/group-photo.jpg",
       "alt": "Students at Aletheia Resource Center"
     },
     "statChips": [
@@ -55,7 +55,7 @@
         "body": "A rigorous programme designed to nurture critical thinkers, equipping students for leading universities worldwide.",
         "image": "/images/class-1.jpg",
         "imageAlt": "Students engaged in classroom learning",
-        "accentColor": "#382016",
+        "accentColor": "#27262b",
         "href": "/programmes",
         "linkText": "Explore Programmes"
       },
@@ -65,7 +65,7 @@
         "body": "Meet the educators who shape young minds and hear from the families who have entrusted us with their children's futures.",
         "image": "/images/people.jpg",
         "imageAlt": "Students and educators at Aletheia Resource Center",
-        "accentColor": "#9A5A0E",
+        "accentColor": "#514f5e",
         "href": "/about",
         "linkText": "Meet Our Team"
       },
@@ -75,7 +75,7 @@
         "body": "From orchestra and debate to robotics and sports, our campus fosters well-rounded growth beyond the classroom.",
         "image": "/images/photo-day.JPG",
         "imageAlt": "Students participating in co-curricular activities",
-        "accentColor": "#6B870F",
+        "accentColor": "#63616e",
         "href": "/gallery",
         "linkText": "View Gallery"
       }

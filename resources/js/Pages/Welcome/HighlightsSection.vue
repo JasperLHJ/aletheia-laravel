@@ -12,7 +12,7 @@ defineProps({
 <template>
     <section
         id="highlights"
-        class="bg-neutral-50 py-14 sm:py-20"
+        class="bg-purple-gray-50 py-14 sm:py-20"
         aria-labelledby="highlights-heading"
     >
         <div id="highlights-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,17 +20,17 @@ defineProps({
                 <p class="section-eyebrow mb-3">{{ content.eyebrow }}</p>
                 <h2
                     id="highlights-heading"
-                    class="font-display font-semibold text-espresso mb-4"
+                    class="font-display font-semibold text-purple-gray-800 mb-4"
                     style="font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.2;"
                 >
                     {{ content.heading }}
                 </h2>
-                <p class="text-neutral-600 leading-relaxed max-w-xl">
+                <p class="text-purple-gray-600 leading-relaxed max-w-xl">
                     {{ content.intro }}
                 </p>
             </div>
 
-            <div class="border-t border-neutral-200 divide-y divide-neutral-200">
+            <div class="border-t border-purple-gray-200 divide-y divide-purple-gray-200">
                 <article
                     v-for="(card, index) in content.cards"
                     :key="card.title"
@@ -64,18 +64,18 @@ defineProps({
                             {{ card.eyebrow }}
                         </p>
                         <h3
-                            class="font-display font-semibold text-espresso mb-4"
+                            class="font-display font-semibold text-purple-gray-800 mb-4"
                             style="font-size: clamp(1.25rem, 2.2vw, 1.875rem); line-height: 1.25;"
                         >
                             {{ card.title }}
                         </h3>
-                        <p class="text-neutral-600 leading-relaxed mb-6">
+                        <p class="text-purple-gray-600 leading-relaxed mb-6">
                             {{ card.body }}
                         </p>
                         <div v-if="card.href">
                             <Link
                                 :href="card.href"
-                                class="inline-flex items-center gap-2 text-sm font-medium text-ember hover:text-ember-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-sm"
+                                class="inline-flex items-center gap-2 text-sm font-medium text-purple-gray-500 hover:text-purple-gray-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 rounded-sm"
                                 :aria-label="`${card.linkText} — ${card.title}`"
                             >
                                 {{ card.linkText }}

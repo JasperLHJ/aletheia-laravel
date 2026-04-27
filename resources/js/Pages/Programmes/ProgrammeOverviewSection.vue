@@ -10,24 +10,24 @@ defineProps({
 <template>
     <section
         id="programme-overview"
-        class="bg-neutral-50 py-20 sm:py-28"
+        class="bg-purple-gray-50 py-20 sm:py-28"
         aria-labelledby="overview-heading"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Left-aligned header with contrast to other centred sections -->
             <div class="max-w-2xl mb-14">
-                <p class="text-xs font-sans font-medium text-ember uppercase tracking-widest mb-3">
+                <p class="text-xs font-sans font-medium text-purple-gray-500 uppercase tracking-widest mb-3">
                     {{ overview.eyebrow }}
                 </p>
                 <h2
                     id="overview-heading"
-                    class="font-display font-semibold text-espresso mb-4"
+                    class="font-display font-semibold text-purple-gray-800 mb-4"
                     style="font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.2;"
                 >
                     {{ overview.heading }}
                 </h2>
-                <p class="text-neutral-600 leading-relaxed">
+                <p class="text-purple-gray-600 leading-relaxed">
                     {{ overview.intro }}
                 </p>
             </div>
@@ -37,7 +37,7 @@ defineProps({
                 <article
                     v-for="programme in overview.programmes"
                     :key="programme.title"
-                    class="programme-overview-card group bg-white rounded-2xl overflow-hidden border border-neutral-200/90 shadow-sm flex flex-col transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:border-transparent"
+                    class="programme-overview-card group bg-white rounded-2xl overflow-hidden border border-purple-gray-200/90 shadow-sm flex flex-col transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:border-transparent"
                     :class="programme.hoverRing"
                 >
                     <!-- Top accent bar -->
@@ -74,14 +74,14 @@ defineProps({
                                 v-html="programme.icon"
                             ></div>
                             <h3
-                                class="font-display font-bold text-espresso pt-1"
+                                class="font-display font-bold text-purple-gray-800 pt-1"
                                 style="font-size: 1.2rem; line-height: 1.25;"
                             >
                                 {{ programme.title }}
                             </h3>
                         </div>
 
-                        <p class="text-sm text-neutral-600 leading-relaxed flex-1 mb-4">
+                        <p class="text-sm text-purple-gray-600 leading-relaxed flex-1 mb-4">
                             {{ programme.description }}
                         </p>
 
@@ -90,13 +90,13 @@ defineProps({
                             <span
                                 v-for="tag in programme.highlights"
                                 :key="tag"
-                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-neutral-100 text-neutral-700"
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-gray-100 text-purple-gray-700"
                             >
                                 {{ tag }}
                             </span>
                         </div>
 
-                        <div class="mt-auto pt-4 border-t border-neutral-100">
+                        <div class="mt-auto pt-4 border-t border-purple-gray-100">
                             <a
                                 :href="programme.anchor"
                                 :class="['flex items-center justify-between text-sm font-semibold font-sans transition-colors duration-200', programme.accentText]"
@@ -118,17 +118,17 @@ defineProps({
             </div>
 
             <!-- At-a-glance comparison table -->
-            <div class="bg-white rounded-2xl border border-neutral-200/90 shadow-sm overflow-hidden">
-                <div class="px-6 py-4 border-b border-neutral-100">
-                    <p class="text-xs font-sans font-semibold text-neutral-500 uppercase tracking-widest">
+            <div class="bg-white rounded-2xl border border-purple-gray-200/90 shadow-sm overflow-hidden">
+                <div class="px-6 py-4 border-b border-purple-gray-100">
+                    <p class="text-xs font-sans font-semibold text-purple-gray-500 uppercase tracking-widest">
                         {{ overview.comparisonHeading }}
                     </p>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm" role="table" :aria-label="overview.comparisonAriaLabel">
                         <thead>
-                            <tr class="border-b border-neutral-100">
-                                <th class="text-left px-6 py-3 text-xs font-semibold font-sans text-neutral-400 uppercase tracking-wider w-32" scope="col">
+                            <tr class="border-b border-purple-gray-100">
+                                <th class="text-left px-6 py-3 text-xs font-semibold font-sans text-purple-gray-400 uppercase tracking-wider w-32" scope="col">
                                     {{ overview.comparisonRowLabel }}
                                 </th>
                                 <th
@@ -146,15 +146,15 @@ defineProps({
                             <tr
                                 v-for="(row, ri) in overview.comparisonRows"
                                 :key="row.label"
-                                :class="ri % 2 === 0 ? 'bg-neutral-50/60' : 'bg-white'"
+                                :class="ri % 2 === 0 ? 'bg-purple-gray-50/60' : 'bg-white'"
                             >
-                                <td class="px-6 py-3 text-xs font-semibold font-sans text-neutral-500 uppercase tracking-wider whitespace-nowrap">
+                                <td class="px-6 py-3 text-xs font-semibold font-sans text-purple-gray-500 uppercase tracking-wider whitespace-nowrap">
                                     {{ row.label }}
                                 </td>
                                 <td
                                     v-for="cell in row.cells"
                                     :key="cell"
-                                    class="px-6 py-3 text-neutral-700 leading-snug"
+                                    class="px-6 py-3 text-purple-gray-700 leading-snug"
                                 >
                                     {{ cell }}
                                 </td>

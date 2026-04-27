@@ -9,7 +9,7 @@ defineProps({
 
 <template>
     <section
-        class="relative flex items-center bg-espresso overflow-hidden"
+        class="relative flex items-center bg-purple-gray-800 overflow-hidden"
         style="min-height: 60vh;"
         aria-labelledby="programmes-hero-heading"
     >
@@ -20,8 +20,8 @@ defineProps({
                 class="w-full h-full object-cover object-center"
                 loading="eager"
             />
-            <div class="absolute inset-0 bg-gradient-to-r from-espresso/90 via-espresso/65 to-espresso/30"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-espresso/60 via-transparent to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-gray-800/90 via-purple-gray-800/65 to-purple-gray-800/30"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-gray-800/60 via-transparent to-transparent"></div>
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
@@ -32,11 +32,11 @@ defineProps({
 
                 <h1
                     id="programmes-hero-heading"
-                    class="programmes-hero-title font-display font-bold text-neutral-50 mb-6"
+                    class="programmes-hero-title font-display font-bold text-purple-gray-50 mb-6"
                     style="font-size: clamp(2.2rem, 4.5vw, 3.2rem); line-height: 1.1;"
                 >
                     {{ hero.titleLine1 }}
-                    <em class="text-gold not-italic block sm:inline"> {{ hero.titleEmphasis }}</em>
+                    <em class="text-purple-gray-400 not-italic block sm:inline"> {{ hero.titleEmphasis }}</em>
                 </h1>
 
                 <p
@@ -70,8 +70,8 @@ defineProps({
                         class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white/10 text-white/70 hover:text-white border border-white/10 transition-all duration-200"
                         :class="[
                             pi === 0 ? 'hover:bg-sage/30 hover:border-sage/50' : '',
-                            pi === 1 ? 'hover:bg-ember/30 hover:border-ember/50' : '',
-                            pi === 2 ? 'hover:bg-gold/30 hover:border-gold/50' : '',
+                            pi === 1 ? 'hover:bg-purple-gray-500/30 hover:border-purple-gray-500/50' : '',
+                            pi === 2 ? 'hover:bg-purple-gray-400/30 hover:border-purple-gray-400/50' : '',
                         ]"
                     >
                         <span :class="['w-2 h-2 rounded-full shrink-0', pill.dotClass]" aria-hidden="true"></span>

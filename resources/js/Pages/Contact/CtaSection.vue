@@ -10,7 +10,7 @@ defineProps({
 <template>
     <section
         id="contact-cta-section"
-        class="bg-espresso py-16 sm:py-20"
+        class="bg-purple-gray-800 py-16 sm:py-20"
         aria-labelledby="contact-cta-heading"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,7 +18,7 @@ defineProps({
                 <p class="section-eyebrow mb-3" aria-hidden="true">{{ ctaSection.eyebrow }}</p>
                 <h2
                     id="contact-cta-heading"
-                    class="font-display font-bold text-neutral-50"
+                    class="font-display font-bold text-purple-gray-50"
                     style="font-size: clamp(1.6rem, 3vw, 2.2rem);"
                 >
                     {{ ctaSection.heading }}
@@ -34,7 +34,7 @@ defineProps({
                     :href="ctaSection.cards.whatsapp.href"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="cta-card group relative flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso"
+                    class="cta-card group relative flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 focus-visible:ring-offset-2 focus-visible:ring-offset-purple-gray-800"
                     style="opacity: 0; transform: translateY(40px);"
                     :aria-label="ctaSection.cards.whatsapp.ariaLabel"
                 >
@@ -51,7 +51,7 @@ defineProps({
                         </div>
                     </div>
 
-                    <h3 class="font-display font-semibold text-neutral-50 text-lg mb-2">{{ ctaSection.cards.whatsapp.title }}</h3>
+                    <h3 class="font-display font-semibold text-purple-gray-50 text-lg mb-2">{{ ctaSection.cards.whatsapp.title }}</h3>
                     <p class="text-white/60 text-sm leading-relaxed mb-6">
                         {{ ctaSection.cards.whatsapp.body }}
                     </p>
@@ -68,29 +68,29 @@ defineProps({
 
                 <a
                     :href="ctaSection.cards.email.href"
-                    class="cta-card group flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso"
+                    class="cta-card group flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 focus-visible:ring-offset-2 focus-visible:ring-offset-purple-gray-800"
                     style="opacity: 0; transform: translateY(40px);"
                     :aria-label="ctaSection.cards.email.ariaLabel"
                 >
                     <div class="relative mb-6 flex items-center justify-center">
                         <div
                             class="absolute inset-0 rounded-full opacity-20 group-hover:opacity-40 transition-opacity"
-                            style="background: #CE7815; transform: scale(1.5); filter: blur(12px);"
+                            style="background: #a09ead; transform: scale(1.5); filter: blur(12px);"
                             aria-hidden="true"
                         ></div>
-                        <div class="relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-gold">
-                            <svg class="w-8 h-8 text-espresso" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <div class="relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-purple-gray-400">
+                            <svg class="w-8 h-8 text-purple-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                             </svg>
                         </div>
                     </div>
 
-                    <h3 class="font-display font-semibold text-neutral-50 text-lg mb-2">{{ ctaSection.cards.email.title }}</h3>
+                    <h3 class="font-display font-semibold text-purple-gray-50 text-lg mb-2">{{ ctaSection.cards.email.title }}</h3>
                     <p class="text-white/60 text-sm leading-relaxed mb-6">
                         {{ ctaSection.cards.email.body }}
                     </p>
                     <span
-                        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-espresso bg-gold transition-all duration-200 group-hover:bg-gold-light group-hover:gap-3"
+                        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-purple-gray-800 bg-purple-gray-400 transition-all duration-200 group-hover:bg-purple-gray-300 group-hover:gap-3"
                     >
                         {{ ctaSection.cards.email.button }}
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -101,7 +101,7 @@ defineProps({
 
                 <a
                     :href="ctaSection.cards.phone.href"
-                    class="cta-card group flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso"
+                    class="cta-card group flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 focus-visible:ring-offset-2 focus-visible:ring-offset-purple-gray-800"
                     style="opacity: 0; transform: translateY(40px);"
                     :aria-label="ctaSection.cards.phone.ariaLabel"
                 >
@@ -118,7 +118,7 @@ defineProps({
                         </div>
                     </div>
 
-                    <h3 class="font-display font-semibold text-neutral-50 text-lg mb-2">{{ ctaSection.cards.phone.title }}</h3>
+                    <h3 class="font-display font-semibold text-purple-gray-50 text-lg mb-2">{{ ctaSection.cards.phone.title }}</h3>
                     <p class="text-white/60 text-sm leading-relaxed mb-6">
                         {{ ctaSection.cards.phone.body }}
                     </p>

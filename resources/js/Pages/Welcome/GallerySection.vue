@@ -105,7 +105,7 @@ onUnmounted(() => {
 <template>
     <section
         id="gallery"
-        class="bg-neutral-100 py-20 sm:py-24 overflow-hidden"
+        class="bg-purple-gray-100 py-20 sm:py-24 overflow-hidden"
         aria-labelledby="gallery-heading"
     >
         <div id="gallery-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,7 +114,7 @@ onUnmounted(() => {
                     <p class="section-eyebrow mb-2">{{ content.eyebrow }}</p>
                     <h2
                         id="gallery-heading"
-                        class="font-display font-semibold text-espresso"
+                        class="font-display font-semibold text-purple-gray-800"
                         style="font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2;"
                     >
                         {{ content.heading }}
@@ -122,7 +122,7 @@ onUnmounted(() => {
                 </div>
                 <a
                     :href="content.galleryHref"
-                    class="text-sm font-medium text-ember hover:text-ember-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-sm shrink-0"
+                    class="text-sm font-medium text-purple-gray-500 hover:text-purple-gray-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 rounded-sm shrink-0"
                     :aria-label="content.viewFullAriaLabel"
                 >
                     {{ content.viewFullLabel }}
@@ -159,7 +159,7 @@ onUnmounted(() => {
                             :loading="i === 0 ? 'eager' : 'lazy'"
                         />
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-espresso/60 via-espresso/10 to-transparent"
+                            class="absolute inset-0 bg-gradient-to-t from-purple-gray-800/60 via-purple-gray-800/10 to-transparent"
                             aria-hidden="true"
                         ></div>
                         <div
@@ -167,7 +167,7 @@ onUnmounted(() => {
                         >
                             <div>
                                 <span
-                                    class="inline-block text-xs font-sans font-medium uppercase tracking-widest text-gold/90 mb-1"
+                                    class="inline-block text-xs font-sans font-medium uppercase tracking-widest text-purple-gray-400/90 mb-1"
                                 >
                                     {{ String(i + 1).padStart(2, '0') }} / {{ String(totalSlides).padStart(2, '0') }}
                                 </span>
@@ -183,27 +183,27 @@ onUnmounted(() => {
                 <div class="flex items-center gap-3 mt-6">
                     <button
                         @click="prev"
-                        class="gallery-nav-btn group relative w-11 h-11 rounded-full border border-neutral-300 bg-white flex items-center justify-center transition-all duration-300 hover:bg-espresso hover:border-espresso focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson"
+                        class="gallery-nav-btn group relative w-11 h-11 rounded-full border border-purple-gray-300 bg-white flex items-center justify-center transition-all duration-300 hover:bg-purple-gray-800 hover:border-purple-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500"
                         :aria-label="content.navPrevAria"
                     >
-                        <svg class="w-4 h-4 text-espresso group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <svg class="w-4 h-4 text-purple-gray-800 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
                     <button
                         @click="next"
-                        class="gallery-nav-btn group relative w-11 h-11 rounded-full border border-neutral-300 bg-white flex items-center justify-center transition-all duration-300 hover:bg-espresso hover:border-espresso focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson"
+                        class="gallery-nav-btn group relative w-11 h-11 rounded-full border border-purple-gray-300 bg-white flex items-center justify-center transition-all duration-300 hover:bg-purple-gray-800 hover:border-purple-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500"
                         :aria-label="content.navNextAria"
                     >
-                        <svg class="w-4 h-4 text-espresso group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <svg class="w-4 h-4 text-purple-gray-800 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
 
                     <!-- Progress bar -->
-                    <div class="flex-1 h-0.5 bg-neutral-300 rounded-full overflow-hidden ml-2">
+                    <div class="flex-1 h-0.5 bg-purple-gray-300 rounded-full overflow-hidden ml-2">
                         <div
-                            class="h-full bg-ember rounded-full transition-all duration-500 ease-out"
+                            class="h-full bg-purple-gray-500 rounded-full transition-all duration-500 ease-out"
                             :style="{ width: progressWidth + '%' }"
                         ></div>
                     </div>
@@ -218,10 +218,10 @@ onUnmounted(() => {
                         role="tab"
                         :aria-selected="i === activeIndex"
                         :aria-label="`View image: ${img.caption}`"
-                        class="gallery-thumb relative rounded-lg overflow-hidden transition-all duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson"
+                        class="gallery-thumb relative rounded-lg overflow-hidden transition-all duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500"
                         :class="[
                             i === activeIndex
-                                ? 'ring-2 ring-ember ring-offset-2 ring-offset-neutral-100 opacity-100'
+                                ? 'ring-2 ring-purple-gray-500 ring-offset-2 ring-offset-purple-gray-100 opacity-100'
                                 : 'opacity-50 hover:opacity-75'
                         ]"
                     >
@@ -233,7 +233,7 @@ onUnmounted(() => {
                         />
                         <div
                             v-if="i === activeIndex"
-                            class="absolute inset-0 border-2 border-ember rounded-lg"
+                            class="absolute inset-0 border-2 border-purple-gray-500 rounded-lg"
                             aria-hidden="true"
                         ></div>
                     </button>

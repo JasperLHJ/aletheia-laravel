@@ -15,17 +15,17 @@ defineProps({
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-                <p class="text-xs font-sans font-medium text-ember uppercase tracking-widest mb-3">
+                <p class="text-xs font-sans font-medium text-purple-gray-500 uppercase tracking-widest mb-3">
                     {{ deepDive.eyebrow }}
                 </p>
                 <h2
                     id="deepdive-heading"
-                    class="font-display font-semibold text-espresso mb-4"
+                    class="font-display font-semibold text-purple-gray-800 mb-4"
                     style="font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.2;"
                 >
                     {{ deepDive.heading }}
                 </h2>
-                <p class="text-neutral-600 leading-relaxed">
+                <p class="text-purple-gray-600 leading-relaxed">
                     {{ deepDive.intro }}
                 </p>
             </div>
@@ -63,9 +63,9 @@ defineProps({
                             <div
                                 class="absolute bottom-5 left-5 bg-white/95 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg max-w-[calc(100%-2.5rem)]"
                             >
-                                <p class="text-xs text-neutral-500 font-sans mb-0.5">{{ deepDive.qualificationLabel }}</p>
+                                <p class="text-xs text-purple-gray-500 font-sans mb-0.5">{{ deepDive.qualificationLabel }}</p>
                                 <p :class="['font-display font-bold text-sm', programme.accentText]">{{ programme.qualification }}</p>
-                                <p v-if="programme.qualificationNote" class="text-xs text-neutral-400 leading-snug mt-1 hidden sm:block">{{ programme.qualificationNote }}</p>
+                                <p v-if="programme.qualificationNote" class="text-xs text-purple-gray-400 leading-snug mt-1 hidden sm:block">{{ programme.qualificationNote }}</p>
                             </div>
 
                             <!-- Accent corner decoration -->
@@ -90,26 +90,26 @@ defineProps({
 
                             <!-- Heading -->
                             <h3
-                                class="font-display font-bold text-espresso mb-3"
+                                class="font-display font-bold text-purple-gray-800 mb-3"
                                 style="font-size: clamp(1.5rem, 2.5vw, 2rem); line-height: 1.2;"
                             >
                                 {{ programme.title }}
                             </h3>
 
-                            <p class="text-neutral-600 leading-relaxed mb-7 text-base">
+                            <p class="text-purple-gray-600 leading-relaxed mb-7 text-base">
                                 {{ programme.overview }}
                             </p>
 
                             <!-- Curriculum Subjects -->
                             <div class="mb-7">
-                                <h4 class="text-xs font-sans font-semibold text-neutral-500 uppercase tracking-widest mb-3">
+                                <h4 class="text-xs font-sans font-semibold text-purple-gray-500 uppercase tracking-widest mb-3">
                                     {{ deepDive.curriculumHeading }}
                                 </h4>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                                     <div
                                         v-for="subject in programme.subjects"
                                         :key="subject.name"
-                                        class="flex items-start gap-2.5 p-3 bg-neutral-50 rounded-xl border border-neutral-100 group hover:border-neutral-200 transition-colors duration-150"
+                                        class="flex items-start gap-2.5 p-3 bg-purple-gray-50 rounded-xl border border-purple-gray-100 group hover:border-purple-gray-200 transition-colors duration-150"
                                     >
                                         <div
                                             :class="['w-1.5 rounded-full shrink-0 mt-1.5', programme.accentBg]"
@@ -117,8 +117,8 @@ defineProps({
                                             aria-hidden="true"
                                         ></div>
                                         <div class="min-w-0">
-                                            <p class="text-xs font-semibold font-sans text-espresso">{{ subject.name }}</p>
-                                            <p class="text-xs text-neutral-500 leading-relaxed mt-0.5">{{ subject.desc }}</p>
+                                            <p class="text-xs font-semibold font-sans text-purple-gray-800">{{ subject.name }}</p>
+                                            <p class="text-xs text-purple-gray-500 leading-relaxed mt-0.5">{{ subject.desc }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -126,14 +126,14 @@ defineProps({
 
                             <!-- Key Outcomes -->
                             <div class="mb-8">
-                                <h4 class="text-xs font-sans font-semibold text-neutral-500 uppercase tracking-widest mb-3">
+                                <h4 class="text-xs font-sans font-semibold text-purple-gray-500 uppercase tracking-widest mb-3">
                                     {{ deepDive.outcomesHeading }}
                                 </h4>
                                 <ul class="space-y-2" role="list">
                                     <li
                                         v-for="outcome in programme.outcomes"
                                         :key="outcome"
-                                        class="flex items-center gap-2.5 text-sm text-neutral-700"
+                                        class="flex items-center gap-2.5 text-sm text-purple-gray-700"
                                     >
                                         <span
                                             :class="['w-5 h-5 rounded-full flex items-center justify-center text-white shrink-0', programme.accentBg]"

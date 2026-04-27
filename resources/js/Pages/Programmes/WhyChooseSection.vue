@@ -10,7 +10,7 @@ defineProps({
 <template>
     <section
         id="why-aletheia"
-        class="bg-espresso py-20 sm:py-28 relative overflow-hidden"
+        class="bg-purple-gray-800 py-20 sm:py-28 relative overflow-hidden"
         aria-labelledby="why-heading"
     >
         <!-- Subtle grid texture only — no repeated orbs -->
@@ -24,12 +24,12 @@ defineProps({
 
             <!-- Editorial header — left-aligned, not centred -->
             <div class="max-w-xl mb-14 sm:mb-16">
-                <p class="text-xs font-sans font-medium text-gold uppercase tracking-widest mb-3">
+                <p class="text-xs font-sans font-medium text-purple-gray-400 uppercase tracking-widest mb-3">
                     {{ why.eyebrow }}
                 </p>
                 <h2
                     id="why-heading"
-                    class="font-display font-bold text-neutral-50 mb-4"
+                    class="font-display font-bold text-purple-gray-50 mb-4"
                     style="font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.2;"
                 >
                     {{ why.heading }}
@@ -56,7 +56,7 @@ defineProps({
                             <span class="text-white" v-html="why.features[5].icon"></span>
                         </div>
 
-                        <blockquote class="font-display font-semibold text-neutral-50 mb-4" style="font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.35;">
+                        <blockquote class="font-display font-semibold text-purple-gray-50 mb-4" style="font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.35;">
                             "{{ why.features[5].title }}"
                         </blockquote>
 
@@ -67,7 +67,7 @@ defineProps({
 
                     <!-- Inline stat: class size proof -->
                     <div class="mt-8 pt-6 border-t border-white/10 flex items-baseline gap-3">
-                        <span class="font-display font-bold text-gold" style="font-size: 2rem;">{{ why.stats[2].value }}</span>
+                        <span class="font-display font-bold text-purple-gray-400" style="font-size: 2rem;">{{ why.stats[2].value }}</span>
                         <span class="text-xs text-white/50 uppercase tracking-wider leading-tight">{{ why.stats[2].label }}</span>
                     </div>
                 </div>
@@ -86,7 +86,7 @@ defineProps({
                         </div>
 
                         <h3
-                            class="font-display font-semibold text-neutral-50 mb-2"
+                            class="font-display font-semibold text-purple-gray-50 mb-2"
                             style="font-size: 1.05rem; line-height: 1.3;"
                         >
                             {{ feature.title }}
@@ -99,7 +99,7 @@ defineProps({
                         <!-- Inline proof stat for university counselling card -->
                         <p
                             v-if="i === 3"
-                            class="mt-3 text-xs font-semibold text-gold"
+                            class="mt-3 text-xs font-semibold text-purple-gray-400"
                         >{{ why.stats[1].value }} {{ why.stats[1].label }}</p>
                     </div>
                 </div>
@@ -116,7 +116,7 @@ defineProps({
 
                     <div class="flex-1 min-w-0">
                         <h3
-                            class="font-display font-semibold text-neutral-50 mb-1"
+                            class="font-display font-semibold text-purple-gray-50 mb-1"
                             style="font-size: 1.1rem; line-height: 1.3;"
                         >
                             {{ why.features[4].title }}
@@ -127,11 +127,11 @@ defineProps({
                     <!-- Inline stats: years of excellence + CCAs -->
                     <div class="flex gap-8 sm:gap-10 shrink-0 sm:border-l sm:border-white/10 sm:pl-8">
                         <div class="text-center sm:text-left">
-                            <p class="font-display font-bold text-gold" style="font-size: 1.6rem;">{{ why.stats[0].value }}</p>
+                            <p class="font-display font-bold text-purple-gray-400" style="font-size: 1.6rem;">{{ why.stats[0].value }}</p>
                             <p class="text-xs text-white/50 uppercase tracking-wider mt-0.5">{{ why.stats[0].label }}</p>
                         </div>
                         <div class="text-center sm:text-left">
-                            <p class="font-display font-bold text-gold" style="font-size: 1.6rem;">{{ why.stats[3].value }}</p>
+                            <p class="font-display font-bold text-purple-gray-400" style="font-size: 1.6rem;">{{ why.stats[3].value }}</p>
                             <p class="text-xs text-white/50 uppercase tracking-wider mt-0.5">{{ why.stats[3].label }}</p>
                         </div>
                     </div>

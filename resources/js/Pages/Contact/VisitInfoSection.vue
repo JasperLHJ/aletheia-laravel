@@ -10,41 +10,41 @@ defineProps({
 <template>
     <section
         id="contact-visit-section"
-        class="bg-neutral-100 py-16 sm:py-20"
+        class="bg-purple-gray-100 py-16 sm:py-20"
         aria-labelledby="visit-info-heading"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <p class="text-xs font-sans font-medium uppercase tracking-widest text-gold mb-3" aria-hidden="true">
+                <p class="text-xs font-sans font-medium uppercase tracking-widest text-purple-gray-400 mb-3" aria-hidden="true">
                     {{ visit.eyebrow }}
                 </p>
                 <h2
                     id="visit-info-heading"
-                    class="font-display font-bold text-espresso"
+                    class="font-display font-bold text-purple-gray-800"
                     style="font-size: clamp(1.6rem, 3vw, 2.2rem);"
                 >
                     {{ visit.heading }}
                 </h2>
-                <p class="mt-3 text-neutral-600 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
+                <p class="mt-3 text-purple-gray-600 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
                     {{ visit.intro }}
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
 
-                <div class="visit-info-card flex flex-col items-start p-7 rounded-2xl bg-white border border-neutral-200 shadow-sm">
-                    <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-espresso/10 mb-5">
-                        <svg class="w-6 h-6 text-espresso" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <div class="visit-info-card flex flex-col items-start p-7 rounded-2xl bg-white border border-purple-gray-200 shadow-sm">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-purple-gray-800/10 mb-5">
+                        <svg class="w-6 h-6 text-purple-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                         </svg>
                     </div>
-                    <h3 class="font-display font-semibold text-espresso text-lg mb-3">{{ visit.addressCard.title }}</h3>
-                    <address class="not-italic text-neutral-600 text-sm leading-relaxed">
+                    <h3 class="font-display font-semibold text-purple-gray-800 text-lg mb-3">{{ visit.addressCard.title }}</h3>
+                    <address class="not-italic text-purple-gray-600 text-sm leading-relaxed">
                         <p
                             v-for="(line, li) in visit.addressCard.lines"
                             :key="li"
-                            :class="li === 0 ? 'font-medium text-neutral-700' : ''"
+                            :class="li === 0 ? 'font-medium text-purple-gray-700' : ''"
                         >
                             {{ line }}
                         </p>
@@ -53,7 +53,7 @@ defineProps({
                         :href="visit.addressCard.directionsHref"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gold hover:text-gold-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-sm"
+                        class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-purple-gray-400 hover:text-purple-gray-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 rounded-sm"
                         :aria-label="visit.addressCard.directionsAria"
                     >
                         {{ visit.addressCard.directionsLabel }}
@@ -63,42 +63,42 @@ defineProps({
                     </a>
                 </div>
 
-                <div class="visit-info-card flex flex-col items-start p-7 rounded-2xl bg-white border border-neutral-200 shadow-sm">
-                    <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-gold/10 mb-5">
-                        <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <div class="visit-info-card flex flex-col items-start p-7 rounded-2xl bg-white border border-purple-gray-200 shadow-sm">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-purple-gray-400/10 mb-5">
+                        <svg class="w-6 h-6 text-purple-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
-                    <h3 class="font-display font-semibold text-espresso text-lg mb-3">{{ visit.hoursCard.title }}</h3>
+                    <h3 class="font-display font-semibold text-purple-gray-800 text-lg mb-3">{{ visit.hoursCard.title }}</h3>
                     <dl class="w-full text-sm space-y-2">
                         <div
                             v-for="(row, ri) in visit.hoursCard.rows"
                             :key="row.day"
                             class="flex justify-between items-center py-1.5"
-                            :class="ri < visit.hoursCard.rows.length - 1 ? 'border-b border-neutral-100' : ''"
+                            :class="ri < visit.hoursCard.rows.length - 1 ? 'border-b border-purple-gray-100' : ''"
                         >
-                            <dt class="text-neutral-500">{{ row.day }}</dt>
+                            <dt class="text-purple-gray-500">{{ row.day }}</dt>
                             <dd
                                 class="font-medium"
-                                :class="row.hoursMuted ? 'text-neutral-400 italic' : 'text-neutral-700'"
+                                :class="row.hoursMuted ? 'text-purple-gray-400 italic' : 'text-purple-gray-700'"
                             >
                                 {{ row.hours }}
                             </dd>
                         </div>
                     </dl>
-                    <p class="mt-4 text-xs text-neutral-400 leading-relaxed">
+                    <p class="mt-4 text-xs text-purple-gray-400 leading-relaxed">
                         {{ visit.hoursCard.footnote }}
                     </p>
                 </div>
 
-                <div class="visit-info-card flex flex-col items-start p-7 rounded-2xl bg-white border border-neutral-200 shadow-sm">
+                <div class="visit-info-card flex flex-col items-start p-7 rounded-2xl bg-white border border-purple-gray-200 shadow-sm">
                     <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-crimson/10 mb-5">
                         <svg class="w-6 h-6 text-crimson" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
                         </svg>
                     </div>
-                    <h3 class="font-display font-semibold text-espresso text-lg mb-3">{{ visit.socialCard.title }}</h3>
-                    <p class="text-neutral-600 text-sm leading-relaxed mb-5">
+                    <h3 class="font-display font-semibold text-purple-gray-800 text-lg mb-3">{{ visit.socialCard.title }}</h3>
+                    <p class="text-purple-gray-600 text-sm leading-relaxed mb-5">
                         {{ visit.socialCard.body }}
                     </p>
                     <div class="flex flex-col gap-3 w-full">
@@ -108,10 +108,10 @@ defineProps({
                             :href="link.href"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="flex items-center gap-3 text-sm text-neutral-600 hover:text-espresso transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-sm"
+                            class="flex items-center gap-3 text-sm text-purple-gray-600 hover:text-purple-gray-800 transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 rounded-sm"
                             :aria-label="link.ariaLabel"
                         >
-                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-neutral-100 group-hover:bg-espresso group-hover:text-white transition-all duration-200">
+                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-gray-100 group-hover:bg-purple-gray-800 group-hover:text-white transition-all duration-200">
                                 <svg
                                     v-if="link.label === 'Facebook'"
                                     class="w-4 h-4"

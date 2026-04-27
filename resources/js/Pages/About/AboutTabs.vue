@@ -293,7 +293,7 @@ onUnmounted(() => {
 <template>
     <section
         id="about-tabs-section"
-        class="bg-neutral-50 py-16 sm:py-24"
+        class="bg-purple-gray-50 py-16 sm:py-24"
         aria-labelledby="about-tabs-heading"
     >
         <h2 id="about-tabs-heading" class="sr-only">About Aletheia Resource Center</h2>
@@ -309,14 +309,14 @@ onUnmounted(() => {
                             ref="tabListRef"
                             role="tablist"
                             aria-label="About sections"
-                            class="relative inline-flex shrink-0 items-center bg-espresso/8 border border-espresso/20 rounded-full p-1.5 shadow-inner"
+                            class="relative inline-flex shrink-0 items-center bg-purple-gray-800/8 border border-purple-gray-800/20 rounded-full p-1.5 shadow-inner"
                             style="background-color: rgba(62,30,13,0.07);"
                             @keydown="handleKeydown"
                         >
                             <!-- Sliding Indicator -->
                             <div
                                 ref="indicatorRef"
-                                class="absolute top-1.5 left-0 h-[calc(100%-12px)] bg-espresso rounded-full shadow-md pointer-events-none"
+                                class="absolute top-1.5 left-0 h-[calc(100%-12px)] bg-purple-gray-800 rounded-full shadow-md pointer-events-none"
                                 aria-hidden="true"
                             ></div>
 
@@ -332,10 +332,10 @@ onUnmounted(() => {
                                 :tabindex="activeIndex === index ? 0 : -1"
                                 :class="[
                                     'relative z-10 px-3.5 sm:px-5 md:px-7 py-2 sm:py-2.5 md:py-3 text-xs sm:text-sm md:text-base font-sans font-semibold rounded-full transition-colors duration-200 whitespace-nowrap select-none',
-                                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2',
+                                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 focus-visible:ring-offset-2',
                                     activeIndex === index
-                                        ? 'text-cream-50'
-                                        : 'text-espresso/70 hover:text-espresso',
+                                        ? 'text-purple-gray-50'
+                                        : 'text-purple-gray-800/70 hover:text-purple-gray-800',
                                 ]"
                                 @click="switchTab(index)"
                             >

@@ -19,15 +19,15 @@ function formatDate(dateStr) {
 }
 
 const categoryAccentColors = {
-    Events: '#A74B1A',
-    Achievements: '#CE7815',
+    Events: '#63616e',
+    Achievements: '#a09ead',
     'Campus Life': '#95B91F',
-    Academic: '#382016',
+    Academic: '#27262b',
     Community: '#D30C5F',
 };
 
 function accentForCategory(cat) {
-    return categoryAccentColors[cat] || '#A74B1A';
+    return categoryAccentColors[cat] || '#63616e';
 }
 
 async function copyLink() {
@@ -42,22 +42,22 @@ async function copyLink() {
 <template>
     <section
         id="blog-post-section"
-        class="bg-neutral-50 py-16 sm:py-20"
+        class="bg-purple-gray-50 py-16 sm:py-20"
         aria-label="Blog post content"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Breadcrumb -->
-            <nav class="blog-post-breadcrumb flex items-center gap-2 text-xs text-neutral-400 mb-8" aria-label="Breadcrumb">
-                <Link href="/" class="hover:text-ember transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm">Home</Link>
+            <nav class="blog-post-breadcrumb flex items-center gap-2 text-xs text-purple-gray-400 mb-8" aria-label="Breadcrumb">
+                <Link href="/" class="hover:text-purple-gray-500 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-purple-gray-500 rounded-sm">Home</Link>
                 <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
-                <Link href="/blog" class="hover:text-ember transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm">Blog</Link>
+                <Link href="/blog" class="hover:text-purple-gray-500 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-purple-gray-500 rounded-sm">Blog</Link>
                 <svg class="w-3 h-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
-                <span class="text-neutral-500 truncate max-w-xs">{{ post.title }}</span>
+                <span class="text-purple-gray-500 truncate max-w-xs">{{ post.title }}</span>
             </nav>
 
             <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
@@ -68,7 +68,7 @@ async function copyLink() {
                     <!-- Back link -->
                     <Link
                         href="/blog"
-                        class="inline-flex items-center gap-2 text-sm text-ember hover:text-ember-dark font-medium mb-8 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-sm"
+                        class="inline-flex items-center gap-2 text-sm text-purple-gray-500 hover:text-purple-gray-600 font-medium mb-8 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 rounded-sm"
                     >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
@@ -87,28 +87,28 @@ async function copyLink() {
 
                     <!-- Title -->
                     <h1
-                        class="font-display font-bold text-espresso leading-tight mb-6"
+                        class="font-display font-bold text-purple-gray-800 leading-tight mb-6"
                         style="font-size: clamp(1.75rem, 4vw, 2.75rem); line-height: 1.15;"
                     >
                         {{ post.title }}
                     </h1>
 
                     <!-- Meta bar -->
-                    <div class="flex flex-wrap items-center gap-4 mb-8 pb-8 border-b border-neutral-200">
-                        <div class="flex items-center gap-2 text-sm text-neutral-500">
-                            <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <div class="flex flex-wrap items-center gap-4 mb-8 pb-8 border-b border-purple-gray-200">
+                        <div class="flex items-center gap-2 text-sm text-purple-gray-500">
+                            <svg class="w-4 h-4 text-purple-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 9v7.5" />
                             </svg>
                             <time :datetime="post.date">{{ formatDate(post.date) }}</time>
                         </div>
-                        <div class="flex items-center gap-2 text-sm text-neutral-500">
-                            <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <div class="flex items-center gap-2 text-sm text-purple-gray-500">
+                            <svg class="w-4 h-4 text-purple-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <span>{{ post.readingTime }} min read</span>
                         </div>
-                        <div class="flex items-center gap-2 text-sm text-neutral-500">
-                            <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <div class="flex items-center gap-2 text-sm text-purple-gray-500">
+                            <svg class="w-4 h-4 text-purple-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                             </svg>
                             <span>{{ post.author }}</span>
@@ -145,8 +145,8 @@ async function copyLink() {
                     />
 
                     <!-- Share row -->
-                    <div class="blog-post-share mt-12 pt-8 border-t border-neutral-200 flex flex-wrap items-center gap-4">
-                        <span class="text-sm font-medium text-neutral-500">Share this post:</span>
+                    <div class="blog-post-share mt-12 pt-8 border-t border-purple-gray-200 flex flex-wrap items-center gap-4">
+                        <span class="text-sm font-medium text-purple-gray-500">Share this post:</span>
                         <a
                             :href="`https://wa.me/?text=${encodeURIComponent(post.title + ' — ' + (typeof window !== 'undefined' ? window.location.href : ''))}`"
                             target="_blank"
@@ -161,7 +161,7 @@ async function copyLink() {
                             WhatsApp
                         </a>
                         <button
-                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-neutral-600 bg-neutral-100 hover:bg-neutral-200 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2"
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-purple-gray-600 bg-purple-gray-100 hover:bg-purple-gray-200 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 focus-visible:ring-offset-2"
                             @click="copyLink"
                         >
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -179,21 +179,21 @@ async function copyLink() {
                         <!-- Related Posts -->
                         <div
                             v-if="relatedPosts.length"
-                            class="bg-white rounded-xl border border-neutral-200 shadow-sm overflow-hidden"
+                            class="bg-white rounded-xl border border-purple-gray-200 shadow-sm overflow-hidden"
                         >
-                            <div class="px-6 py-4 border-b border-neutral-100 flex items-center gap-2">
+                            <div class="px-6 py-4 border-b border-purple-gray-100 flex items-center gap-2">
                                 <div
                                     class="w-1 h-4 rounded-full"
                                     :style="`background-color: ${accentForCategory(post.category || '')};`"
                                     aria-hidden="true"
                                 ></div>
-                                <h2 class="text-sm font-sans font-semibold text-espresso uppercase tracking-widest">Related Posts</h2>
+                                <h2 class="text-sm font-sans font-semibold text-purple-gray-800 uppercase tracking-widest">Related Posts</h2>
                             </div>
-                            <ul class="divide-y divide-neutral-100">
+                            <ul class="divide-y divide-purple-gray-100">
                                 <li v-for="related in relatedPosts" :key="related.slug">
                                     <Link
                                         :href="`/blog/${related.slug}`"
-                                        class="flex items-start gap-3 p-4 group hover:bg-neutral-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-crimson"
+                                        class="flex items-start gap-3 p-4 group hover:bg-purple-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-purple-gray-500"
                                     >
                                         <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0">
                                             <img
@@ -212,20 +212,20 @@ async function copyLink() {
                                             >
                                                 {{ related.category }}
                                             </p>
-                                            <p class="text-sm font-sans font-medium text-espresso group-hover:text-ember transition-colors duration-200 leading-snug line-clamp-2">
+                                            <p class="text-sm font-sans font-medium text-purple-gray-800 group-hover:text-purple-gray-500 transition-colors duration-200 leading-snug line-clamp-2">
                                                 {{ related.title }}
                                             </p>
-                                            <p class="text-xs text-neutral-400 mt-1">
+                                            <p class="text-xs text-purple-gray-400 mt-1">
                                                 <time :datetime="related.date">{{ formatDate(related.date) }}</time>
                                             </p>
                                         </div>
                                     </Link>
                                 </li>
                             </ul>
-                            <div class="px-6 py-4 border-t border-neutral-100">
+                            <div class="px-6 py-4 border-t border-purple-gray-100">
                                 <Link
                                     href="/blog"
-                                    class="flex items-center justify-center gap-2 text-sm font-medium text-ember hover:text-ember-dark transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson rounded-sm"
+                                    class="flex items-center justify-center gap-2 text-sm font-medium text-purple-gray-500 hover:text-purple-gray-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 rounded-sm"
                                 >
                                     View all posts
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -236,15 +236,15 @@ async function copyLink() {
                         </div>
 
                         <!-- Enquiry CTA -->
-                        <div class="bg-espresso rounded-xl overflow-hidden relative p-6 text-center">
+                        <div class="bg-purple-gray-800 rounded-xl overflow-hidden relative p-6 text-center">
                             <div
                                 class="absolute inset-0 opacity-5"
-                                style="background-image: repeating-linear-gradient(45deg, #CE7815 0, #CE7815 1px, transparent 0, transparent 50%); background-size: 20px 20px;"
+                                style="background-image: repeating-linear-gradient(45deg, #a09ead 0, #a09ead 1px, transparent 0, transparent 50%); background-size: 20px 20px;"
                                 aria-hidden="true"
                             ></div>
                             <div class="relative z-10">
-                                <p class="section-eyebrow text-gold mb-2">Admissions Open</p>
-                                <h3 class="font-display font-semibold text-neutral-50 mb-3" style="font-size: 1.1rem; line-height: 1.3;">
+                                <p class="section-eyebrow text-purple-gray-400 mb-2">Admissions Open</p>
+                                <h3 class="font-display font-semibold text-purple-gray-50 mb-3" style="font-size: 1.1rem; line-height: 1.3;">
                                     Ready to Join Our Community?
                                 </h3>
                                 <p class="text-white/60 text-xs leading-relaxed mb-5">
@@ -295,14 +295,14 @@ async function copyLink() {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     margin: 2rem 0;
-    border-left: 4px solid #CE7815;
+    border-left: 4px solid #a09ead;
     border-radius: 0.25rem;
 }
 
 .blog-prose-html :deep(blockquote p) {
     font-family: var(--font-display, ui-serif, Georgia, serif);
     font-style: italic;
-    color: #382016;
+    color: #27262b;
     margin-bottom: 0.75rem;
 }
 

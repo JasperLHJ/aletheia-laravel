@@ -10,28 +10,28 @@ defineProps({
 <template>
     <section
         id="enquiry"
-        class="bg-neutral-50 py-20 sm:py-28"
+        class="bg-purple-gray-50 py-20 sm:py-28"
         aria-labelledby="cta-heading"
     >
         <div id="cta-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="cta-content bg-espresso rounded-2xl overflow-hidden relative">
+            <div class="cta-content bg-purple-gray-800 rounded-2xl overflow-hidden relative">
                 <div
                     class="absolute inset-0 opacity-5"
-                    style="background-image: repeating-linear-gradient(45deg, #CE7815 0, #CE7815 1px, transparent 0, transparent 50%); background-size: 20px 20px;"
+                    style="background-image: repeating-linear-gradient(45deg, #a09ead 0, #a09ead 1px, transparent 0, transparent 50%); background-size: 20px 20px;"
                     aria-hidden="true"
                 ></div>
                 <div
                     class="absolute right-0 top-0 w-80 h-80 rounded-full -translate-y-1/3 translate-x-1/4 opacity-10"
-                    style="background: #A74B1A;"
+                    style="background: #63616e;"
                     aria-hidden="true"
                 ></div>
 
                 <div class="relative z-10 px-8 sm:px-12 lg:px-16 py-14 sm:py-20 flex flex-col lg:flex-row items-center justify-between gap-10">
                     <div class="text-center lg:text-left max-w-xl">
-                        <p class="section-eyebrow text-gold mb-3">{{ content.eyebrow }}</p>
+                        <p class="section-eyebrow text-purple-gray-400 mb-3">{{ content.eyebrow }}</p>
                         <h2
                             id="cta-heading"
-                            class="font-display font-bold text-neutral-50 mb-4"
+                            class="font-display font-bold text-purple-gray-50 mb-4"
                             style="font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.2;"
                         >
                             {{ content.heading }}

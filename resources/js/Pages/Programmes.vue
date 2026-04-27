@@ -26,8 +26,8 @@ let scrollTriggerInstances = [];
 
 const subNavItems = [
     { id: 'primary-programme', label: 'Primary', dotClass: 'bg-sage' },
-    { id: 'secondary-programme', label: 'Secondary', dotClass: 'bg-ember' },
-    { id: 'preuniversity-programme', label: 'Pre-University', dotClass: 'bg-gold' },
+    { id: 'secondary-programme', label: 'Secondary', dotClass: 'bg-purple-gray-500' },
+    { id: 'preuniversity-programme', label: 'Pre-University', dotClass: 'bg-purple-gray-400' },
 ];
 
 function onScroll() {
@@ -152,7 +152,7 @@ onUnmounted(() => {
         >
             <nav
                 v-if="showSubNav"
-                class="fixed top-[var(--nav-height,64px)] left-0 right-0 z-50 bg-espresso/95 backdrop-blur-sm border-b border-white/10 shadow-lg"
+                class="fixed top-[var(--nav-height,64px)] left-0 right-0 z-50 bg-purple-gray-800/95 backdrop-blur-sm border-b border-white/10 shadow-lg"
                 aria-label="Jump to programme"
             >
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -165,7 +165,7 @@ onUnmounted(() => {
                                 :href="`#${item.id}`"
                                 class="inline-flex items-center gap-2 px-4 py-3 text-xs font-semibold font-sans uppercase tracking-wider transition-colors duration-150 whitespace-nowrap border-b-2"
                                 :class="activeSection === item.id
-                                    ? 'text-white border-gold'
+                                    ? 'text-white border-purple-gray-400'
                                     : 'text-white/50 border-transparent hover:text-white/80 hover:border-white/20'"
                             >
                                 <span :class="['w-2 h-2 rounded-full shrink-0', item.dotClass]" aria-hidden="true"></span>

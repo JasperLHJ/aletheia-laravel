@@ -6,12 +6,12 @@
   "hero": {
     "image": "/images/class-1.jpg",
     "eyebrow": "Our Blog",
-    "titleHtml": "Stories, <em class=\"text-gold not-italic\">Insights & Updates</em>",
+    "titleHtml": "Stories, <em class=\"text-purple-gray-400 not-italic\">Insights & Updates</em>",
     "subtitle": "Stay connected with campus life, academic achievements, events, and everything that makes our school community thrive.",
     "pills": [
       { "dotClass": "bg-sage", "label": "Campus Life" },
-      { "dotClass": "bg-gold", "label": "Achievements" },
-      { "dotClass": "bg-ember", "label": "Events" }
+      { "dotClass": "bg-purple-gray-400", "label": "Achievements" },
+      { "dotClass": "bg-purple-gray-500", "label": "Events" }
     ]
   },
   "listing": {
@@ -31,10 +31,10 @@
     "filteredEmptyBody": "Check back soon, or browse all posts.",
     "viewAll": "View all posts",
     "categoryAccentColors": {
-      "Events": "#A74B1A",
-      "Achievements": "#CE7815",
+      "Events": "#63616e",
+      "Achievements": "#a09ead",
       "Campus Life": "#95B91F",
-      "Academic": "#382016",
+      "Academic": "#27262b",
       "Community": "#D30C5F"
     }
   }

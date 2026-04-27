@@ -30,13 +30,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="min-h-screen bg-neutral-50 font-sans">
+    <div class="min-h-screen bg-purple-gray-50 font-sans">
         <header
             role="banner"
             :class="[
                 'fixed top-0 left-0 right-0 z-[60] transition-all duration-500',
                 isScrolled
-                    ? 'bg-espresso shadow-lg shadow-espresso-dark/20'
+                    ? 'bg-purple-gray-800 shadow-lg shadow-purple-gray-950/20'
                     : 'bg-transparent'
             ]"
         >
@@ -46,17 +46,17 @@ onUnmounted(() => {
             >
                 <a
                     href="/"
-                    class="min-w-0 flex-1 md:flex-initial flex flex-col leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso rounded-sm"
+                    class="min-w-0 flex-1 md:flex-initial flex flex-col leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 focus-visible:ring-offset-2 focus-visible:ring-offset-purple-gray-800 rounded-sm"
                     :aria-label="site.brand?.homeAriaLabel"
                 >
-                    <span class="font-display text-lg sm:text-xl font-bold text-cream-50 tracking-wide truncate">{{ site.brand?.wordmark }}</span>
+                    <span class="font-display text-lg sm:text-xl font-bold text-purple-gray-50 tracking-wide truncate">{{ site.brand?.wordmark }}</span>
                 </a>
 
                 <ul class="hidden md:flex items-center gap-1" role="list">
                     <li v-for="link in navLinks" :key="link.label">
                         <a
                             :href="link.href"
-                            class="px-3 py-2 text-sm font-sans font-normal text-white/70 hover:text-white transition-colors duration-150 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso"
+                            class="px-3 py-2 text-sm font-sans font-normal text-white/70 hover:text-white transition-colors duration-150 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 focus-visible:ring-offset-2 focus-visible:ring-offset-purple-gray-800"
                         >
                             {{ link.label }}
                         </a>
@@ -74,7 +74,7 @@ onUnmounted(() => {
                 </div>
 
                 <button
-                    class="md:hidden shrink-0 flex items-center justify-center w-11 h-11 text-white/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson focus-visible:ring-offset-2 focus-visible:ring-offset-espresso rounded-md transition-colors"
+                    class="md:hidden shrink-0 flex items-center justify-center w-11 h-11 text-white/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 focus-visible:ring-offset-2 focus-visible:ring-offset-purple-gray-800 rounded-md transition-colors"
                     :aria-expanded="isMobileMenuOpen"
                     aria-controls="mobile-menu"
                     :aria-label="site.nav?.mobileMenuToggleAriaLabel"
@@ -92,13 +92,13 @@ onUnmounted(() => {
             <div
                 v-show="isMobileMenuOpen"
                 id="mobile-menu"
-                class="md:hidden relative z-10 bg-espresso border-t border-white/10 px-4 py-4 shadow-lg"
+                class="md:hidden relative z-10 bg-purple-gray-800 border-t border-white/10 px-4 py-4 shadow-lg"
             >
                 <ul class="flex flex-col gap-1" role="list">
                     <li v-for="link in navLinks" :key="link.label">
                         <a
                             :href="link.href"
-                            class="block px-3 py-3 text-sm font-sans text-white/80 hover:text-white hover:bg-white/10 rounded-md transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson"
+                            class="block px-3 py-3 text-sm font-sans text-white/80 hover:text-white hover:bg-white/10 rounded-md transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500"
                             @click="closeMobileMenu"
                         >
                             {{ link.label }}
@@ -121,13 +121,13 @@ onUnmounted(() => {
             <slot />
         </main>
 
-        <footer class="bg-espresso-dark text-white/70" role="contentinfo">
+        <footer class="bg-purple-gray-950 text-white/70" role="contentinfo">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
 
                     <div class="md:col-span-1">
                         <div class="font-display text-xl text-white font-semibold tracking-wide mb-1">{{ site.brand?.wordmark }}</div>
-                        <div class="text-xs text-gold tracking-widest uppercase mb-4" style="font-size: 9px; letter-spacing: 0.16em;">{{ site.footer?.tagline }}</div>
+                        <div class="text-xs text-purple-gray-400 tracking-widest uppercase mb-4" style="font-size: 9px; letter-spacing: 0.16em;">{{ site.footer?.tagline }}</div>
                         <p class="text-sm text-white/60 leading-relaxed max-w-xs">
                             {{ site.footer?.blurb }}
                         </p>
@@ -139,7 +139,7 @@ onUnmounted(() => {
                             <li v-for="link in navLinks" :key="'f-' + link.label">
                                 <a
                                     :href="link.href"
-                                    class="text-sm text-white/60 hover:text-gold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm"
+                                    class="text-sm text-white/60 hover:text-purple-gray-400 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-purple-gray-500 rounded-sm"
                                 >
                                     {{ link.label }}
                                 </a>
@@ -147,7 +147,7 @@ onUnmounted(() => {
                             <li>
                                 <a
                                     :href="enquiryHref"
-                                    class="text-sm text-crimson hover:text-crimson-light transition-colors duration-150 font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm"
+                                    class="text-sm text-crimson hover:text-crimson-light transition-colors duration-150 font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-purple-gray-500 rounded-sm"
                                 >
                                     {{ site.footer?.enquireLink }}
                                 </a>
@@ -160,20 +160,20 @@ onUnmounted(() => {
                         <address class="not-italic flex flex-col gap-2 mb-6">
                             <a
                                 :href="site.footer?.phone?.href"
-                                class="text-sm text-white/60 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm flex items-center gap-2"
+                                class="text-sm text-white/60 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-purple-gray-500 rounded-sm flex items-center gap-2"
                                 :aria-label="site.footer?.phone?.ariaLabel"
                             >
-                                <svg class="w-4 h-4 shrink-0 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <svg class="w-4 h-4 shrink-0 text-purple-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                                 </svg>
                                 {{ site.footer?.phone?.display }}
                             </a>
                             <a
                                 :href="site.footer?.email?.href"
-                                class="text-sm text-white/60 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm flex items-center gap-2"
+                                class="text-sm text-white/60 hover:text-white transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-purple-gray-500 rounded-sm flex items-center gap-2"
                                 :aria-label="site.footer?.email?.ariaLabel"
                             >
-                                <svg class="w-4 h-4 shrink-0 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <svg class="w-4 h-4 shrink-0 text-purple-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                                 </svg>
                                 {{ site.footer?.email?.display }}
@@ -187,7 +187,7 @@ onUnmounted(() => {
                                 :href="soc.href"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 text-white/60 hover:bg-gold hover:text-espresso transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson"
+                                class="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 text-white/60 hover:bg-purple-gray-400 hover:text-purple-gray-800 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500"
                                 :aria-label="soc.ariaLabel"
                             >
                                 <svg v-if="i === 0" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -210,7 +210,7 @@ onUnmounted(() => {
                     </p>
                     <div class="flex items-center gap-4">
                         <template v-for="(item, li) in legalLinks" :key="item.label">
-                            <a :href="item.href" class="text-xs text-white/30 hover:text-white/60 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-crimson rounded-sm">{{ item.label }}</a>
+                            <a :href="item.href" class="text-xs text-white/30 hover:text-white/60 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-purple-gray-500 rounded-sm">{{ item.label }}</a>
                             <span v-if="li < legalLinks.length - 1" class="text-white/20" aria-hidden="true">·</span>
                         </template>
                     </div>

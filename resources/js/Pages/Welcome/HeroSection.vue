@@ -12,7 +12,7 @@ defineProps({
 const heroRef = ref(null);
 const prefersReducedMotion = ref(false);
 
-const particles = Array.from({ length: 28 }, (_, i) => ({
+const particles = Array.from({ length: 14 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
@@ -21,127 +21,130 @@ const particles = Array.from({ length: 28 }, (_, i) => ({
     duration: Math.random() * 8 + 6,
 }));
 
-let animations = [];
+let gsapCtx = null;
+let mousemoveCleanup = null;
 
 onMounted(() => {
+    const root = heroRef.value;
     prefersReducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (prefersReducedMotion.value) {
-        gsap.set([
-            '.hero-eyebrow', '.hero-title', '.hero-title-em',
-            '.hero-subtitle', '.hero-ctas', '.hero-badges',
-            '.hero-image-wrap', '.hero-stat',
-        ], { opacity: 1, y: 0, x: 0, scale: 1 });
+    if (!root || prefersReducedMotion.value) {
         return;
     }
 
-    // Staggered entrance timeline
-    const tl = gsap.timeline({ delay: 0.15 });
+    gsapCtx = gsap.context(() => {
+        const startAmbientAfterIntro = () => {
+            gsap.to('.hero-orb', {
+                x: 40,
+                y: -30,
+                duration: 7,
+                ease: 'sine.inOut',
+                yoyo: true,
+                repeat: -1,
+            });
+            gsap.to('.hero-scroll-indicator', {
+                y: 8,
+                duration: 1.4,
+                ease: 'sine.inOut',
+                yoyo: true,
+                repeat: -1,
+            });
+        };
 
-    tl.fromTo('.hero-eyebrow',
-        { y: 24, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.65, ease: 'power3.out' }
-    )
-    .fromTo('.hero-title-line-1',
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.75, ease: 'power3.out' },
-        '-=0.35'
-    )
-    .fromTo('.hero-title-line-2',
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.75, ease: 'power3.out' },
-        '-=0.55'
-    )
-    .fromTo('.hero-subtitle',
-        { y: 24, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' },
-        '-=0.4'
-    )
-    .fromTo('.hero-ctas',
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.55, ease: 'power2.out' },
-        '-=0.3'
-    )
-    .fromTo('.hero-badges',
-        { y: 16, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' },
-        '-=0.25'
-    )
-    .fromTo('.hero-image-wrap',
-        { opacity: 0, scale: 0.96, x: 30 },
-        { opacity: 1, scale: 1, x: 0, duration: 1.0, ease: 'power3.out' },
-        0.2
-    )
-    .fromTo('.hero-stat',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.55, stagger: 0.12, ease: 'power2.out' },
-        '-=0.5'
-    );
+        const introTl = gsap.timeline({ delay: 0.12, paused: true });
+        introTl.eventCallback('onComplete', startAmbientAfterIntro);
 
-    animations.push(tl);
+        introTl.fromTo('.hero-eyebrow',
+            { y: 24, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.65, ease: 'power3.out', force3D: true },
+        )
+            .fromTo('.hero-title-line-1',
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.75, ease: 'power3.out', force3D: true },
+                '-=0.35',
+            )
+            .fromTo('.hero-title-line-2',
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.75, ease: 'power3.out', force3D: true },
+                '-=0.55',
+            )
+            .fromTo('.hero-subtitle',
+                { y: 24, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', force3D: true },
+                '-=0.4',
+            )
+            .fromTo('.hero-ctas',
+                { y: 20, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.55, ease: 'power2.out', force3D: true },
+                '-=0.3',
+            )
+            .fromTo('.hero-badges',
+                { y: 16, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out', force3D: true },
+                '-=0.25',
+            )
+            .fromTo('.hero-image-wrap',
+                { opacity: 0, scale: 0.96, x: 30 },
+                { opacity: 1, scale: 1, x: 0, duration: 1.0, ease: 'power3.out', force3D: true },
+                0.2,
+            )
+            .fromTo('.hero-stat',
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 0.55, stagger: 0.12, ease: 'power2.out', force3D: true },
+                '-=0.5',
+            );
 
-    // Floating ambient orb
-    const orb = gsap.to('.hero-orb', {
-        x: 40, y: -30,
-        duration: 7,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1,
-    });
-    animations.push(orb);
+        const inner = root.querySelector('.hero-image-inner');
+        const orbEl = root.querySelector('.hero-orb');
+        const partEl = root.querySelector('.hero-particles-layer');
 
-    // Parallax on mouse move
-    const section = heroRef.value;
-    const onMouseMove = (e) => {
-        const { clientX, clientY, currentTarget } = e;
-        const { width, height } = currentTarget.getBoundingClientRect();
-        const xRatio = (clientX / width - 0.5);
-        const yRatio = (clientY / height - 0.5);
+        if (inner && orbEl && partEl) {
+            gsap.set(inner, { scale: 1.04, transformOrigin: '50% 0%' });
+            const innerX = gsap.quickTo(inner, 'x', { duration: 1.2, ease: 'power1.out' });
+            const innerY = gsap.quickTo(inner, 'y', { duration: 1.2, ease: 'power1.out' });
+            const orbX = gsap.quickTo(orbEl, 'x', { duration: 1.8, ease: 'power1.out' });
+            const orbY = gsap.quickTo(orbEl, 'y', { duration: 1.8, ease: 'power1.out' });
+            const partX = gsap.quickTo(partEl, 'x', { duration: 2, ease: 'power1.out' });
+            const partY = gsap.quickTo(partEl, 'y', { duration: 2, ease: 'power1.out' });
 
-        gsap.to('.hero-image-inner', {
-            x: xRatio * -18,
-            y: yRatio * -12,
-            duration: 1.2,
-            ease: 'power1.out',
+            const onMouseMove = (e) => {
+                const rect = root.getBoundingClientRect();
+                const xRatio = (e.clientX - rect.left) / rect.width - 0.5;
+                const yRatio = (e.clientY - rect.top) / rect.height - 0.5;
+                innerX(xRatio * -18);
+                innerY(yRatio * -12);
+                orbX(xRatio * 40);
+                orbY(yRatio * 30);
+                partX(xRatio * 10);
+                partY(yRatio * 8);
+            };
+
+            root.addEventListener('mousemove', onMouseMove, { passive: true });
+            mousemoveCleanup = () => root.removeEventListener('mousemove', onMouseMove);
+        }
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => introTl.play());
         });
-        gsap.to('.hero-orb', {
-            x: xRatio * 40,
-            y: yRatio * 30,
-            duration: 1.8,
-            ease: 'power1.out',
-        });
-        gsap.to('.hero-particles-layer', {
-            x: xRatio * 10,
-            y: yRatio * 8,
-            duration: 2,
-            ease: 'power1.out',
-        });
-    };
-
-    section.addEventListener('mousemove', onMouseMove);
-    animations._cleanup = () => section.removeEventListener('mousemove', onMouseMove);
-
-    // Scroll indicator bob
-    const bob = gsap.to('.hero-scroll-indicator', {
-        y: 8,
-        duration: 1.4,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1,
-    });
-    animations.push(bob);
+    }, root);
 });
 
 onUnmounted(() => {
-    animations.forEach(a => { if (a && typeof a.kill === 'function') a.kill(); });
-    if (animations._cleanup) animations._cleanup();
+    if (mousemoveCleanup) {
+        mousemoveCleanup();
+        mousemoveCleanup = null;
+    }
+    if (gsapCtx) {
+        gsapCtx.revert();
+        gsapCtx = null;
+    }
 });
 </script>
 
 <template>
     <section
         ref="heroRef"
-        class="hero-section relative min-h-screen flex items-center bg-espresso-dark overflow-hidden"
+        class="hero-section relative min-h-screen flex items-center bg-purple-gray-800 overflow-hidden"
         aria-labelledby="hero-heading"
     >
         <!-- Full-bleed background image -->
@@ -156,10 +159,10 @@ onUnmounted(() => {
             />
             <!-- Deep vignette -->
             <div class="absolute inset-0"
-                style="background: radial-gradient(ellipse 120% 100% at 60% 50%, transparent 20%, #1E0D08 85%);"
+                style="background: radial-gradient(ellipse 120% 100% at 60% 50%, transparent 20%, #18171c 85%);"
             ></div>
             <!-- Left fade for text readability -->
-            <div class="absolute inset-0 bg-gradient-to-r from-espresso-dark via-espresso-dark/90 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-gray-700 via-purple-gray-800/90 to-transparent"></div>
         </div>
 
         <!-- Ambient glowing orb -->
@@ -171,8 +174,8 @@ onUnmounted(() => {
                 width: 560px;
                 height: 560px;
                 border-radius: 50%;
-                background: radial-gradient(circle, rgba(167,75,26,0.28) 0%, rgba(206,120,21,0.12) 45%, transparent 70%);
-                filter: blur(40px);
+                background: radial-gradient(circle, rgba(99, 97, 110,0.28) 0%, rgba(160, 158, 173,0.12) 45%, transparent 70%);
+                filter: blur(28px);
             "
             aria-hidden="true"
         ></div>
@@ -186,8 +189,8 @@ onUnmounted(() => {
                 width: 420px;
                 height: 420px;
                 border-radius: 50%;
-                background: radial-gradient(circle, rgba(211,12,95,0.12) 0%, transparent 65%);
-                filter: blur(60px);
+                background: radial-gradient(circle, rgba(63,61,72,0.18) 0%, transparent 65%);
+                filter: blur(44px);
             "
             aria-hidden="true"
         ></div>
@@ -209,10 +212,12 @@ onUnmounted(() => {
             ></div>
         </div>
 
-        <!-- Decorative grid lines -->
-        <div class="absolute inset-0 z-0 pointer-events-none opacity-[0.04]" aria-hidden="true"
-            style="background-image: linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px); background-size: 80px 80px;"
-        ></div>
+        <!-- Surface texture: grain + dual-scale grid (blend modes so it reads as material, not a flat watermark) -->
+        <div class="hero-texture absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+            <div class="hero-texture-grain absolute inset-0"></div>
+            <div class="hero-texture-grid hero-texture-grid--coarse absolute inset-0"></div>
+            <div class="hero-texture-grid hero-texture-grid--fine absolute inset-0"></div>
+        </div>
 
         <!-- ── Main layout ── -->
         <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-24">
@@ -223,19 +228,19 @@ onUnmounted(() => {
 
                     <!-- Eyebrow -->
                     <div class="hero-eyebrow flex items-center gap-3 mb-6">
-                        <span class="block w-8 h-px bg-gold opacity-70"></span>
-                        <p class="text-xs font-sans font-semibold uppercase tracking-[0.22em] text-gold/80" aria-hidden="true">
+                        <span class="block w-8 h-px bg-purple-gray-400 opacity-70"></span>
+                        <p class="text-xs font-sans font-semibold uppercase tracking-[0.22em] text-purple-gray-400/80" aria-hidden="true">
                             {{ content.eyebrow }}
                         </p>
                     </div>
 
                     <!-- Heading — split into two lines for staggered reveal -->
-                    <h1 id="hero-heading" class="hero-title font-display font-bold text-neutral-50 leading-[1.08] mb-7" style="font-size: clamp(2.6rem, 5.5vw, 4rem);">
+                    <h1 id="hero-heading" class="hero-title font-display font-bold text-purple-gray-50 leading-[1.08] mb-7" style="font-size: clamp(2.6rem, 5.5vw, 4rem);">
                         <span class="hero-title-line-1 block overflow-hidden">
                             <span class="block">{{ content.titleLine1 }}</span>
                         </span>
                         <span class="hero-title-line-2 block overflow-hidden">
-                            <em class="block text-gold not-italic">{{ content.titleLine2Em }}</em>
+                            <em class="block text-purple-gray-400 not-italic">{{ content.titleLine2Em }}</em>
                         </span>
                     </h1>
 
@@ -305,8 +310,8 @@ onUnmounted(() => {
                     <!-- Floating image frame -->
                     <div class="relative">
                         <!-- Decorative corner lines -->
-                        <div class="absolute -top-3 -left-3 w-12 h-12 border-t-2 border-l-2 border-gold/40 rounded-tl-sm pointer-events-none z-20"></div>
-                        <div class="absolute -bottom-3 -right-3 w-12 h-12 border-b-2 border-r-2 border-gold/40 rounded-br-sm pointer-events-none z-20"></div>
+                        <div class="absolute -top-3 -left-3 w-12 h-12 border-t-2 border-l-2 border-purple-gray-400/40 rounded-tl-sm pointer-events-none z-20"></div>
+                        <div class="absolute -bottom-3 -right-3 w-12 h-12 border-b-2 border-r-2 border-purple-gray-400/40 rounded-br-sm pointer-events-none z-20"></div>
 
                         <!-- Inner image with parallax target -->
                         <div class="hero-image-inner w-[340px] xl:w-[400px] rounded-2xl overflow-hidden"
@@ -317,12 +322,13 @@ onUnmounted(() => {
                                 :alt="content.portrait.alt"
                                 class="w-full aspect-[3/4] object-cover object-top scale-[1.04]"
                                 loading="eager"
+                                fetchpriority="high"
                                 decoding="async"
                                 style="transform-origin: center top;"
                             />
                             <!-- Colour grade overlay -->
                             <div class="absolute inset-0 mix-blend-multiply opacity-30"
-                                style="background: linear-gradient(135deg, #382016 0%, #A74B1A 100%);"
+                                style="background: linear-gradient(135deg, #27262b 0%, #63616e 100%);"
                             ></div>
                         </div>
 
@@ -355,24 +361,114 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+/* Match GSAP intro start state to avoid a flash before mount; GPU-friendly transforms */
+@media (prefers-reduced-motion: no-preference) {
+    .hero-eyebrow {
+        opacity: 0;
+        transform: translate3d(0, 24px, 0);
+    }
+    .hero-title-line-1,
+    .hero-title-line-2 {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+    .hero-subtitle {
+        opacity: 0;
+        transform: translate3d(0, 24px, 0);
+    }
+    .hero-ctas {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+    .hero-badges {
+        opacity: 0;
+        transform: translate3d(0, 16px, 0);
+    }
+    .hero-image-wrap {
+        opacity: 0;
+        transform: translate3d(30px, 0, 0) scale(0.96);
+    }
+    .hero-stat {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+    .hero-orb {
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+    }
+    .hero-image-inner {
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+    }
+}
+
+/* ─── Hero surface texture (full-bleed) ─── */
+.hero-texture-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    opacity: 0.28;
+    mix-blend-mode: overlay;
+}
+.hero-texture-grid--coarse {
+    background-image:
+        linear-gradient(to right, rgba(196, 192, 210, 0.14) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(196, 192, 210, 0.14) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mix-blend-mode: soft-light;
+    opacity: 0.85;
+    -webkit-mask-image: radial-gradient(ellipse 95% 85% at 55% 45%, #000 12%, rgba(0, 0, 0, 0.55) 55%, transparent 88%);
+    mask-image: radial-gradient(ellipse 95% 85% at 55% 45%, #000 12%, rgba(0, 0, 0, 0.55) 55%, transparent 88%);
+}
+.hero-texture-grid--fine {
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+    background-size: 14px 14px;
+    mix-blend-mode: overlay;
+    opacity: 0.65;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-texture-grain {
+        opacity: 0.18;
+    }
+    .hero-texture-grid--coarse {
+        opacity: 0.65;
+    }
+    .hero-texture-grid--fine {
+        opacity: 0.45;
+    }
+}
+
 /* ─── Particles ─── */
 .hero-particle {
     background: rgba(255, 255, 255, 0.18);
     animation: particle-float linear infinite;
 }
 .hero-particle:nth-child(odd) {
-    background: rgba(206, 120, 21, 0.35);
+    background: rgba(160, 158, 173, 0.35);
 }
 .hero-particle:nth-child(3n) {
-    background: rgba(149, 185, 31, 0.25);
+    background: rgba(160, 158, 173, 0.18);
 }
 
 @keyframes particle-float {
-    0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+    0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0; }
     10% { opacity: 1; }
-    50% { transform: translateY(-60px) translateX(20px) scale(1.1); opacity: 0.7; }
+    50% { transform: translate3d(20px, -60px, 0) scale(1.1); opacity: 0.7; }
     90% { opacity: 0.4; }
-    100% { transform: translateY(-120px) translateX(-15px) scale(0.8); opacity: 0; }
+    100% { transform: translate3d(-15px, -120px, 0) scale(0.8); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-particle {
+        animation: none !important;
+        opacity: 0.35;
+        transform: none;
+    }
+    .hero-scroll-line {
+        animation: none !important;
+    }
 }
 
 /* ─── Scroll line shimmer ─── */
@@ -394,8 +490,8 @@ onUnmounted(() => {
     font-family: 'DM Sans', sans-serif;
     font-size: 0.875rem;
     font-weight: 600;
-    color: #FAF9F7;
-    background: linear-gradient(135deg, #D30C5F 0%, #A74B1A 100%);
+    color: #fafafa;
+    background: linear-gradient(135deg, #D30C5F 0%, #63616e 100%);
     border-radius: 0.5rem;
     border: 1px solid rgba(255,255,255,0.12);
     box-shadow: 0 4px 20px rgba(211,12,95,0.35), inset 0 1px 0 rgba(255,255,255,0.12);
@@ -507,9 +603,9 @@ onUnmounted(() => {
     flex-direction: column;
     gap: 0.15rem;
     padding: 0.75rem 1rem;
-    background: rgba(30, 13, 8, 0.75);
+    background: rgba(9, 8, 12, 0.75);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(206, 120, 21, 0.25);
+    border: 1px solid rgba(160, 158, 173, 0.25);
     border-radius: 0.75rem;
     box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     min-width: 110px;
@@ -518,7 +614,7 @@ onUnmounted(() => {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 1.6rem;
     font-weight: 700;
-    color: #CE7815;
+    color: #a09ead;
     line-height: 1;
 }
 .hero-stat-label {

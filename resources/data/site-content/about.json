@@ -7,7 +7,7 @@
     "hero": {
         "image": "/images/class-2.jpg",
         "eyebrow": "About Us",
-        "titleHtml": "Our Story, <em class=\"text-gold not-italic\">Our People</em>",
+        "titleHtml": "Our Story, <em class=\"text-purple-gray-400 not-italic\">Our People</em>",
         "subtitle": "Discover our academic programmes, meet the educators who shape young minds, and hear from the families who have entrusted us with their children's futures."
     },
     "tabs": [
@@ -105,10 +105,10 @@
                     "Co-Curricular Excellence"
                 ],
                 "href": "/programmes#secondary-programme",
-                "accentColor": "bg-ember",
-                "accentText": "text-ember",
-                "accentBorder": "border-ember",
-                "hoverRing": "hover:ring-ember",
+                "accentColor": "bg-purple-gray-500",
+                "accentText": "text-purple-gray-500",
+                "accentBorder": "border-purple-gray-500",
+                "hoverRing": "hover:ring-purple-gray-500",
                 "detail": {
                     "overview": "The Secondary Programme prepares students for Cambridge IGCSE examinations while cultivating deep analytical thinking, independent research, and a breadth of academic interests.",
                     "curriculum": [
@@ -157,10 +157,10 @@
                     "Leadership Programmes"
                 ],
                 "href": "/programmes#preuniversity-programme",
-                "accentColor": "bg-gold",
-                "accentText": "text-gold",
-                "accentBorder": "border-gold",
-                "hoverRing": "hover:ring-gold",
+                "accentColor": "bg-purple-gray-400",
+                "accentText": "text-purple-gray-400",
+                "accentBorder": "border-purple-gray-400",
+                "hoverRing": "hover:ring-purple-gray-400",
                 "detail": {
                     "overview": "Our Pre-University Programme is a focused two-year track designed to maximise Cambridge A-Level results and secure admission to top universities worldwide. Students receive individualised mentorship, subject specialisation, and expert university counselling.",
                     "curriculum": [

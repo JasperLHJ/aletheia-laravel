@@ -12,7 +12,7 @@ defineProps({
         id="programmes-enquiry-cta"
         class="relative overflow-hidden py-20 sm:py-24"
         aria-labelledby="cta-heading"
-        style="background-color: #1E0D08;"
+        style="background-color: #09080c;"
     >
         <!-- Warm crimson bloom — top right, conversion energy -->
         <div
@@ -20,7 +20,7 @@ defineProps({
             style="
                 top: -10%; right: -5%;
                 width: 55vw; max-width: 600px; height: 55vw; max-height: 600px;
-                background: radial-gradient(ellipse at center, oklch(35% 0.18 10 / 0.28) 0%, transparent 65%);
+                background: radial-gradient(ellipse at center, rgba(63, 61, 72, 0.35) 0%, transparent 65%);
             "
             aria-hidden="true"
         ></div>
@@ -30,25 +30,25 @@ defineProps({
             style="
                 bottom: -15%; left: -8%;
                 width: 45vw; max-width: 500px; height: 45vw; max-height: 500px;
-                background: radial-gradient(ellipse at center, oklch(55% 0.14 55 / 0.18) 0%, transparent 65%);
+                background: radial-gradient(ellipse at center, rgba(99, 97, 110, 0.2) 0%, transparent 65%);
             "
             aria-hidden="true"
         ></div>
-        <!-- Thin gold rule at top -->
-        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" aria-hidden="true"></div>
+        <!-- Thin purple-gray-400 rule at top -->
+        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-purple-gray-400/40 to-transparent" aria-hidden="true"></div>
 
         <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center cta-content">
-            <p class="text-xs font-sans font-medium text-gold uppercase tracking-widest mb-4">
+            <p class="text-xs font-sans font-medium text-purple-gray-400 uppercase tracking-widest mb-4">
                 {{ cta.eyebrow }}
             </p>
 
             <h2
                 id="cta-heading"
-                class="font-display font-bold text-neutral-50 mb-5"
+                class="font-display font-bold text-purple-gray-50 mb-5"
                 style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15;"
             >
                 {{ cta.titleLine1 }}
-                <em class="text-gold not-italic"> {{ cta.titleEmphasis }}</em>
+                <em class="text-purple-gray-400 not-italic"> {{ cta.titleEmphasis }}</em>
             </h2>
 
             <p class="text-white/75 leading-relaxed max-w-2xl mx-auto mb-10 text-base">
@@ -94,7 +94,7 @@ defineProps({
                     :key="ti"
                     class="flex items-center gap-2 text-white/40 text-xs"
                 >
-                    <svg class="w-4 h-4 text-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg class="w-4 h-4 text-purple-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
                     </svg>
                     {{ line }}

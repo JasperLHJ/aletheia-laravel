@@ -22,22 +22,22 @@ const swiperModules = [Autoplay, Pagination, EffectFade];
 <template>
     <section
         id="testimonial-section"
-        class="testimonial-swiper-section bg-espresso py-20 sm:py-28 overflow-hidden relative"
+        class="testimonial-swiper-section bg-purple-gray-800 py-20 sm:py-28 overflow-hidden relative"
         aria-labelledby="testimonial-heading"
     >
         <div
             class="absolute left-0 top-0 w-72 h-72 rounded-full opacity-10 -translate-x-1/2 -translate-y-1/2"
-            style="background: #A74B1A;"
+            style="background: #63616e;"
             aria-hidden="true"
         ></div>
         <div
             class="absolute right-0 bottom-0 w-96 h-96 rounded-full opacity-5 translate-x-1/3 translate-y-1/3"
-            style="background: #CE7815;"
+            style="background: #a09ead;"
             aria-hidden="true"
         ></div>
 
         <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="section-eyebrow text-gold mb-4" v-html="props.copy.eyebrowHtml">
+            <p class="section-eyebrow text-purple-gray-400 mb-4" v-html="props.copy.eyebrowHtml">
             </p>
             <h2 id="testimonial-heading" class="sr-only">{{ props.copy.headingSrOnly }}</h2>
 
@@ -68,7 +68,7 @@ const swiperModules = [Autoplay, Pagination, EffectFade];
                             </p>
                         </blockquote>
                         <footer class="flex flex-col items-center gap-1">
-                            <cite class="not-italic font-sans font-medium text-gold text-sm">
+                            <cite class="not-italic font-sans font-medium text-purple-gray-400 text-sm">
                                 {{ t.author }}
                             </cite>
                             <span class="text-white/40 text-xs font-sans">
@@ -129,6 +129,6 @@ const swiperModules = [Autoplay, Pagination, EffectFade];
 
 .testimonial-swiper-section .testimonial-pagination .swiper-pagination-bullet-active {
     width: 32px;
-    background: #CE7815;
+    background: #a09ead;
 }
 </style>

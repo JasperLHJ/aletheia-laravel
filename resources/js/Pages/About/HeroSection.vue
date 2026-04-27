@@ -9,7 +9,7 @@ defineProps({
 
 <template>
     <section
-        class="relative flex items-center bg-espresso overflow-hidden"
+        class="relative flex items-center bg-purple-gray-800 overflow-hidden"
         style="min-height: 40vh;"
         aria-labelledby="about-hero-heading"
     >
@@ -20,13 +20,13 @@ defineProps({
                 class="w-full h-full object-cover object-center"
                 loading="eager"
             />
-            <div class="absolute inset-0 bg-gradient-to-r from-espresso/80 via-espresso/55 to-espresso/25"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-espresso/40 via-transparent to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-gray-800/80 via-purple-gray-800/55 to-purple-gray-800/25"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-gray-800/40 via-transparent to-transparent"></div>
         </div>
 
         <div
             class="absolute right-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full opacity-10 pointer-events-none"
-            style="background: radial-gradient(circle, #CE7815 0%, transparent 70%);"
+            style="background: radial-gradient(circle, #a09ead 0%, transparent 70%);"
             aria-hidden="true"
         ></div>
 
@@ -38,7 +38,7 @@ defineProps({
 
                 <h1
                     id="about-hero-heading"
-                    class="about-hero-title font-display font-bold text-neutral-50 leading-tight mb-5"
+                    class="about-hero-title font-display font-bold text-purple-gray-50 leading-tight mb-5"
                     style="font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15;"
                     v-html="hero.titleHtml"
                 >
