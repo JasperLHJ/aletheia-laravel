@@ -30,6 +30,15 @@
     "filteredEmptyTitle": "No posts in this category yet",
     "filteredEmptyBody": "Check back soon, or browse all posts.",
     "viewAll": "View all posts",
+    "instagramCard": {
+      "href": "https://www.instagram.com/aletheiaresourcecenter/",
+      "title": "Follow us on Instagram",
+      "subtitle": "Daily photos and reels from campus, events, and student life.",
+      "eyebrow": "Social",
+      "cta": "Open profile",
+      "handle": "@aletheiaresourcecenter",
+      "ariaLabel": "Follow Aletheia Resource Center on Instagram"
+    },
     "categoryAccentColors": {
       "Events": "#63616e",
       "Achievements": "#a09ead",

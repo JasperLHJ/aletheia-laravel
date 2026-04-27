@@ -265,6 +265,72 @@ function accentForCategory(cat) {
                             </div>
                         </Link>
                     </article>
+
+                    <article
+                        v-if="listing.instagramCard?.href"
+                        class="blog-card blog-instagram-card group bg-white rounded-xl overflow-hidden border border-purple-gray-200 shadow-sm flex flex-col transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:border-transparent"
+                    >
+                        <a
+                            :href="listing.instagramCard.href"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex flex-col flex-1 min-h-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 rounded-xl"
+                            :aria-label="listing.instagramCard.ariaLabel"
+                        >
+                            <div class="relative h-48 overflow-hidden blog-instagram-card__banner">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCB045] opacity-95 transition-transform duration-500 ease-out group-hover:scale-110"
+                                    aria-hidden="true"
+                                ></div>
+                                <div
+                                    class="absolute inset-0 opacity-30 mix-blend-overlay bg-[radial-gradient(circle_at_30%_20%,white,transparent_55%)]"
+                                    aria-hidden="true"
+                                ></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm text-white shadow-lg ring-1 ring-white/25 transition-transform duration-300 ease-out group-hover:scale-110 group-hover:rotate-[-6deg]">
+                                        <svg class="h-9 w-9" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="p-6 flex flex-col flex-1">
+                                <p
+                                    v-if="listing.instagramCard.eyebrow"
+                                    class="text-xs font-sans font-medium uppercase tracking-widest mb-2 text-purple-gray-500"
+                                >
+                                    {{ listing.instagramCard.eyebrow }}
+                                </p>
+                                <h3
+                                    class="font-display font-semibold text-purple-gray-800 mb-3 transition-colors duration-200 group-hover:text-[#833AB4]"
+                                    style="font-size: 1.1rem; line-height: 1.35;"
+                                >
+                                    {{ listing.instagramCard.title }}
+                                </h3>
+                                <p class="text-sm text-purple-gray-600 leading-relaxed flex-1 line-clamp-3">
+                                    {{ listing.instagramCard.subtitle }}
+                                </p>
+                            </div>
+
+                            <div class="px-6 pb-5 border-t border-purple-gray-100 pt-4 flex items-center justify-between gap-3">
+                                <span
+                                    v-if="listing.instagramCard.handle"
+                                    class="text-xs font-medium text-purple-gray-500 truncate"
+                                >
+                                    {{ listing.instagramCard.handle }}
+                                </span>
+                                <span
+                                    class="text-sm font-medium text-purple-gray-500 group-hover:text-[#E1306C] inline-flex items-center gap-1.5 transition-all duration-200 group-hover:gap-2.5"
+                                >
+                                    {{ listing.instagramCard.cta }}
+                                    <svg class="w-4 h-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </a>
+                    </article>
                 </div>
 
                 <!-- Empty state (filtered / no other posts) -->

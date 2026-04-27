@@ -314,7 +314,7 @@ onUnmounted(() => {
                         <div class="absolute -bottom-3 -right-3 w-12 h-12 border-b-2 border-r-2 border-purple-gray-400/40 rounded-br-sm pointer-events-none z-20"></div>
 
                         <!-- Inner image with parallax target -->
-                        <div class="hero-image-inner w-[340px] xl:w-[400px] rounded-2xl overflow-hidden"
+                        <div class="hero-image-inner relative w-[340px] xl:w-[400px] rounded-2xl overflow-hidden"
                             style="box-shadow: 0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06);"
                         >
                             <img
