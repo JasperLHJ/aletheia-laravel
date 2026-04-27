@@ -1,131 +1,193 @@
 {
-  "meta": {
-    "title": "Welcome — Aletheia Resource Center",
-    "description": "Aletheia Resource Center is a close-knit school where every student is known by name. Explore our programmes, values, and community — enrolment open for 2026.",
-    "image": "/images/student-1.jpg"
-  },
-  "hero": {
-    "backgroundImage": "/images/group-photo.JPG",
-    "eyebrow": "Welcome to Aletheia Resource Center",
-    "titleLine1": "Shaping minds.",
-    "titleLine2Em": "Inspiring futures.",
-    "subtitleHtml": "A tradition of academic excellence, nurturing students who think boldly and act with integrity.\n<strong class=\"text-white/80 font-medium\">Enrolment now open for 2026.</strong>",
-    "whatsapp": {
-      "href": "https://wa.me/60312345678?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20Aletheia%20Resource%20Center.",
-      "label": "Chat on WhatsApp",
-      "ariaLabel": "Chat with us on WhatsApp"
+    "meta": {
+        "title": "Welcome — Aletheia Resource Center",
+        "description": "Aletheia Resource Center is a close-knit school where every student is known by name. Explore our programmes, values, and community — enrolment open for 2026.",
+        "image": "/images/student-1.jpg"
     },
-    "email": {
-      "href": "mailto:hello@aletheia.edu.my?subject=Enquiry%20about%20Aletheia%20Resource%20Center",
-      "label": "Email Us",
-      "ariaLabel": "Email us an enquiry"
+    "hero": {
+        "backgroundImage": "/images/group-photo.JPG",
+        "eyebrow": "Welcome to Aletheia Resource Center",
+        "titleLine1": "Shaping minds.",
+        "titleLine2Em": "Inspiring futures.",
+        "subtitleHtml": "A tradition of academic excellence, nurturing students who think boldly and act with integrity.\n<strong class=\"text-white/80 font-medium\">Enrolment now open for 2026.</strong>",
+        "whatsapp": {
+            "href": "https://wa.me/60312345678?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20Aletheia%20Resource%20Center.",
+            "label": "Chat on WhatsApp",
+            "ariaLabel": "Chat with us on WhatsApp"
+        },
+        "email": {
+            "href": "mailto:hello@aletheia.edu.my?subject=Enquiry%20about%20Aletheia%20Resource%20Center",
+            "label": "Email Us",
+            "ariaLabel": "Email us an enquiry"
+        },
+        "followUs": "Follow us",
+        "socialLinks": [
+            {
+                "href": "https://instagram.com",
+                "ariaLabel": "Follow us on Instagram"
+            },
+            {
+                "href": "https://facebook.com",
+                "ariaLabel": "Follow us on Facebook"
+            },
+            {
+                "href": "https://youtube.com",
+                "ariaLabel": "Watch us on YouTube"
+            }
+        ],
+        "portrait": {
+            "src": "/images/group-photo.jpg",
+            "alt": "Students at Aletheia Resource Center"
+        },
+        "statChips": [
+            {
+                "value": "15+",
+                "labelHtml": "Years of<br>Excellence"
+            },
+            {
+                "value": "98%",
+                "labelHtml": "Graduate<br>Satisfaction"
+            }
+        ],
+        "scrollLabel": "Scroll"
     },
-    "followUs": "Follow us",
-    "socialLinks": [
-      { "href": "https://instagram.com", "ariaLabel": "Follow us on Instagram" },
-      { "href": "https://facebook.com", "ariaLabel": "Follow us on Facebook" },
-      { "href": "https://youtube.com", "ariaLabel": "Watch us on YouTube" }
-    ],
-    "portrait": {
-      "src": "/images/group-photo.jpg",
-      "alt": "Students at Aletheia Resource Center"
+    "stats": {
+        "sectionAriaLabel": "School statistics",
+        "items": [
+            {
+                "numericValue": 500,
+                "suffix": "+",
+                "label": "Students Enrolled",
+                "description": "Across all year levels"
+            },
+            {
+                "numericValue": 98,
+                "suffix": "%",
+                "label": "University Placement",
+                "description": "Class of 2025"
+            },
+            {
+                "numericValue": 60,
+                "suffix": "+",
+                "label": "Co-curricular Clubs",
+                "description": "Arts, sports & more"
+            }
+        ]
     },
-    "statChips": [
-      { "value": "15+", "labelHtml": "Years of<br>Excellence" },
-      { "value": "98%", "labelHtml": "Graduate<br>Satisfaction" }
-    ],
-    "scrollLabel": "Scroll"
-  },
-  "stats": {
-    "sectionAriaLabel": "School statistics",
-    "items": [
-      { "numericValue": 500, "suffix": "+", "label": "Students Enrolled", "description": "Across all year levels" },
-      { "numericValue": 98, "suffix": "%", "label": "University Placement", "description": "Class of 2025" },
-      { "numericValue": 60, "suffix": "+", "label": "Co-curricular Clubs", "description": "Arts, sports & more" }
-    ]
-  },
-  "highlights": {
-    "eyebrow": "Why Aletheia Resource Center",
-    "heading": "An Education That Stays With You",
-    "intro": "We believe education is more than examination results. It is character, curiosity, and the courage to lead.",
-    "cards": [
-      {
-        "eyebrow": "Academic Excellence",
-        "title": "World-Class Curriculum",
-        "body": "A rigorous programme designed to nurture critical thinkers, equipping students for leading universities worldwide.",
-        "image": "/images/class-1.jpg",
-        "imageAlt": "Students engaged in classroom learning",
-        "accentColor": "#27262b",
-        "href": "/programmes",
-        "linkText": "Explore Programmes"
-      },
-      {
-        "eyebrow": "Our Community",
-        "title": "People at the Heart of It",
-        "body": "Meet the educators who shape young minds and hear from the families who have entrusted us with their children's futures.",
-        "image": "/images/people.jpg",
-        "imageAlt": "Students and educators at Aletheia Resource Center",
-        "accentColor": "#514f5e",
-        "href": "/about",
-        "linkText": "Meet Our Team"
-      },
-      {
+    "highlights": {
+        "eyebrow": "Why Aletheia Resource Center",
+        "heading": "An Education That Stays With You",
+        "intro": "We believe education is more than examination results. It is character, curiosity, and the courage to lead.",
+        "cards": [
+            {
+                "eyebrow": "Academic Excellence",
+                "title": "World-Class Curriculum",
+                "body": "A rigorous programme designed to nurture critical thinkers, equipping students for leading universities worldwide.",
+                "image": "/images/class-1.jpg",
+                "imageAlt": "Students engaged in classroom learning",
+                "accentColor": "#27262b",
+                "href": "/programmes",
+                "linkText": "Explore Programmes"
+            },
+            {
+                "eyebrow": "Our Community",
+                "title": "People at the Heart of It",
+                "body": "Meet the educators who shape young minds and hear from the families who have entrusted us with their children's futures.",
+                "image": "/images/people.jpg",
+                "imageAlt": "Students and educators at Aletheia Resource Center",
+                "accentColor": "#514f5e",
+                "href": "/about",
+                "linkText": "Meet Our Team"
+            },
+            {
+                "eyebrow": "School Life",
+                "title": "A Campus Full of Life",
+                "body": "From orchestra and debate to robotics and sports, our campus fosters well-rounded growth beyond the classroom.",
+                "image": "/images/photo-day.JPG",
+                "imageAlt": "Students participating in co-curricular activities",
+                "accentColor": "#63616e",
+                "href": "/gallery",
+                "linkText": "View Gallery"
+            }
+        ]
+    },
+    "galleryTeaser": {
         "eyebrow": "School Life",
-        "title": "A Campus Full of Life",
-        "body": "From orchestra and debate to robotics and sports, our campus fosters well-rounded growth beyond the classroom.",
-        "image": "/images/photo-day.JPG",
-        "imageAlt": "Students participating in co-curricular activities",
-        "accentColor": "#63616e",
-        "href": "/gallery",
-        "linkText": "View Gallery"
-      }
-    ]
-  },
-  "galleryTeaser": {
-    "eyebrow": "School Life",
-    "heading": "Life at Aletheia",
-    "viewFullLabel": "View Full Gallery →",
-    "viewFullAriaLabel": "View the full gallery",
-    "galleryHref": "/gallery",
-    "navPrevAria": "Previous image",
-    "navNextAria": "Next image",
-    "thumbTablistAria": "Gallery image thumbnails",
-    "images": [
-      { "src": "/images/class-4.jpg", "alt": "Modern classroom facilities at Aletheia Resource Center", "caption": "Modern Facilities" },
-      { "src": "/images/sports-1.jpg", "alt": "Students participating in sports activities", "caption": "Sports & Athletics" },
-      { "src": "/images/student-1.jpg", "alt": "Student studying at Aletheia Resource Center", "caption": "Focused Learning" },
-      { "src": "/images/class-1.jpg", "alt": "Interactive learning environment", "caption": "Interactive Learning" }
-    ]
-  },
-  "testimonials": {
-    "eyebrowHtml": "<span aria-hidden=\"true\">★★★★★</span><span class=\"sr-only\">5 stars</span>&nbsp;What Our Community Says",
-    "headingSrOnly": "Testimonials",
-    "emptyMessage": "Testimonials coming soon."
-  },
-  "enquiryCta": {
-    "eyebrow": "Admissions Open 2026",
-    "heading": "Ready to Begin Your Child's Journey?",
-    "body": "Book a private tour, speak with our admissions team, or request our school prospectus. We'd love to meet your family.",
-    "whatsapp": {
-      "href": "https://wa.me/60312345678",
-      "label": "Book a Visit",
-      "ariaLabel": "Book a visit via WhatsApp"
+        "heading": "Life at Aletheia",
+        "viewFullLabel": "View Full Gallery →",
+        "viewFullAriaLabel": "View the full gallery",
+        "galleryHref": "/gallery",
+        "navPrevAria": "Previous image",
+        "navNextAria": "Next image",
+        "thumbTablistAria": "Gallery image thumbnails",
+        "images": [
+            {
+                "src": "/images/class-4.jpg",
+                "alt": "Modern classroom facilities at Aletheia Resource Center",
+                "caption": "Modern Facilities"
+            },
+            {
+                "src": "/images/sports-1.jpg",
+                "alt": "Students participating in sports activities",
+                "caption": "Sports & Athletics"
+            },
+            {
+                "src": "/images/student-1.jpg",
+                "alt": "Student studying at Aletheia Resource Center",
+                "caption": "Focused Learning"
+            },
+            {
+                "src": "/images/class-1.jpg",
+                "alt": "Interactive learning environment",
+                "caption": "Interactive Learning"
+            }
+        ]
     },
-    "email": {
-      "href": "mailto:admissions@aletheiaacademy.edu.my",
-      "label": "Email Admissions",
-      "ariaLabel": "Email our admissions team"
+    "testimonials": {
+        "eyebrowHtml": "<span aria-hidden=\"true\">★★★★★</span><span class=\"sr-only\">5 stars</span>&nbsp;What Our Community Says",
+        "headingSrOnly": "Testimonials",
+        "emptyMessage": "Testimonials coming soon."
+    },
+    "enquiryCta": {
+        "eyebrow": "Admissions Open 2026",
+        "heading": "Ready to Begin Your Child's Journey?",
+        "body": "Book a private tour, speak with our admissions team, or request our school prospectus. We'd love to meet your family.",
+        "whatsapp": {
+            "href": "https://wa.me/60312345678",
+            "label": "Book a Visit",
+            "ariaLabel": "Book a visit via WhatsApp"
+        },
+        "email": {
+            "href": "mailto:admissions@aletheiaacademy.edu.my",
+            "label": "Email Admissions",
+            "ariaLabel": "Email our admissions team"
+        }
+    },
+    "social": {
+        "eyebrow": "Stay Connected",
+        "heading": "Follow Our Story",
+        "intro": "Get a glimpse into daily school life — events, achievements, and community moments.",
+        "links": [
+            {
+                "href": "https://facebook.com",
+                "label": "Facebook",
+                "ariaLabel": "Follow Aletheia Resource Center on Facebook"
+            },
+            {
+                "href": "https://instagram.com",
+                "label": "Instagram",
+                "ariaLabel": "Follow Aletheia Resource Center on Instagram"
+            },
+            {
+                "href": "https://wa.me/60312345678",
+                "label": "WhatsApp",
+                "ariaLabel": "Chat with Aletheia Resource Center on WhatsApp"
+            },
+            {
+                "href": "https://youtube.com",
+                "label": "YouTube",
+                "ariaLabel": "Watch Aletheia Resource Center on YouTube"
+            }
+        ]
     }
-  },
-  "social": {
-    "eyebrow": "Stay Connected",
-    "heading": "Follow Our Story",
-    "intro": "Get a glimpse into daily school life — events, achievements, and community moments.",
-    "links": [
-      { "href": "https://facebook.com", "label": "Facebook", "ariaLabel": "Follow Aletheia Resource Center on Facebook" },
-      { "href": "https://instagram.com", "label": "Instagram", "ariaLabel": "Follow Aletheia Resource Center on Instagram" },
-      { "href": "https://wa.me/60312345678", "label": "WhatsApp", "ariaLabel": "Chat with Aletheia Resource Center on WhatsApp" },
-      { "href": "https://youtube.com", "label": "YouTube", "ariaLabel": "Watch Aletheia Resource Center on YouTube" }
-    ]
-  }
 }

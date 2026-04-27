@@ -86,6 +86,13 @@ const userMenuContentClass =
                     >
                         Educators
                     </SidebarNavLink>
+                    <SidebarNavLink
+                        :href="route('site-content.index')"
+                        :active="route().current('site-content.*')"
+                        icon="pi pi-database"
+                    >
+                        Site content
+                    </SidebarNavLink>
 
                     <!-- User menu pinned to bottom of scroll area -->
                     <div class="mt-auto flex flex-col gap-2 border-t border-white/10 pt-4">
@@ -263,6 +270,14 @@ const userMenuContentClass =
                                 @click="closeMobileNav"
                             >
                                 Educators
+                            </SidebarNavLink>
+                            <SidebarNavLink
+                                :href="route('site-content.index')"
+                                :active="route().current('site-content.*')"
+                                icon="pi pi-database"
+                                @click="closeMobileNav"
+                            >
+                                Site content
                             </SidebarNavLink>
                         </nav>
                         <div class="border-t border-white/10 p-4">

@@ -14,11 +14,14 @@ class PublicBlogController extends Controller
 
     public function index(SiteContentRepository $siteContent, SeoBuilder $seo): Response
     {
+        $limit = (int) config('blog.listing_limit', 24);
+
         $rows = Post::published()
             ->with('user')
             ->orderByDesc('is_featured')
             ->orderByDesc('published_at')
             ->orderByDesc('created_at')
+            ->limit($limit)
             ->get();
 
         $posts = $rows->map(fn (Post $post) => $this->toPublicCard($post))->values()->all();

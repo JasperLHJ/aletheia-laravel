@@ -49,9 +49,13 @@ class SitemapController extends Controller
             );
         }
 
+        $postLimit = (int) config('blog.listing_limit', 24);
+
         Post::published()
+            ->orderByDesc('is_featured')
             ->orderByDesc('published_at')
             ->orderByDesc('created_at')
+            ->limit($postLimit)
             ->get()
             ->each(function (Post $post) use ($sitemap, $seo) {
                 $lastMod = $post->updated_at ?? $post->published_at ?? $post->created_at ?? now();

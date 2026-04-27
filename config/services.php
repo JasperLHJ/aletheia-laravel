@@ -37,6 +37,7 @@ return [
 
     'instagram' => [
         'username' => env('INSTAGRAM_USERNAME', 'aletheiaresourcecenter'),
+        'scrape_limit' => env('INSTAGRAM_SCRAPE_LIMIT', 24),
     ],
 
 ];

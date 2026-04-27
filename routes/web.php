@@ -6,10 +6,11 @@ use App\Http\Controllers\EducatorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicBlogController;
 use App\Http\Controllers\PublicPageController;
+use App\Http\Controllers\SiteContentController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\TestimonialController;
 use App\Services\SiteContentRepository;
 use App\Support\Seo\SeoBuilder;
-use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -42,6 +43,16 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified', 'noindex'])->name('dashboard');
 
 Route::middleware(['auth', 'verified', 'noindex'])->group(function () {
+    $siteContentDocuments = implode('|', array_keys(config('site-content.documents')));
+
+    Route::get('/site-content', [SiteContentController::class, 'index'])->name('site-content.index');
+    Route::get('/site-content/{document}/edit', [SiteContentController::class, 'edit'])
+        ->where('document', $siteContentDocuments)
+        ->name('site-content.edit');
+    Route::put('/site-content/{document}', [SiteContentController::class, 'update'])
+        ->where('document', $siteContentDocuments)
+        ->name('site-content.update');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

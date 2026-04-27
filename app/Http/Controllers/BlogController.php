@@ -19,6 +19,7 @@ class BlogController extends Controller
             'posts' => Post::with('user')
                 ->orderByDesc('created_at')
                 ->get(),
+            'instagramScrapeLimitDefault' => (int) config('services.instagram.scrape_limit', 24),
         ]);
     }
 
@@ -75,12 +76,35 @@ class BlogController extends Controller
         return Redirect::route('blogs.index')->with('success', 'Blog post deleted.');
     }
 
-    public function scrape(): RedirectResponse
+    public function scrape(Request $request): RedirectResponse
     {
-        $exitCode = Artisan::call('instagram:scrape');
+        $validated = $request->validate([
+            'limit' => ['nullable', 'integer', 'min:1', 'max:100'],
+        ]);
+
+        $limit = $validated['limit'] ?? (int) config('services.instagram.scrape_limit', 24);
+
+        $exitCode = Artisan::call('instagram:scrape', [
+            '--limit' => $limit,
+        ]);
+
+        $output = trim(Artisan::output());
 
         if ($exitCode === 0) {
-            return Redirect::route('blogs.index')->with('success', 'Instagram posts synced successfully.');
+            $upserted = null;
+            if (preg_match('/Done\.\s*(\d+)\s*post\(s\)\s*upserted/', $output, $m)) {
+                $upserted = (int) $m[1];
+            }
+
+            $message = $upserted !== null
+                ? "Instagram sync finished: {$upserted} post(s) upserted (requested up to {$limit})."
+                : 'Instagram posts synced successfully.';
+
+            if ($upserted !== null && $upserted < $limit && str_contains($output, 'Instagram feed')) {
+                $message .= ' Instagram blocked loading older posts for now (rate limit). Wait a few minutes and press Sync again, or run: php artisan instagram:scrape --limit='.$limit;
+            }
+
+            return Redirect::route('blogs.index')->with('success', $message);
         }
 
         return Redirect::route('blogs.index')->with('error', 'Instagram sync failed. Check the logs for details.');

@@ -1,0 +1,44 @@
+# DigitalOcean App Platform spec — use with: doctl apps create --spec .do/app.yaml
+# (or import in the control panel). Replace github.repo with your org/repo; set APP_KEY as a SECRET
+# in the UI or via doctl. Do not commit real secrets to this file.
+
+name: aletheia-laravel
+region: sgp
+
+alerts:
+  - rule: DEPLOYMENT_FAILED
+  - rule: DOMAIN_FAILED
+
+services:
+  - name: web
+    environment_slug: php
+    instance_count: 1
+    # Single instance only when using SQLite (one database file per app instance).
+    github:
+      repo: jasperlhj/aletheia-laravel
+      branch: main
+      deploy_on_push: true
+    build_command: composer install --no-interaction --prefer-dist --optimize-autoloader && npm ci && npm run build
+    run_command: bash bin/app-platform-start.sh
+    source_dir: /
+    http_port: 8080
+    health_check:
+      http_path: /up
+      initial_delay_seconds: 45
+      period_seconds: 10
+      timeout_seconds: 5
+      success_threshold: 1
+      failure_threshold: 3
+    envs:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: DB_CONNECTION
+        value: sqlite
+    # In the App Platform UI (or in this file before apply), set at minimum:
+    #   APP_KEY (type SECRET, from `php artisan key:generate --show`)
+    #   APP_URL (canonical public URL, e.g. https://your-app.ondigitalocean.app)
+    # Copy other variables from .env.example (Instagram, SEO, BLOG_*, etc.).
+    # No separate worker: schedule:work runs in bin/app-platform-start.sh (same container as the DB).
+    # No PRE_DEPLOY job: migrations run at container start for the same SQLite the app uses.

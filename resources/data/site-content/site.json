@@ -1,79 +1,100 @@
 {
-  "seo": {
-    "siteName": "Aletheia Resource Center",
-    "defaultTitle": "Aletheia Resource Center — Excellence in Education",
-    "defaultDescription": "Aletheia Resource Center nurtures curious minds and principled leaders through rigorous academics, dedicated educators, and a close-knit community.",
-    "defaultImage": "/images/og-default.jpg",
-    "twitterHandle": "",
-    "locale": "en_US",
-    "themeColor": "#0f172a",
-    "organization": {
-      "name": "Aletheia Resource Center",
-      "legalName": "Aletheia Resource Center",
-      "logo": "/images/aletheia-logo.svg",
-      "telephone": "+60312345678",
-      "email": "info@aletheiaacademy.edu.my",
-      "sameAs": [
-        "https://facebook.com",
-        "https://instagram.com"
-      ]
-    }
-  },
-  "brand": {
-    "wordmark": "Aletheia Resource Center",
-    "homeAriaLabel": "Aletheia Resource Center — home"
-  },
-  "nav": {
-    "ariaLabel": "Main navigation",
-    "links": [
-      { "label": "About", "href": "/about" },
-      { "label": "Programmes", "href": "/programmes" },
-      { "label": "Gallery", "href": "/gallery" },
-      { "label": "Blog", "href": "/blog" },
-      { "label": "Contact", "href": "/contact" }
-    ],
-    "ctaEnquire": "Enquire Now",
-    "mobileMenuToggleAriaLabel": "Toggle navigation menu"
-  },
-  "footer": {
-    "tagline": "Est. MCMXLVII · Excellence in Education",
-    "blurb": "Nurturing curious minds and principled leaders. Every student is known by name and guided by dedicated educators.",
-    "quickLinksHeading": "Quick Links",
-    "enquireLink": "Enquire Now →",
-    "connectHeading": "Connect",
-    "phone": {
-      "href": "tel:+60312345678",
-      "display": "+603 1234 5678",
-      "ariaLabel": "Call us at +603 1234 5678"
+    "seo": {
+        "siteName": "Aletheia Resource Center",
+        "defaultTitle": "Aletheia Resource Center — Excellence in Education",
+        "defaultDescription": "Aletheia Resource Center nurtures curious minds and principled leaders through rigorous academics, dedicated educators, and a close-knit community.",
+        "defaultImage": "/images/og-default.jpg",
+        "twitterHandle": "",
+        "locale": "en_US",
+        "themeColor": "#0f172a",
+        "organization": {
+            "name": "Aletheia Resource Center",
+            "legalName": "Aletheia Resource Center",
+            "logo": "/images/aletheia-logo.svg",
+            "telephone": "+60312345678",
+            "email": "info@aletheiaacademy.edu.my",
+            "sameAs": [
+                "https://facebook.com",
+                "https://instagram.com"
+            ]
+        }
     },
-    "email": {
-      "href": "mailto:info@aletheiaacademy.edu.my",
-      "display": "info@aletheiaacademy.edu.my",
-      "ariaLabel": "Email us at info@aletheiaacademy.edu.my"
+    "brand": {
+        "wordmark": "Aletheia Resource Center",
+        "homeAriaLabel": "Aletheia Resource Center — home"
     },
-    "social": [
-      {
-        "href": "https://facebook.com",
-        "ariaLabel": "Aletheia Resource Center on Facebook"
-      },
-      {
-        "href": "https://instagram.com",
-        "ariaLabel": "Aletheia Resource Center on Instagram"
-      },
-      {
+    "nav": {
+        "ariaLabel": "Main navigation",
+        "links": [
+            {
+                "label": "About",
+                "href": "/about"
+            },
+            {
+                "label": "Programmes",
+                "href": "/programmes"
+            },
+            {
+                "label": "Gallery",
+                "href": "/gallery"
+            },
+            {
+                "label": "Blog",
+                "href": "/blog"
+            },
+            {
+                "label": "Contact",
+                "href": "/contact"
+            }
+        ],
+        "ctaEnquire": "Enquire Now",
+        "mobileMenuToggleAriaLabel": "Toggle navigation menu"
+    },
+    "footer": {
+        "tagline": "Est. MCMXLVII · Excellence in Education",
+        "blurb": "Nurturing curious minds and principled leaders. Every student is known by name and guided by dedicated educators.",
+        "quickLinksHeading": "Quick Links",
+        "enquireLink": "Enquire Now →",
+        "connectHeading": "Connect",
+        "phone": {
+            "href": "tel:+60312345678",
+            "display": "+603 1234 5678",
+            "ariaLabel": "Call us at +603 1234 5678"
+        },
+        "email": {
+            "href": "mailto:info@aletheiaacademy.edu.my",
+            "display": "info@aletheiaacademy.edu.my",
+            "ariaLabel": "Email us at info@aletheiaacademy.edu.my"
+        },
+        "social": [
+            {
+                "href": "https://facebook.com",
+                "ariaLabel": "Aletheia Resource Center on Facebook"
+            },
+            {
+                "href": "https://instagram.com",
+                "ariaLabel": "Aletheia Resource Center on Instagram"
+            },
+            {
+                "href": "https://wa.me/60312345678",
+                "ariaLabel": "Contact Aletheia Resource Center on WhatsApp"
+            }
+        ],
+        "copyrightName": "Aletheia Resource Center",
+        "legal": [
+            {
+                "label": "Privacy Policy",
+                "href": "#"
+            },
+            {
+                "label": "Terms of Use",
+                "href": "#"
+            }
+        ]
+    },
+    "floatingWhatsapp": {
         "href": "https://wa.me/60312345678",
-        "ariaLabel": "Contact Aletheia Resource Center on WhatsApp"
-      }
-    ],
-    "copyrightName": "Aletheia Resource Center",
-    "legal": [
-      { "label": "Privacy Policy", "href": "#" },
-      { "label": "Terms of Use", "href": "#" }
-    ]
-  },
-  "floatingWhatsapp": {
-    "href": "https://wa.me/60312345678",
-    "ariaLabel": "Chat with us on WhatsApp"
-  },
-  "enquiryAnchor": "#enquiry"
+        "ariaLabel": "Chat with us on WhatsApp"
+    },
+    "enquiryAnchor": "#enquiry"
 }

@@ -70,7 +70,13 @@ class TestimonialSeeder extends Seeder
         ];
 
         foreach ($rows as $row) {
-            Testimonial::query()->create($row);
+            Testimonial::query()->updateOrCreate(
+                [
+                    'author' => $row['author'],
+                    'role' => $row['role'],
+                ],
+                $row
+            );
         }
     }
 }
