@@ -2,8 +2,8 @@
 # (or import in the control panel). Replace github.repo with your org/repo; set APP_KEY as a SECRET
 # in the UI or via doctl. Do not commit real secrets to this file.
 #
-# Do not add a file named "Dockerfile" in the repo root: App Platform auto-detects it and
-# switches the component to a Docker build. Local Docker Compose uses Dockerfile.local instead.
+# Build path: App Platform auto-detects the root Dockerfile and builds the image
+# defined there (single container running supervisord -> nginx + php-fpm + schedule:work).
 
 name: aletheia-laravel
 region: sgp
@@ -14,16 +14,14 @@ alerts:
 
 services:
   - name: web
-    environment_slug: php
     instance_count: 1
-    # Single instance only when using SQLite (one database file per app instance).
+    # Single instance only when using SQLite (one database file per app instance, ephemeral).
+    dockerfile_path: Dockerfile
+    source_dir: /
     github:
       repo: jasperlhj/aletheia-laravel
       branch: main
       deploy_on_push: true
-    build_command: composer install --no-interaction --prefer-dist --optimize-autoloader && npm ci && npm run build
-    run_command: bash bin/app-platform-start.sh
-    source_dir: /
     http_port: 8080
     health_check:
       http_path: /up
@@ -40,12 +38,13 @@ services:
       - key: DB_CONNECTION
         value: sqlite
       - key: LOG_CHANNEL
-        value: errorlog
+        value: stderr
       - key: LOG_LEVEL
         value: error
     # In the App Platform UI (or in this file before apply), set at minimum:
     #   APP_KEY (type SECRET, from `php artisan key:generate --show`)
     #   APP_URL (canonical public URL, e.g. https://your-app.ondigitalocean.app)
     # Copy other variables from .env.example (Instagram, SEO, BLOG_*, etc.).
-    # No separate worker: schedule:work runs in bin/app-platform-start.sh (same container as the DB).
-    # No PRE_DEPLOY job: migrations run at container start for the same SQLite the app uses.
+    # The container also runs `php artisan schedule:work` via supervisord (see
+    # docker/supervisor/supervisord.conf), so no separate worker component is needed.
+    # Migrations + seeds run on every container start (docker/php/docker-entrypoint.sh).

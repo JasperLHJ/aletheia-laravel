@@ -28,4 +28,3 @@ phpunit.xml
 tests
 *.md
 !README.md
-docker-compose.override.yml

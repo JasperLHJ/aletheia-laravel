@@ -1,6 +1,14 @@
 #!/bin/sh
 set -e
+
+cd /var/www/html
+
 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
+if [ ! -f public/build/manifest.json ]; then
+    echo "FATAL: public/build/manifest.json missing. The Docker build must run 'npm run build' (frontend stage) successfully." >&2
+    exit 1
+fi
 
 if [ "${DB_CONNECTION:-}" = "sqlite" ]; then
     dbpath="${DB_DATABASE:-database/database.sqlite}"
@@ -21,8 +29,10 @@ if [ -n "${APP_KEY:-}" ]; then
     php artisan config:cache 2>/dev/null || true
     php artisan route:cache 2>/dev/null || true
     php artisan view:cache 2>/dev/null || true
-    php artisan migrate --force 2>/dev/null || true
     chown -R www-data:www-data /var/www/html/bootstrap/cache
 fi
+
+php artisan migrate --force
+php artisan db:seed --force
 
 exec "$@"

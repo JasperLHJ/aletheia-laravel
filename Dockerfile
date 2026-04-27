@@ -1,7 +1,8 @@
 # syntax=docker/dockerfile:1
 
-# Named Dockerfile.local (not root Dockerfile) so DigitalOcean App Platform does not
-# auto-select a Docker build; App Platform uses .do/app.yaml and the PHP buildpack.
+# DigitalOcean App Platform auto-detects this root Dockerfile and builds from it.
+# Single container: nginx + php-fpm + supervisord, listening on :8080 (App Platform
+# default http_port). DO terminates TLS at the edge, so no SSL inside the container.
 
 # PHP deps first — Vite imports from vendor/tightenco/ziggy (not in build context due to .dockerignore).
 FROM composer:2 AS composer_deps
@@ -33,8 +34,6 @@ COPY --from=frontend /app/public/build ./public/build
 RUN composer dump-autoload --optimize --classmap-authoritative --no-dev
 
 FROM php:8.4-fpm-bookworm AS app
-ARG WWWUSER=33
-ARG WWWGROUP=33
 WORKDIR /var/www/html
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -69,12 +68,10 @@ COPY docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY --from=vendor /app /var/www/html
 COPY docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
-RUN groupmod -o -g "${WWWGROUP}" www-data \
-    && usermod -o -u "${WWWUSER}" -g www-data www-data \
-    && chmod +x /usr/local/bin/docker-entrypoint.sh \
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
     && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-EXPOSE 80 443
+EXPOSE 8080
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
