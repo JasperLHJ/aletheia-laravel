@@ -1,5 +1,8 @@
 # syntax=docker/dockerfile:1
 
+# Named Dockerfile.local (not root Dockerfile) so DigitalOcean App Platform does not
+# auto-select a Docker build; App Platform uses .do/app.yaml and the PHP buildpack.
+
 # PHP deps first — Vite imports from vendor/tightenco/ziggy (not in build context due to .dockerignore).
 FROM composer:2 AS composer_deps
 WORKDIR /app

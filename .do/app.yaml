@@ -1,6 +1,9 @@
 # DigitalOcean App Platform spec — use with: doctl apps create --spec .do/app.yaml
 # (or import in the control panel). Replace github.repo with your org/repo; set APP_KEY as a SECRET
 # in the UI or via doctl. Do not commit real secrets to this file.
+#
+# Do not add a file named "Dockerfile" in the repo root: App Platform auto-detects it and
+# switches the component to a Docker build. Local Docker Compose uses Dockerfile.local instead.
 
 name: aletheia-laravel
 region: sgp

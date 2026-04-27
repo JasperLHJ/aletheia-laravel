@@ -2,7 +2,7 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.local
       target: nginx
       args:
         WWWUSER: ${WWWUSER:-33}
@@ -18,7 +18,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.local
       target: php
       args:
         WWWUSER: ${WWWUSER:-33}
@@ -39,7 +39,7 @@ services:
   queue:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.local
       target: php
       args:
         WWWUSER: ${WWWUSER:-33}
