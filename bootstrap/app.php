@@ -23,5 +23,19 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        // Ensures a line appears in App Platform / Apache / php-fpm logs even when
+        // file logging or LOG_CHANNEL is misconfigured (stderr alone can be hard to see).
+        $exceptions->reportable(function (\Throwable $e) {
+            if (app()->environment('testing')) {
+                return;
+            }
+
+            error_log(sprintf(
+                '[laravel] %s: %s in %s:%d',
+                $e::class,
+                $e->getMessage(),
+                $e->getFile(),
+                $e->getLine()
+            ));
+        });
     })->create();

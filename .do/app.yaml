@@ -39,6 +39,10 @@ services:
         value: "false"
       - key: DB_CONNECTION
         value: sqlite
+      - key: LOG_CHANNEL
+        value: errorlog
+      - key: LOG_LEVEL
+        value: error
     # In the App Platform UI (or in this file before apply), set at minimum:
     #   APP_KEY (type SECRET, from `php artisan key:generate --show`)
     #   APP_URL (canonical public URL, e.g. https://your-app.ondigitalocean.app)
