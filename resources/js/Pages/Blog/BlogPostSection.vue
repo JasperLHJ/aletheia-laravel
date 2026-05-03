@@ -251,7 +251,7 @@ async function copyLink() {
                                     Speak with our admissions team and book your campus visit today.
                                 </p>
                                 <a
-                                    href="https://wa.me/60312345678?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20Aletheia%20Resource%20Center."
+                                    href="https://wa.me/60123450702?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20Aletheia%20Resource%20Center."
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="btn-cta w-full text-sm"

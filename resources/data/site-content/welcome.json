@@ -11,7 +11,7 @@
         "titleLine2Em": "Inspiring futures.",
         "subtitleHtml": "A tradition of academic excellence, nurturing students who think boldly and act with integrity.\n<strong class=\"text-white/80 font-medium\">Enrolment now open for 2026.</strong>",
         "whatsapp": {
-            "href": "https://wa.me/60312345678?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20Aletheia%20Resource%20Center.",
+            "href": "https://wa.me/60123450702?text=Hi%2C%20I%27d%20like%20to%20find%20out%20more%20about%20Aletheia%20Resource%20Center.",
             "label": "Chat on WhatsApp",
             "ariaLabel": "Chat with us on WhatsApp"
         },
@@ -153,7 +153,7 @@
         "heading": "Ready to Begin Your Child's Journey?",
         "body": "Book a private tour, speak with our admissions team, or request our school prospectus. We'd love to meet your family.",
         "whatsapp": {
-            "href": "https://wa.me/60312345678",
+            "href": "https://wa.me/60123450702",
             "label": "Book a Visit",
             "ariaLabel": "Book a visit via WhatsApp"
         },
@@ -179,7 +179,7 @@
                 "ariaLabel": "Follow Aletheia Resource Center on Instagram"
             },
             {
-                "href": "https://wa.me/60312345678",
+                "href": "https://wa.me/60123450702",
                 "label": "WhatsApp",
                 "ariaLabel": "Chat with Aletheia Resource Center on WhatsApp"
             },

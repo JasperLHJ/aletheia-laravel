@@ -28,11 +28,11 @@ return [
         'name' => env('SEO_ORG_NAME', 'Aletheia Resource Center'),
         'legal_name' => env('SEO_ORG_LEGAL_NAME', 'Aletheia Resource Center'),
         'logo' => env('SEO_ORG_LOGO', '/images/aletheia-logo.svg'),
-        'telephone' => env('SEO_ORG_TELEPHONE', '+60312345678'),
+        'telephone' => env('SEO_ORG_TELEPHONE', '+60123450702'),
         'email' => env('SEO_ORG_EMAIL', 'info@aletheiaacademy.edu.my'),
         'same_as' => array_values(array_filter([
-            env('SEO_ORG_FACEBOOK', 'https://facebook.com'),
-            env('SEO_ORG_INSTAGRAM', 'https://instagram.com'),
+            env('SEO_ORG_FACEBOOK', 'https://www.facebook.com/AletheiaResourceCenter/'),
+            env('SEO_ORG_INSTAGRAM', 'https://www.instagram.com/aletheiaresourcecenter/'),
         ])),
     ],
 ];

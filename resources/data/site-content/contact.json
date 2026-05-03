@@ -15,7 +15,7 @@
     "intro": "We're available via WhatsApp, email, or phone. Pick what works best for you.",
     "cards": {
       "whatsapp": {
-        "href": "https://wa.me/60312345678?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20Aletheia%20Resource%20Center.",
+        "href": "https://wa.me/60123450702?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20Aletheia%20Resource%20Center.",
         "ariaLabel": "Chat with us on WhatsApp",
         "title": "WhatsApp",
         "body": "Chat with us directly for a quick response. Available during school hours.",
@@ -29,7 +29,7 @@
         "button": "Send Email"
       },
       "phone": {
-        "href": "tel:+60312345678",
+        "href": "tel:+60123450702",
         "ariaLabel": "Call us at +603 1234 5678",
         "title": "Call Us",
         "body": "Speak directly with our admissions team. Tap to dial on your mobile device.",
@@ -68,7 +68,7 @@
       "links": [
         { "href": "https://facebook.com", "label": "Facebook", "ariaLabel": "Aletheia Resource Center on Facebook" },
         { "href": "https://instagram.com", "label": "Instagram", "ariaLabel": "Aletheia Resource Center on Instagram" },
-        { "href": "https://wa.me/60312345678", "label": "WhatsApp", "ariaLabel": "WhatsApp Aletheia Resource Center" }
+        { "href": "https://wa.me/60123450702", "label": "WhatsApp", "ariaLabel": "WhatsApp Aletheia Resource Center" }
       ]
     }
   },
@@ -81,7 +81,17 @@
     "iframeTitle": "Aletheia Resource Center location on Google Maps",
     "iframeSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127484.35779745167!2d101.59274993835938!3d3.1385035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc362abd08e7d3%3A0x232e1b1f14a3a16f!2sKuala%20Lumpur%2C%20Federal%20Territory%20of%20Kuala%20Lumpur%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1712650000000",
     "pinTitle": "Aletheia Resource Center",
-    "pinLinesHtml": "No. 12, Jalan Pendidikan 3/4<br>Kuala Lumpur"
+    "pinLinesHtml": "No. 12, Jalan Pendidikan 3/4<br>Kuala Lumpur",
+    "closing": {
+      "eyebrow": "Get in Touch",
+      "heading": "Ready to Take the Next Step?",
+      "body": "Our team is happy to answer your questions — no pressure, just a conversation.",
+      "whatsapp": {
+        "label": "Chat on WhatsApp",
+        "href": "https://wa.me/60123450702",
+        "ariaLabel": "Chat with Aletheia Resource Center on WhatsApp"
+      }
+    }
   },
   "form": {
     "sidebarEyebrow": "Get in Touch",
@@ -99,7 +109,7 @@
       {
         "title": "Prefer to chat?",
         "whatsappText": "Message us on WhatsApp →",
-        "whatsappHref": "https://wa.me/60312345678"
+        "whatsappHref": "https://wa.me/60123450702"
       }
     ],
     "successTitle": "Message Sent!",

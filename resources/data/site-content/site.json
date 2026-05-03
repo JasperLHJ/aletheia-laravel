@@ -11,7 +11,7 @@
             "name": "Aletheia Resource Center",
             "legalName": "Aletheia Resource Center",
             "logo": "/images/aletheia-logo.svg",
-            "telephone": "+60312345678",
+            "telephone": "+60123450702",
             "email": "info@aletheiaacademy.edu.my",
             "sameAs": [
                 "https://facebook.com",
@@ -57,7 +57,7 @@
         "enquireLink": "Enquire Now →",
         "connectHeading": "Connect",
         "phone": {
-            "href": "tel:+60312345678",
+            "href": "tel:+60123450702",
             "display": "+603 1234 5678",
             "ariaLabel": "Call us at +603 1234 5678"
         },
@@ -76,7 +76,7 @@
                 "ariaLabel": "Aletheia Resource Center on Instagram"
             },
             {
-                "href": "https://wa.me/60312345678",
+                "href": "https://wa.me/60123450702",
                 "ariaLabel": "Contact Aletheia Resource Center on WhatsApp"
             }
         ],
@@ -93,7 +93,7 @@
         ]
     },
     "floatingWhatsapp": {
-        "href": "https://wa.me/60312345678",
+        "href": "https://wa.me/60123450702",
         "ariaLabel": "Chat with us on WhatsApp"
     },
     "enquiryAnchor": "#enquiry"

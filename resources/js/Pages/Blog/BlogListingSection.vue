@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { Link } from '@inertiajs/vue3';
 
 const props = defineProps({
@@ -13,17 +13,6 @@ const props = defineProps({
     },
 });
 
-const selectedCategory = ref('All');
-
-const categoryTabs = computed(() => {
-    const labels = new Set();
-    for (const p of props.posts) {
-        if (p.category) labels.add(p.category);
-    }
-    const sorted = [...labels].sort((a, b) => a.localeCompare(b));
-    return ['All', ...sorted];
-});
-
 const featuredPost = computed(() => {
     if (!props.posts.length) return null;
     return props.posts.find(p => p.featured) || props.posts[0];
@@ -35,11 +24,6 @@ const gridSource = computed(() => {
     return props.posts.filter(p => p.slug !== fp.slug);
 });
 
-const filteredPosts = computed(() => {
-    const rest = gridSource.value;
-    if (selectedCategory.value === 'All') return rest;
-    return rest.filter(p => p.category === selectedCategory.value);
-});
 
 function formatDate(dateStr) {
     if (!dateStr) return '';
@@ -165,34 +149,13 @@ function accentForCategory(cat) {
                     </Link>
                 </article>
 
-                <!-- Category Filter -->
-                <div
-                    v-if="categoryTabs.length > 1"
-                    class="flex flex-wrap items-center justify-center gap-2 mb-12"
-                    role="group"
-                    :aria-label="listing.filterAria"
-                >
-                    <button
-                        v-for="cat in categoryTabs"
-                        :key="cat"
-                        class="px-4 py-2 rounded-full text-sm font-sans font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500 focus-visible:ring-offset-2"
-                        :class="selectedCategory === cat
-                            ? 'bg-purple-gray-800 text-purple-gray-50 shadow-md'
-                            : 'bg-white text-purple-gray-600 border border-purple-gray-200 hover:border-purple-gray-800 hover:text-purple-gray-800'"
-                        :aria-pressed="selectedCategory === cat"
-                        @click="selectedCategory = cat"
-                    >
-                        {{ cat }}
-                    </button>
-                </div>
-
                 <!-- Posts Grid -->
                 <div
-                    v-if="filteredPosts.length"
+                    v-if="gridSource.length"
                     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
                 >
                     <article
-                        v-for="post in filteredPosts"
+                        v-for="post in gridSource"
                         :key="post.slug"
                         class="blog-card group bg-white rounded-xl overflow-hidden border border-purple-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col"
                     >
@@ -343,15 +306,8 @@ function accentForCategory(cat) {
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
                         </svg>
                     </div>
-                    <p class="font-display text-purple-gray-800 text-lg mb-2">{{ listing.filteredEmptyTitle }}</p>
-                    <p class="text-purple-gray-500 text-sm">{{ listing.filteredEmptyBody }}</p>
-                    <button
-                        v-if="categoryTabs.length > 1"
-                        class="mt-4 px-5 py-2 rounded-full text-sm font-medium bg-purple-gray-800 text-purple-gray-50 hover:bg-purple-gray-950 transition-colors"
-                        @click="selectedCategory = 'All'"
-                    >
-                        {{ listing.viewAll }}
-                    </button>
+                    <p class="font-display text-purple-gray-800 text-lg mb-2">{{ listing.emptyTitle }}</p>
+                    <p class="text-purple-gray-500 text-sm">{{ listing.emptyBody }}</p>
                 </div>
             </template>
 

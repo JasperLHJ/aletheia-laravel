@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 /**
  * Seeds published blog posts matching the former static mock data on the public blog.
@@ -14,13 +13,7 @@ class BlogPostSeeder extends Seeder
 {
     public function run(): void
     {
-        $user = User::query()->firstOrCreate(
-            ['email' => 'admin@email.com'],
-            [
-                'name' => 'Aletheia Resource Center',
-                'password' => Hash::make('password'),
-            ]
-        );
+        $user = User::query()->where('email', 'admin@email.com')->firstOrFail();
 
         foreach ($this->posts() as $post) {
             Post::query()->updateOrCreate(

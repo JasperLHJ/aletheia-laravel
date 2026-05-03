@@ -5,7 +5,6 @@ import HeroSection from '@/Pages/Contact/HeroSection.vue';
 import CtaSection from '@/Pages/Contact/CtaSection.vue';
 import VisitInfoSection from '@/Pages/Contact/VisitInfoSection.vue';
 import MapSection from '@/Pages/Contact/MapSection.vue';
-import ContactFormSection from '@/Pages/Contact/ContactFormSection.vue';
 import { onMounted, onUnmounted, ref } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -35,7 +34,6 @@ onMounted(() => {
     // .cta-card initial state is set via inline styles in CtaSection.vue to prevent flash
     gsap.set('.visit-info-card', { opacity: 0, y: 30 });
     gsap.set('#contact-map-section', { opacity: 0, y: 20 });
-    gsap.set('#contact-form-section', { opacity: 0, y: 30 });
 
     const heroTl = gsap.timeline({ delay: 0.1 });
     heroTl
@@ -87,20 +85,6 @@ onMounted(() => {
     });
     scrollTriggerInstances.push(st3);
 
-    const st4 = ScrollTrigger.create({
-        trigger: '#contact-form-section',
-        start: 'top 80%',
-        onEnter: () => {
-            gsap.to('#contact-form-section', {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: 'power2.out',
-            });
-        },
-        once: true,
-    });
-    scrollTriggerInstances.push(st4);
 });
 
 onUnmounted(() => {
@@ -117,6 +101,5 @@ onUnmounted(() => {
         <CtaSection :cta-section="pageContent.ctaSection" />
         <VisitInfoSection :visit="pageContent.visit" />
         <MapSection :map="pageContent.map" />
-        <ContactFormSection :form-content="pageContent.form" />
     </PublicLayout>
 </template>
