@@ -26,6 +26,10 @@ const props = defineProps({
         type: String,
         default: '',
     },
+    pageUrl: {
+        type: String,
+        default: null,
+    },
 });
 
 const initialFields = {};
@@ -61,13 +65,25 @@ function submit() {
                     aria-label="Back to site content"
                     @click="router.visit(route('site-content.index'))"
                 />
-                <div>
-                    <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-                        {{ label }}
-                    </h2>
-                    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">
-                        {{ fieldCount }} text fields · Photos and links stay as they are on the site
-                    </p>
+                <div class="flex flex-1 flex-wrap items-center justify-between gap-3">
+                    <div>
+                        <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
+                            {{ label }}
+                        </h2>
+                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">
+                            {{ fieldCount }} text fields · Photos and links stay as they are on the site
+                        </p>
+                    </div>
+                    <a
+                        v-if="pageUrl"
+                        :href="pageUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 hover:text-violet-700 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:text-violet-300"
+                    >
+                        <i class="pi pi-external-link text-xs" aria-hidden="true" />
+                        View page
+                    </a>
                 </div>
             </div>
         </template>
@@ -84,9 +100,17 @@ function submit() {
                 <form class="space-y-8" @submit.prevent="submit">
                     <Card v-for="section in sections" :key="section.key">
                         <template #title>
-                            <span class="text-lg font-semibold text-slate-900 dark:text-slate-100">
-                                {{ section.title }}
-                            </span>
+                            <div>
+                                <span class="text-lg font-semibold text-slate-900 dark:text-slate-100">
+                                    {{ section.title }}
+                                </span>
+                                <p
+                                    v-if="section.description"
+                                    class="mt-1 text-sm font-normal text-slate-500 dark:text-slate-400"
+                                >
+                                    {{ section.description }}
+                                </p>
+                            </div>
                         </template>
                         <template #content>
                             <div class="space-y-6">

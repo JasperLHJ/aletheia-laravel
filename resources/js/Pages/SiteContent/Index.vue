@@ -3,12 +3,17 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import Card from 'primevue/card';
 
-defineProps({
+const props = defineProps({
     documents: {
         type: Array,
         required: true,
     },
 });
+
+function pageLabel(doc) {
+    if (!doc.pageUrl) return 'Site-wide';
+    return doc.pageUrl === '/' ? 'Home page' : doc.pageUrl;
+}
 </script>
 
 <template>
@@ -52,11 +57,22 @@ defineProps({
                                         >
                                             {{ doc.label }}
                                         </h3>
-                                        <p
-                                            class="mt-2 font-mono text-xs text-slate-500 dark:text-slate-400"
-                                        >
-                                            {{ doc.slug }}.json
-                                        </p>
+                                        <div class="mt-2 flex items-center gap-1.5">
+                                            <i class="pi pi-globe text-xs text-slate-400 dark:text-slate-500" aria-hidden="true" />
+                                            <a
+                                                v-if="doc.pageUrl"
+                                                :href="doc.pageUrl"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="text-xs text-slate-500 hover:text-violet-700 hover:underline dark:text-slate-400 dark:hover:text-violet-300"
+                                                @click.stop
+                                            >
+                                                {{ pageLabel(doc) }}
+                                            </a>
+                                            <span v-else class="text-xs text-slate-500 dark:text-slate-400">
+                                                {{ pageLabel(doc) }}
+                                            </span>
+                                        </div>
                                         <span
                                             class="mt-4 inline-flex items-center text-sm font-medium text-violet-700 dark:text-violet-300"
                                         >

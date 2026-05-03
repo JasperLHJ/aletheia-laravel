@@ -16,4 +16,18 @@ return [
         'programmes' => 'Programmes page',
         'blog' => 'Blog page (hero & copy)',
     ],
+
+    /*
+    | Public URL for each document (used to link editors to the live page).
+    | null means the document affects multiple pages or has no single URL.
+    */
+    'document_urls' => [
+        'site'       => null,
+        'welcome'    => '/',
+        'about'      => '/about',
+        'gallery'    => '/gallery',
+        'contact'    => '/contact',
+        'programmes' => '/programmes',
+        'blog'       => '/blog',
+    ],
 ];

@@ -13,6 +13,32 @@ use Inertia\Response;
 
 class SiteContentController extends Controller
 {
+    private const SECTION_DESCRIPTIONS = [
+        'meta'          => 'SEO title and description shown in search results and the browser tab.',
+        'hero'          => 'The large banner at the top of the page.',
+        'stats'         => 'The key statistics and numbers row.',
+        'highlights'    => 'The feature cards displayed below the stats row.',
+        'galleryTeaser' => 'The gallery preview strip on the home page.',
+        'testimonials'  => 'The testimonials section heading and empty-state message.',
+        'enquiryCta'    => 'The call-to-action block prompting visitors to enquire.',
+        'social'        => 'The social media section headings and link labels.',
+        'seo'           => 'Global SEO defaults — site name, description, and organisation details.',
+        'brand'         => 'The site name shown in the navigation header.',
+        'nav'           => 'Navigation menu link labels.',
+        'footer'        => 'Footer text, copyright, and column headings.',
+        'floatingWhatsapp' => 'The floating WhatsApp button label.',
+        'enquiryAnchor' => 'The enquiry anchor / scroll-to label.',
+        'form'          => 'Contact form labels, placeholders, and response messages.',
+        'visit'         => 'Address, office hours, and directions cards.',
+        'map'           => 'Map section heading and labels.',
+        'ctaSection'    => 'The "Choose How to Connect" contact cards.',
+        'overview'      => 'The overview / introductory section.',
+        'deepDive'      => 'The in-depth programme detail section.',
+        'whyChoose'     => 'The "Why Choose Us" section.',
+        'grid'          => 'The gallery grid headings and category labels.',
+        'listing'       => 'The blog listing section headings.',
+    ];
+
     public function __construct(
         private readonly SiteContentRepository $siteContent,
         private readonly SiteContentTextFormService $textForm,
@@ -21,9 +47,14 @@ class SiteContentController extends Controller
     public function index(): Response
     {
         $documents = $this->siteContent->documentLabels();
+        $urls = config('site-content.document_urls', []);
         $items = [];
         foreach ($documents as $slug => $label) {
-            $items[] = ['slug' => $slug, 'label' => $label];
+            $items[] = [
+                'slug'    => $slug,
+                'label'   => $label,
+                'pageUrl' => $urls[$slug] ?? null,
+            ];
         }
 
         return Inertia::render('SiteContent/Index', [
@@ -43,11 +74,14 @@ class SiteContentController extends Controller
 
         $fields = $this->textForm->fieldDefinitions($data);
 
+        $urls = config('site-content.document_urls', []);
+
         return Inertia::render('SiteContent/Edit', [
             'document' => $document,
-            'label' => $this->siteContent->documentLabels()[$document] ?? $document,
+            'label'    => $this->siteContent->documentLabels()[$document] ?? $document,
             'sections' => $this->groupFieldsIntoSections($fields),
-            'intro' => 'Edit the text that appears on your website. Photos, image paths, and link URLs are not shown here and stay unchanged.',
+            'pageUrl'  => $urls[$document] ?? null,
+            'intro'    => 'Edit the text that appears on your website. Photos, image paths, and link URLs are not shown here and stay unchanged.',
         ]);
     }
 
@@ -81,9 +115,10 @@ class SiteContentController extends Controller
             $top = explode('.', $field['path'])[0] ?: 'general';
             if (! isset($groups[$top])) {
                 $groups[$top] = [
-                    'key' => $top,
-                    'title' => Str::headline(str_replace(['-', '_'], ' ', $top)),
-                    'fields' => [],
+                    'key'         => $top,
+                    'title'       => Str::headline(str_replace(['-', '_'], ' ', $top)),
+                    'description' => self::SECTION_DESCRIPTIONS[$top] ?? null,
+                    'fields'      => [],
                 ];
             }
             $groups[$top]['fields'][] = $field;

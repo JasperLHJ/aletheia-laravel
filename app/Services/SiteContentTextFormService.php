@@ -9,18 +9,23 @@ class SiteContentTextFormService
 {
     /**
      * Keys (anywhere in the tree) whose values are not editable — URLs, image paths, layout tokens, SVG, etc.
+     * Pattern-based blocking is also applied in isBlockedKey(): any key whose name contains "aria" (case-insensitive)
+     * or ends with "Href" / "Url" / "Src" is automatically suppressed.
      *
      * @var list<string>
      */
     private const BLOCKED_KEYS = [
+        // Images / media paths
         'image',
         'src',
         'backgroundImage',
         'defaultImage',
         'logo',
         'iframeSrc',
+        // URLs (bare key — compound variants like whatsappHref caught by suffix pattern)
         'href',
         'sameAs',
+        // Styling / CSS tokens
         'themeColor',
         'categoryAccentColors',
         'icon',
@@ -33,13 +38,37 @@ class SiteContentTextFormService
         'accentText',
         'accentBorder',
         'hoverRing',
+        'iconBg',
+        'accentLine',
+        // Internal navigation anchors
         'anchor',
         'id',
-        'contactHref',
-        'directionsHref',
-        'openMapsHref',
-        'galleryHref',
-        'ctaHref',
+        // Accessibility / screen-reader only (most caught by 'aria' pattern; belt-and-braces below)
+        'headingSrOnly',
+        'iframeTitle',
+        'hoursMuted',
+        // Empty-state messages (developer fallback copy, not primary content)
+        'emptyTitle',
+        'emptyBody',
+        'emptyMessage',
+        'empty',
+        'filteredEmptyTitle',
+        'filteredEmptyBody',
+        // Pluralisation / read-time format tokens
+        'photoWordOne',
+        'photoWordMany',
+        'readTimeSuffix',
+        'readTimeShort',
+        'readArrow',
+        // Navigation / hero micro-copy decorations
+        'scrollLabel',
+        'jumpToLabel',
+        // Technical SEO / config
+        'locale',
+        'twitterHandle',
+        // UI internals
+        'comparisonRowLabel',
+        'noPhoto',
     ];
 
     /**
@@ -135,7 +164,7 @@ class SiteContentTextFormService
         }
 
         foreach ($value as $key => $child) {
-            if (! is_string($key) || in_array($key, self::BLOCKED_KEYS, true)) {
+            if (! is_string($key) || $this->isBlockedKey($key)) {
                 continue;
             }
             $childPath = ltrim($path.'.'.$key, '.');
@@ -165,9 +194,46 @@ class SiteContentTextFormService
         return true;
     }
 
+    private function isBlockedKey(string $key): bool
+    {
+        if (in_array($key, self::BLOCKED_KEYS, true)) {
+            return true;
+        }
+
+        // Block all ARIA / accessibility attributes regardless of prefix or suffix.
+        if (stripos($key, 'aria') !== false) {
+            return true;
+        }
+
+        // Block any URL / path field expressed as a compound key (e.g. whatsappHref, logoSrc).
+        if (str_ends_with($key, 'Href') || str_ends_with($key, 'Url') || str_ends_with($key, 'Src')) {
+            return true;
+        }
+
+        return false;
+    }
+
     private function labelForPath(string $path): string
     {
-        return Str::headline(str_replace(['.', '-'], ' ', $path));
+        $segments = explode('.', $path);
+
+        // Strip the top-level segment — it is already shown as the section card title.
+        if (count($segments) > 1) {
+            array_shift($segments);
+        }
+
+        $parts = [];
+        foreach ($segments as $seg) {
+            if (is_numeric($seg)) {
+                // Collapse "parentKey, N" → "Parent Singular N"
+                $last = array_pop($parts) ?? 'Item';
+                $parts[] = Str::singular($last).' '.((int) $seg + 1);
+            } else {
+                $parts[] = Str::headline(str_replace('-', ' ', $seg));
+            }
+        }
+
+        return implode(': ', array_filter($parts));
     }
 
     private function helpForPath(string $path): ?string
