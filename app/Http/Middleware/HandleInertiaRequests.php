@@ -42,6 +42,7 @@ class HandleInertiaRequests extends Middleware
                 'success' => $request->session()->get('success'),
             ],
             'siteContent' => $this->siteContentRepository->site(),
+            'csrf_token' => csrf_token(),
         ];
     }
 }

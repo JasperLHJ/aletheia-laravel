@@ -73,16 +73,24 @@ class SiteContentController extends Controller
             : $this->siteContent->page($document);
 
         $fields = $this->textForm->fieldDefinitions($data);
+        $imageFields = $this->textForm->imageFieldDefinitions($data);
 
         $urls = config('site-content.document_urls', []);
 
-        return Inertia::render('SiteContent/Edit', [
-            'document' => $document,
-            'label'    => $this->siteContent->documentLabels()[$document] ?? $document,
-            'sections' => $this->groupFieldsIntoSections($fields),
-            'pageUrl'  => $urls[$document] ?? null,
-            'intro'    => 'Edit the text that appears on your website. Photos, image paths, and link URLs are not shown here and stay unchanged.',
-        ]);
+        $props = [
+            'document'      => $document,
+            'label'         => $this->siteContent->documentLabels()[$document] ?? $document,
+            'sections'      => $this->groupFieldsIntoSections($fields),
+            'imageSections' => $this->groupFieldsIntoSections($imageFields),
+            'pageUrl'       => $urls[$document] ?? null,
+            'intro'         => 'Edit the text and images that appear on your website. Link URLs and styling tokens stay unchanged.',
+        ];
+
+        if ($document === 'gallery') {
+            $props['albums'] = $data['grid']['albums'] ?? [];
+        }
+
+        return Inertia::render('SiteContent/Edit', $props);
     }
 
     public function update(UpdateSiteContentRequest $request, string $document): RedirectResponse

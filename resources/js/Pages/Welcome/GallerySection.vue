@@ -7,9 +7,11 @@ const props = defineProps({
         type: Object,
         required: true,
     },
+    albums: {
+        type: Array,
+        default: () => [],
+    },
 });
-
-const galleryImages = computed(() => props.content.images);
 
 const activeIndex = ref(0);
 const isTransitioning = ref(false);
@@ -19,10 +21,10 @@ let autoplayTimer = null;
 let touchStartX = 0;
 let touchDelta = 0;
 
-const totalSlides = computed(() => galleryImages.value.length);
+const totalSlides = computed(() => props.albums.length);
 
 function goTo(index, direction = null) {
-    if (isTransitioning.value || index === activeIndex.value) return;
+    if (isTransitioning.value || index === activeIndex.value || totalSlides.value < 2) return;
     isTransitioning.value = true;
 
     const prev = activeIndex.value;
@@ -59,16 +61,20 @@ function goTo(index, direction = null) {
 }
 
 function next() {
+    if (totalSlides.value < 2) return;
     goTo((activeIndex.value + 1) % totalSlides.value, 1);
 }
 
 function prev() {
+    if (totalSlides.value < 2) return;
     goTo((activeIndex.value - 1 + totalSlides.value) % totalSlides.value, -1);
 }
 
 function resetAutoplay() {
     clearInterval(autoplayTimer);
-    autoplayTimer = setInterval(next, 4500);
+    if (totalSlides.value > 1) {
+        autoplayTimer = setInterval(next, 4500);
+    }
 }
 
 function onTouchStart(e) {
@@ -89,6 +95,7 @@ function onTouchEnd() {
 }
 
 const progressWidth = computed(() => {
+    if (totalSlides.value === 0) return 0;
     return ((activeIndex.value + 1) / totalSlides.value) * 100;
 });
 
@@ -129,8 +136,17 @@ onUnmounted(() => {
                 </a>
             </div>
 
+            <!-- Empty state -->
+            <div
+                v-if="albums.length === 0"
+                class="flex flex-col items-center justify-center py-24 text-center rounded-2xl border border-purple-gray-200 bg-white/50"
+            >
+                <p class="text-purple-gray-500 text-sm">Gallery albums will appear here soon.</p>
+            </div>
+
             <!-- Carousel -->
             <div
+                v-else
                 class="relative"
                 @touchstart.passive="onTouchStart"
                 @touchmove.passive="onTouchMove"
@@ -142,45 +158,53 @@ onUnmounted(() => {
                     class="relative w-full overflow-hidden rounded-2xl"
                     style="aspect-ratio: 16 / 7;"
                 >
-                    <div
-                        v-for="(img, i) in galleryImages"
-                        :key="img.src + i"
-                        class="gallery-slide absolute inset-0 transition-none"
+                    <a
+                        v-for="(album, i) in albums"
+                        :key="album.albumUrl + i"
+                        :href="album.albumUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="gallery-slide absolute inset-0 transition-none block"
                         :class="{ 'z-20': i === activeIndex, 'z-10': i !== activeIndex }"
                         :style="{
                             opacity: carouselReady ? (i === activeIndex ? 1 : 0) : (i === 0 ? 1 : 0),
                             transform: carouselReady && i !== activeIndex ? 'scale(0.85)' : 'scale(1)',
                         }"
+                        :tabindex="i === activeIndex ? 0 : -1"
+                        :aria-label="`${album.title} — opens Google Photos album in a new tab`"
                     >
                         <img
-                            :src="img.src"
-                            :alt="img.alt"
+                            :src="album.coverUrl"
+                            :alt="album.alt || album.title"
                             class="w-full h-full object-cover"
                             :loading="i === 0 ? 'eager' : 'lazy'"
                         />
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-purple-gray-800/60 via-purple-gray-800/10 to-transparent"
                             aria-hidden="true"
-                        ></div>
-                        <div
-                            class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 flex items-end justify-between"
-                        >
+                        />
+                        <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 flex items-end justify-between">
                             <div>
-                                <span
-                                    class="inline-block text-xs font-sans font-medium uppercase tracking-widest text-purple-gray-400/90 mb-1"
-                                >
+                                <span class="inline-block text-xs font-sans font-medium uppercase tracking-widest text-purple-gray-400/90 mb-1">
                                     {{ String(i + 1).padStart(2, '0') }} / {{ String(totalSlides).padStart(2, '0') }}
                                 </span>
                                 <p class="font-display text-white text-lg sm:text-xl font-semibold">
-                                    {{ img.caption }}
+                                    {{ album.title }}
                                 </p>
                             </div>
+                            <!-- "Open album" chip -->
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-sm text-white text-xs font-medium border border-white/25 opacity-0 group-hover:opacity-100 pointer-events-none" aria-hidden="true">
+                                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                View album
+                            </span>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <!-- Navigation arrows -->
-                <div class="flex items-center gap-3 mt-6">
+                <div v-if="totalSlides > 1" class="flex items-center gap-3 mt-6">
                     <button
                         @click="prev"
                         class="gallery-nav-btn group relative w-11 h-11 rounded-full border border-purple-gray-300 bg-white flex items-center justify-center transition-all duration-300 hover:bg-purple-gray-800 hover:border-purple-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500"
@@ -205,19 +229,24 @@ onUnmounted(() => {
                         <div
                             class="h-full bg-purple-gray-500 rounded-full transition-all duration-500 ease-out"
                             :style="{ width: progressWidth + '%' }"
-                        ></div>
+                        />
                     </div>
                 </div>
 
                 <!-- Thumbnail strip -->
-                <div class="grid grid-cols-4 gap-3 mt-5" role="tablist" :aria-label="content.thumbTablistAria">
+                <div
+                    class="grid gap-3 mt-5"
+                    :style="{ gridTemplateColumns: `repeat(${Math.min(albums.length, 4)}, minmax(0, 1fr))` }"
+                    role="tablist"
+                    :aria-label="content.thumbTablistAria"
+                >
                     <button
-                        v-for="(img, i) in galleryImages"
+                        v-for="(album, i) in albums"
                         :key="'thumb-' + i"
                         @click="goTo(i)"
                         role="tab"
                         :aria-selected="i === activeIndex"
-                        :aria-label="`View image: ${img.caption}`"
+                        :aria-label="`View album: ${album.title}`"
                         class="gallery-thumb relative rounded-lg overflow-hidden transition-all duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-gray-500"
                         :class="[
                             i === activeIndex
@@ -226,7 +255,7 @@ onUnmounted(() => {
                         ]"
                     >
                         <img
-                            :src="img.src"
+                            :src="album.coverUrl"
                             :alt="''"
                             class="w-full h-16 sm:h-20 object-cover"
                             loading="lazy"
@@ -235,7 +264,7 @@ onUnmounted(() => {
                             v-if="i === activeIndex"
                             class="absolute inset-0 border-2 border-purple-gray-500 rounded-lg"
                             aria-hidden="true"
-                        ></div>
+                        />
                     </button>
                 </div>
             </div>

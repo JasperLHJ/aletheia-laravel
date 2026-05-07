@@ -11,6 +11,10 @@ const props = defineProps({
         type: Object,
         required: true,
     },
+    galleryAlbums: {
+        type: Array,
+        default: () => [],
+    },
 });
 import HeroSection from '@/Pages/Welcome/HeroSection.vue';
 import StatsBarSection from '@/Pages/Welcome/StatsBarSection.vue';
@@ -175,7 +179,7 @@ onUnmounted(() => {
         <HeroSection :content="props.pageContent.hero" />
         <StatsBarSection ref="statsBarRef" :content="props.pageContent.stats" />
         <HighlightsSection :content="props.pageContent.highlights" />
-        <GallerySection :content="props.pageContent.galleryTeaser" />
+        <GallerySection :content="props.pageContent.galleryTeaser" :albums="props.galleryAlbums" />
         <TestimonialsSection
             :testimonials="props.featuredTestimonials"
             :copy="props.pageContent.testimonials"

@@ -8,6 +8,19 @@ use Illuminate\Support\Str;
 class SiteContentTextFormService
 {
     /**
+     * Image path keys that are exposed as uploadable fields in the CMS.
+     * These are excluded from the text form but returned by imageFieldDefinitions().
+     *
+     * @var list<string>
+     */
+    private const IMAGE_KEYS = [
+        'image',
+        'backgroundImage',
+        'defaultImage',
+        'logo',
+    ];
+
+    /**
      * Keys (anywhere in the tree) whose values are not editable — URLs, image paths, layout tokens, SVG, etc.
      * Pattern-based blocking is also applied in isBlockedKey(): any key whose name contains "aria" (case-insensitive)
      * or ends with "Href" / "Url" / "Src" is automatically suppressed.
@@ -15,12 +28,8 @@ class SiteContentTextFormService
      * @var list<string>
      */
     private const BLOCKED_KEYS = [
-        // Images / media paths
-        'image',
+        // Images / media paths (IMAGE_KEYS are handled separately)
         'src',
-        'backgroundImage',
-        'defaultImage',
-        'logo',
         'iframeSrc',
         // URLs (bare key — compound variants like whatsappHref caught by suffix pattern)
         'href',
@@ -194,9 +203,64 @@ class SiteContentTextFormService
         return true;
     }
 
+    /**
+     * @return list<array{path: string, label: string, control: 'image', value: string}>
+     */
+    public function imageFieldDefinitions(array $data): array
+    {
+        $flat = [];
+        $this->walkImages($data, '', $flat);
+
+        $out = [];
+        foreach ($flat as $path => $value) {
+            $out[] = [
+                'path'  => $path,
+                'label' => $this->labelForPath($path),
+                'control' => 'image',
+                'value' => $value,
+            ];
+        }
+
+        return $out;
+    }
+
+    /**
+     * @param  array<string, mixed>  $flat
+     */
+    private function walkImages(mixed $value, string $path, array &$flat): void
+    {
+        if (! is_array($value)) {
+            return;
+        }
+
+        if (array_is_list($value)) {
+            foreach ($value as $i => $item) {
+                $this->walkImages($item, ltrim($path.'.'.$i, '.'), $flat);
+            }
+
+            return;
+        }
+
+        foreach ($value as $key => $child) {
+            if (! is_string($key)) {
+                continue;
+            }
+            $childPath = ltrim($path.'.'.$key, '.');
+            if (in_array($key, self::IMAGE_KEYS, true) && is_string($child)) {
+                $flat[$childPath] = $child;
+            } else {
+                $this->walkImages($child, $childPath, $flat);
+            }
+        }
+    }
+
     private function isBlockedKey(string $key): bool
     {
         if (in_array($key, self::BLOCKED_KEYS, true)) {
+            return true;
+        }
+
+        if (in_array($key, self::IMAGE_KEYS, true)) {
             return true;
         }
 

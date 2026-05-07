@@ -19,9 +19,12 @@ class PublicPageController extends Controller
             ->ordered()
             ->get();
 
+        $gallery = $siteContent->page('gallery');
+
         return Inertia::render('Welcome', [
             'featuredTestimonials' => $featuredTestimonials,
-            'pageContent' => $siteContent->page('welcome'),
+            'pageContent'          => $siteContent->page('welcome'),
+            'galleryAlbums'        => $gallery['grid']['albums'] ?? [],
         ])->withViewData('seo', $seo->forPage('welcome')->toArray());
     }
 

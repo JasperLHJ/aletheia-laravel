@@ -1,47 +1,43 @@
 {
-  "meta": {
-    "title": "Gallery — Aletheia Resource Center",
-    "description": "A visual tour of life at Aletheia Resource Center — classrooms, co-curricular activities, events, and the people who make our community.",
-    "image": "/images/photo-day.JPG"
-  },
-  "hero": {
-    "image": "/images/class-4.jpg",
-    "eyebrow": "School Life",
-    "titleHtml": "A Window into Our <em class=\"text-purple-gray-400 not-italic\">World</em>",
-    "subtitle": "Explore the vibrant life at Aletheia Resource Center — from the energy of our classrooms and sports fields to the warmth of community events and our world-class facilities."
-  },
-  "grid": {
-    "eyebrow": "Browse & Explore",
-    "heading": "Our School in Pictures",
-    "photoWordOne": "photo",
-    "photoWordMany": "photos",
-    "filterTablistAria": "Filter gallery by category",
-    "filterTabAriaShow": "Show {category} photos ({count})",
-    "gridAria": "Gallery photos",
-    "viewPhotoAria": "View photo: {caption}",
-    "emptyTitle": "No photos yet",
-    "emptyBody": "Photos in this category will appear here soon.",
-    "ctaText": "Want to experience Aletheia in person?",
-    "ctaButton": "Book a School Tour",
-    "ctaHref": "/contact",
-    "lightboxCloseAria": "Close lightbox",
-    "lightboxPrevAria": "Previous photo",
-    "lightboxNextAria": "Next photo",
-    "lightboxDialogAria": "Lightbox: {caption}",
-    "categories": ["All", "Events", "Facilities", "Classrooms", "Sports"],
-    "images": [
-      { "src": "/images/class-1.jpg", "category": "Classrooms", "caption": "Interactive Learning", "alt": "Students engaged in interactive learning in a modern classroom" },
-      { "src": "/images/class-2.jpg", "category": "Classrooms", "caption": "Collaborative Spaces", "alt": "Students collaborating in a well-designed classroom environment" },
-      { "src": "/images/class-4.jpg", "category": "Facilities", "caption": "Modern Facilities", "alt": "State-of-the-art facilities at Aletheia Resource Center" },
-      { "src": "/images/sports-1.jpg", "category": "Sports", "caption": "Sports & Athletics", "alt": "Students participating in sports and athletic activities" },
-      { "src": "/images/student-1.jpg", "category": "Events", "caption": "Student Life", "alt": "Students enjoying school life and community events" },
-      { "src": "/images/class-2.jpg", "category": "Events", "caption": "School Celebrations", "alt": "Students and staff celebrating at a school event" },
-      { "src": "/images/sports-1.jpg", "category": "Facilities", "caption": "Sports Complex", "alt": "The school sports complex and outdoor facilities" },
-      { "src": "/images/student-1.jpg", "category": "Classrooms", "caption": "Focused Study", "alt": "A student deeply focused during a study session" },
-      { "src": "/images/class-1.jpg", "category": "Sports", "caption": "Team Spirit", "alt": "Students demonstrating teamwork and sportsmanship" },
-      { "src": "/images/class-4.jpg", "category": "Events", "caption": "Annual Showcase", "alt": "Students presenting their work at the annual school showcase" },
-      { "src": "/images/student-1.jpg", "category": "Facilities", "caption": "Learning Commons", "alt": "The school learning commons and library area" },
-      { "src": "/images/class-2.jpg", "category": "Sports", "caption": "Active Lifestyle", "alt": "Students enjoying an active and healthy school lifestyle" }
-    ]
-  }
+    "meta": {
+        "title": "Gallery — Aletheia Resource Center",
+        "description": "A visual tour of life at Aletheia Resource Center — classrooms, co-curricular activities, events, and the people who make our community.",
+        "image": "/images/photo-day.JPG"
+    },
+    "hero": {
+        "image": "/images/class-4.jpg",
+        "eyebrow": "School Life",
+        "titleHtml": "A Window into Our <em class=\"text-purple-gray-400 not-italic\">World</em>",
+        "subtitle": "Explore the vibrant life at Aletheia Resource Center — from the energy of our classrooms and sports fields to the warmth of community events and our world-class facilities."
+    },
+    "grid": {
+        "eyebrow": "Browse & Explore",
+        "heading": "Our School in Pictures",
+        "viewAlbumText": "View full album",
+        "emptyTitle": "No albums yet",
+        "emptyBody": "Gallery albums will appear here soon.",
+        "ctaText": "Want to experience Aletheia in person?",
+        "ctaButton": "Book a School Tour",
+        "ctaHref": "/contact",
+        "albums": [
+            {
+                "albumUrl": "https://photos.google.com/share/AF1QipMagPVaKH1n62Ovdzk0GFuDLe3JoACBxJKgy7_QIV2Itzu_IgpByukJ9HWOLeia8A?key=QnMwMjY0WnBza2s0eG5WeEhaOEw2OVJ6aTY4dlR3",
+                "coverUrl": "https://lh3.googleusercontent.com/pw/AP1GczN4gGbXwV493tIAULBdO8Ujdaahr8IOYJIoyw8bPPTN0v2GmwaGyhKXYY8L4t987k1WCIAzp_sbTlaK1UogcWjw3q6nTCgQbhwrS4w1ZijIR-eQ_I_x=w1600",
+                "title": "2025 ARC School Camp",
+                "alt": "Cover photo from 2025 ARC School Camp album"
+            },
+            {
+                "albumUrl": "https://photos.google.com/share/AF1QipMQTkuF2mFbVBmwkhso5WjNshtPOKuOL6jV_3jeN_xhI2HvH0GuELMpmckB_kbHJA?key=QWYzOTJ0R1dUOUVGM3BiMkF0WUcwZ3dxQzZQalpR",
+                "coverUrl": "https://lh3.googleusercontent.com/pw/AP1GczMpw1oNREss2YoaM4HTvluNP6JQF-OzEBSJtexRv23_D4hVB5UpycXH-T9Ri5O3ePslGeKx_Ahol3Oymxt2HKg2iyCX44nExop3r-8j8M1QYZR2FLo5=w1600",
+                "title": "ARC Photo Day 2025",
+                "alt": "Cover photo from ARC Photo Day 2025 album"
+            },
+            {
+                "albumUrl": "https://photos.google.com/share/AF1QipOe9ao5e556Wiaw7pr3VgNbEO_kmzgAiZXuq02BSGmeAKhswdHEsSB6hNbGHNYHOQ?key=NWt4eDRtOWNVT01WcmZNQk5iVUkzSmxBdE9hUG5n",
+                "coverUrl": "https://lh3.googleusercontent.com/pw/AP1GczMnO-tVFNGfJVi-PdDA_CPMUWi1ug_vdyEyrUH3qVKc6KbylhVR21dV5NZdcEP9IOMGcDDN_9ypFL4MhHx6usoytQru2M2XEjk639onMNutAWKNYRYe=w1600",
+                "title": "ARC Awards Day 2025",
+                "alt": "Cover photo from ARC Awards Day 2025 album"
+            }
+        ]
+    }
 }

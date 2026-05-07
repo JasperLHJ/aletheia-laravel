@@ -1,7 +1,9 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link, router } from '@inertiajs/vue3';
+import Button from 'primevue/button';
 import Card from 'primevue/card';
+import { ref } from 'vue';
 
 const props = defineProps({
     documents: {
@@ -14,6 +16,33 @@ function pageLabel(doc) {
     if (!doc.pageUrl) return 'Site-wide';
     return doc.pageUrl === '/' ? 'Home page' : doc.pageUrl;
 }
+
+// Backup restore
+const restoreInputRef = ref(null);
+const restoring = ref(false);
+
+function triggerRestoreInput() {
+    restoreInputRef.value?.click();
+}
+
+function handleRestoreChange(event) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    restoring.value = true;
+
+    router.post(
+        route('site-content.backup.restore'),
+        { backup: file },
+        {
+            forceFormData: true,
+            onFinish: () => {
+                restoring.value = false;
+                event.target.value = '';
+            },
+        },
+    );
+}
 </script>
 
 <template>
@@ -21,14 +50,43 @@ function pageLabel(doc) {
 
     <AuthenticatedLayout>
         <template #header>
-            <div>
-                <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-                    Site content
-                </h2>
-                <p class="mt-2 max-w-2xl text-slate-600 dark:text-slate-400">
-                    Update headings, paragraphs, and labels for the public site. Photos and links are
-                    unchanged from here.
-                </p>
+            <div class="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
+                        Site content
+                    </h2>
+                    <p class="mt-2 max-w-2xl text-slate-600 dark:text-slate-400">
+                        Update headings, paragraphs, images, and labels for the public site.
+                    </p>
+                </div>
+
+                <div class="flex shrink-0 items-center gap-2">
+                    <a
+                        :href="route('site-content.backup.download')"
+                        class="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 hover:text-violet-700 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:text-violet-300"
+                    >
+                        <i class="pi pi-download text-xs" aria-hidden="true" />
+                        Download backup
+                    </a>
+                    <Button
+                        type="button"
+                        label="Restore backup"
+                        icon="pi pi-upload"
+                        severity="secondary"
+                        :loading="restoring"
+                        :disabled="restoring"
+                        size="small"
+                        @click="triggerRestoreInput"
+                    />
+                    <input
+                        ref="restoreInputRef"
+                        type="file"
+                        accept=".zip,application/zip"
+                        class="sr-only"
+                        aria-label="Select backup ZIP to restore"
+                        @change="handleRestoreChange"
+                    />
+                </div>
             </div>
         </template>
 
