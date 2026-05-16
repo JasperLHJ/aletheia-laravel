@@ -35,6 +35,6 @@ fi
 php artisan migrate --force
 php artisan db:seed --force
 php artisan storage:link --force 2>/dev/null || true
-php artisan instagram:scrape
+# php artisan instagram:scrape
 
 exec "$@"
