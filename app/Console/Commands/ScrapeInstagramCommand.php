@@ -6,6 +6,7 @@ use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class ScrapeInstagramCommand extends Command
@@ -36,6 +37,10 @@ class ScrapeInstagramCommand extends Command
 
         if (! $profileResponse->successful()) {
             $this->error("Instagram profile request failed with status {$profileResponse->status()}.");
+            Log::error('instagram:scrape profile request failed', [
+                'status' => $profileResponse->status(),
+                'body'   => substr($profileResponse->body(), 0, 500),
+            ]);
 
             return self::FAILURE;
         }
@@ -44,17 +49,25 @@ class ScrapeInstagramCommand extends Command
         $userId = data_get($profileJson, 'data.user.id');
 
         if (! $userId) {
-            $this->warn('No user id in Instagram response. The endpoint may have changed or the account may be private.');
+            $this->error('No user ID returned by Instagram — the server IP may be blocked, the account private, or the endpoint changed.');
+            Log::error('instagram:scrape: no user ID in response', [
+                'status' => $profileResponse->status(),
+                'body'   => substr($profileResponse->body(), 0, 500),
+            ]);
 
-            return self::SUCCESS;
+            return self::FAILURE;
         }
 
         $entries = $this->collectTimelineEntries($username, (string) $userId, $profileJson, $limit);
 
         if ($entries === []) {
-            $this->warn('No posts found in the Instagram response. The endpoint may have changed or the account may be private.');
+            $this->error('No posts found in the Instagram response — the server IP may be blocked, the endpoint may have changed, or the account may be private.');
+            Log::error('instagram:scrape: no timeline entries collected', [
+                'username' => $username,
+                'userId'   => $userId,
+            ]);
 
-            return self::SUCCESS;
+            return self::FAILURE;
         }
 
         $upserted = 0;

@@ -107,7 +107,10 @@ class BlogController extends Controller
             return Redirect::route('blogs.index')->with('success', $message);
         }
 
-        return Redirect::route('blogs.index')->with('error', 'Instagram sync failed. Check the logs for details.');
+        $errorDetail = $output ? strip_tags($output) : 'No output captured.';
+        $errorDetail = preg_replace('/\s+/', ' ', $errorDetail);
+
+        return Redirect::route('blogs.index')->with('error', "Instagram sync failed: {$errorDetail} Check the application logs for details.");
     }
 
     /**
