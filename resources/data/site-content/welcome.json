@@ -41,12 +41,12 @@
         },
         "statChips": [
             {
-                "value": "15+",
-                "labelHtml": "Years of<br>Excellence"
+                "value": "13 Years",
+                "labelHtml": "Since 2013"
             },
             {
-                "value": "98%",
-                "labelHtml": "Graduate<br>Satisfaction"
+                "value": "4 Students",
+                "labelHtml": "To Every <br> 1 Teacher"
             }
         ],
         "scrollLabel": "Scroll"
@@ -55,22 +55,23 @@
         "sectionAriaLabel": "School statistics",
         "items": [
             {
-                "numericValue": 500,
+                "numericValue": 40,
                 "suffix": "+",
                 "label": "Students Enrolled",
-                "description": "Across all year levels"
+                "description": "Across every year level"
             },
             {
-                "numericValue": 98,
+                "numericValue": 10000,
+                "suffix": "",
+                "prefix": "RM",
+                "label": "Typical annual fees",
+                "description": "From below; varies by year level"
+            },
+            {
+                "numericValue": 100,
                 "suffix": "%",
-                "label": "University Placement",
-                "description": "Class of 2025"
-            },
-            {
-                "numericValue": 60,
-                "suffix": "+",
-                "label": "Co-curricular Clubs",
-                "description": "Arts, sports & more"
+                "label": "IGCSE Passing Rate",
+                "description": "At IGCSE level"
             }
         ]
     },

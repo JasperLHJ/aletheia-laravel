@@ -8,7 +8,7 @@
         "eyebrow": "Our Academic Pathways",
         "titleLine1": "Programmes Designed to",
         "titleEmphasis": "Ignite Potential",
-        "subtitle": "From primary through pre-university, our Cambridge-aligned curriculum nurtures critical thinkers, confident communicators, and principled leaders ready for a rapidly changing world.",
+        "subtitle": "From primary through Cambridge IGCSE, our curriculum — grounded in the Ignitia programme through Grade 9 and culminating in Cambridge IGCSE qualifications — nurtures critical thinkers, confident communicators, and principled leaders ready for a rapidly changing world.",
         "primaryCta": {
             "href": "/contact",
             "label": "Enquire Now"
@@ -30,9 +30,9 @@
                 "label": "Secondary"
             },
             {
-                "href": "#preuniversity-programme",
+                "href": "#igcse-programme",
                 "dotClass": "bg-purple-gray-400",
-                "label": "Pre-University"
+                "label": "IGCSE"
             }
         ],
         "scrollLabel": "Scroll"
@@ -40,7 +40,7 @@
     "overview": {
         "eyebrow": "Our Pathways",
         "heading": "A Complete Education Journey",
-        "intro": "Three connected Cambridge-aligned programmes forming a seamless pathway from a child's first school years all the way to university admission.",
+        "intro": "Three connected programmes forming a seamless pathway — Ignitia for Grades 3–9 and Cambridge IGCSE for Grades 10–11 — from a child's first school years through to internationally recognised IGCSE qualifications.",
         "connector": [
             {
                 "dotClass": "bg-sage",
@@ -49,12 +49,12 @@
             },
             {
                 "dotClass": "bg-purple-gray-500",
-                "label": "Ages 12–16",
+                "label": "Ages 12–14",
                 "textClass": "text-purple-gray-500"
             },
             {
                 "dotClass": "bg-purple-gray-400",
-                "label": "Ages 17–18",
+                "label": "Ages 15–16",
                 "textClass": "text-purple-gray-400"
             }
         ],
@@ -65,40 +65,40 @@
         "comparisonCols": [
             { "title": "Primary", "headingClass": "text-sage-dark" },
             { "title": "Secondary", "headingClass": "text-purple-gray-600" },
-            { "title": "Pre-University", "headingClass": "text-purple-gray-600" }
+            { "title": "IGCSE", "headingClass": "text-purple-gray-600" }
         ],
         "comparisonRows": [
             {
                 "label": "Ages",
-                "cells": ["5–11", "12–16", "17–18"]
+                "cells": ["5–11", "12–14", "15–16"]
             },
             {
-                "label": "Qualification",
-                "cells": ["Cambridge Primary Checkpoint", "Cambridge IGCSE (up to 10 subjects)", "Cambridge A-Levels (AS & A2)"]
+                "label": "Curriculum",
+                "cells": ["Ignitia (Grades 3–6)", "Ignitia (Grades 7–9)", "Cambridge IGCSE (Grades 10–11)"]
             },
             {
                 "label": "Key Focus",
-                "cells": ["Literacy, numeracy & inquiry foundations", "Critical thinking & subject breadth", "Subject specialisation & university entry"]
+                "cells": ["Biblical worldview, literacy, numeracy & inquiry foundations", "Core academics mastery through Ignitia Grades 7–9", "Cambridge IGCSE subject breadth & internationally recognised qualifications"]
             },
             {
                 "label": "Class Size",
-                "cells": ["Max 20 students", "Max 20 students", "Max 15 students"]
+                "cells": ["Max 20 students", "Max 20 students", "Max 20 students"]
             },
             {
                 "label": "Duration",
-                "cells": ["6 years", "5 years", "2 years"]
+                "cells": ["4 years (Grades 3–6)", "3 years (Grades 7–9)", "2 years (Grades 10–11)"]
             }
         ],
         "programmes": [
             {
                 "eyebrow": "Ages 5–11",
                 "title": "Primary Programme",
-                "description": "A strong foundation in literacy, numeracy, and critical thinking through an inquiry-based Cambridge curriculum that nurtures curiosity and builds confidence in every child.",
+                "description": "A strong foundation in biblical understanding, literacy, numeracy, and scientific inquiry through the Ignitia curriculum — building confident, curious learners across five integrated core subjects.",
                 "highlights": [
-                    "Cambridge Primary",
-                    "STEM Integration",
-                    "Character Education",
-                    "Portfolio Assessment"
+                    "Ignitia Curriculum",
+                    "Bible-Integrated Learning",
+                    "Language Arts & Science",
+                    "Character Education"
                 ],
                 "image": "/images/class-3.jpg",
                 "imageAlt": "Young students engaged in hands-on learning activities",
@@ -111,14 +111,14 @@
                 "icon": "<svg class=\"w-5 h-5\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25\" /></svg>"
             },
             {
-                "eyebrow": "Ages 12–16",
+                "eyebrow": "Ages 12–14",
                 "title": "Secondary Programme",
-                "description": "Rigorous academic preparation aligned with Cambridge IGCSE, developing analytical skills and subject mastery to prepare students for advanced study and global opportunities.",
+                "description": "Upper-level Ignitia coursework through Grade 9 — including Algebra, Biology, and English — developing deep analytical, writing, and quantitative skills across five core subjects.",
                 "highlights": [
-                    "Cambridge IGCSE",
+                    "Ignitia Grades 7–9",
                     "Core Sciences",
-                    "Modern Languages",
-                    "Co-Curricular Activities"
+                    "English Language Arts",
+                    "Character Education"
                 ],
                 "image": "/images/class-1.jpg",
                 "imageAlt": "Secondary students in a science laboratory",
@@ -131,23 +131,23 @@
                 "icon": "<svg class=\"w-5 h-5\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5\" /></svg>"
             },
             {
-                "eyebrow": "Ages 17–18",
-                "title": "Pre-University",
-                "description": "Advanced Cambridge A-Level pathways with personalised mentorship, subject specialisation, and expert university counselling for admission to leading institutions worldwide.",
+                "eyebrow": "Ages 15–16",
+                "title": "Cambridge IGCSE",
+                "description": "Internationally recognised Cambridge IGCSE qualifications across Sciences, Mathematics, Languages, and Humanities — providing students with a globally accepted credential and strong preparation for further education.",
                 "highlights": [
-                    "Cambridge A-Levels",
-                    "University Counselling",
-                    "Research Projects",
-                    "Leadership"
+                    "Cambridge IGCSE Grades 10–11",
+                    "Sciences & Mathematics",
+                    "Languages & Humanities",
+                    "Internationally Recognised"
                 ],
                 "image": "/images/class-2.jpg",
-                "imageAlt": "Pre-university students in a discussion seminar",
+                "imageAlt": "IGCSE students engaged in focused academic study",
                 "overlayColor": "#514f5e",
                 "accentBg": "bg-purple-gray-400",
                 "accentText": "text-purple-gray-600",
                 "accentBorder": "border-purple-gray-400",
                 "hoverRing": "hover:ring-2 hover:ring-offset-2 hover:ring-purple-gray-400/60",
-                "anchor": "#preuniversity-programme",
+                "anchor": "#igcse-programme",
                 "icon": "<svg class=\"w-5 h-5\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z\" /></svg>"
             }
         ]
@@ -166,9 +166,9 @@
                 "contactHref": "/contact?programme=primary",
                 "eyebrow": "Primary · Ages 5–11",
                 "title": "Primary Programme",
-                "qualification": "Cambridge Primary Checkpoint",
-                "qualificationNote": "An internationally recognised milestone assessment at the end of primary school, used by schools worldwide.",
-                "overview": "Our Primary Programme is designed to instil a lifelong love of learning from the earliest years. Grounded in the Cambridge Primary framework, students explore the world through structured inquiry, collaborative projects, and discovery-based activities that build strong academic and social foundations.",
+                "qualification": "Ignitia Curriculum — Alpha Omega Publications",
+                "qualificationNote": "Ignitia is an interactive, mastery-based online curriculum by Alpha Omega Publications, used by the school across Grades 3–6 in five core subject areas with a biblically-integrated approach.",
+                "overview": "Our Primary Programme is built on the Ignitia curriculum by Alpha Omega Publications — a mastery-based programme that builds strong academic foundations across five core subjects: Bible, History & Geography, Language Arts, Mathematics, and Science. Students explore the world through structured lessons, hands-on experiments, and biblically-integrated content that nurtures both intellectual curiosity and godly character.",
                 "image": "/images/class-3.jpg",
                 "imageAlt": "Young students engaged in hands-on learning activities in a bright classroom",
                 "overlayColor": "#95B91F",
@@ -176,46 +176,42 @@
                 "accentText": "text-sage-dark",
                 "subjects": [
                     {
-                        "name": "English & Literacy",
-                        "desc": "Phonics, comprehension, and creative writing with differentiated support."
+                        "name": "Bible",
+                        "desc": "A developmental study of the Old and New Testaments across five content strands — biblical literature, biblical background, Christian growth, Christian evidences, and life application. Students explore the lives of Jesus, Paul, Joseph, and other key figures; study Bible archaeology, the Psalms, and Old Testament geography; and grow in Christian character and service."
+                    },
+                    {
+                        "name": "History & Geography",
+                        "desc": "Early grades explore US geography, regional communities, and map skills (latitude, longitude, compass rose). By Grade 6, students survey world geography and ancient civilisations — Mesopotamia, Egypt, Israel, Greece, Rome, and the Middle Ages — building historical thinking and cultural awareness."
+                    },
+                    {
+                        "name": "Language Arts",
+                        "desc": "A sequential programme building reading, writing, speaking, and listening skills. Students advance from phonics and grammar foundations to literary comprehension, composition, and oral communication — exploring fiction, poetry, biography, and biblical literature. Writing skills progress from sentence-level mechanics to essays, summaries, and short stories."
                     },
                     {
                         "name": "Mathematics",
-                        "desc": "Conceptual understanding through Singapore Math and manipulative-based learning."
+                        "desc": "A rigorous progression from number sense and arithmetic operations through fractions, decimals, geometry, early algebraic thinking, data analysis, and probability. By Grade 6, students work with ratios, proportions, coordinate planes, and introductory algebraic expressions — with real-world problem-solving integrated at every level."
                     },
                     {
-                        "name": "Sciences",
-                        "desc": "Hands-on experiments and STEM projects that build scientific curiosity."
-                    },
-                    {
-                        "name": "Humanities",
-                        "desc": "Age-appropriate history, geography, and cultural studies."
-                    },
-                    {
-                        "name": "Arts & Music",
-                        "desc": "Expressive arts fostering creativity and emotional intelligence."
-                    },
-                    {
-                        "name": "Physical Education",
-                        "desc": "Structured sports, movement, and wellness routines."
+                        "name": "Science",
+                        "desc": "A broad, inquiry-driven survey of the natural world covering the human body, plants, animals, health and nutrition, matter, sound, earth science, heat energy, and introductory chemistry and physics. Units include hands-on experiments, observation projects, and scientific inquiry activities that build curiosity and a subject-matter knowledge base."
                     }
                 ],
                 "outcomes": [
-                    "Strong literacy and numeracy foundations",
-                    "Inquisitive, self-directed learners",
-                    "Collaborative social and emotional skills",
-                    "Cambridge Primary Checkpoint qualification"
+                    "Strong literacy, numeracy, and scientific foundations",
+                    "Biblical worldview and character integrated across all subjects",
+                    "Inquisitive, self-directed learners with research and writing skills",
+                    "Readiness for secondary-level academic rigour"
                 ],
                 "icon": "<svg fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" style=\"width:14px;height:14px;\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25\" /></svg>"
             },
             {
                 "id": "secondary-programme",
                 "contactHref": "/contact?programme=secondary",
-                "eyebrow": "Secondary · Ages 12–16",
+                "eyebrow": "Secondary · Ages 12–14",
                 "title": "Secondary Programme",
-                "qualification": "Cambridge IGCSE (up to 10 subjects)",
-                "qualificationNote": "The Cambridge IGCSE is a globally recognised qualification taken at around age 16, accepted by universities and employers in over 160 countries.",
-                "overview": "The Secondary Programme prepares students for Cambridge IGCSE examinations while cultivating deep analytical thinking, independent research, and a breadth of academic interests. Students are challenged to think critically, communicate effectively, and engage with global issues across disciplines.",
+                "qualification": "Ignitia Curriculum — Alpha Omega Publications (Grades 7–9)",
+                "qualificationNote": "Students complete the Ignitia upper-level programme through Grade 9, building rigorous academic foundations across five core subjects through a mastery-based, biblically-integrated approach before progressing to the Cambridge IGCSE programme.",
+                "overview": "Our Secondary Programme advances students through upper-level and named Ignitia courses across Grades 7 to 9 — developing rigorous analytical, writing, and quantitative skills across all five core subjects. Each grade deepens subject knowledge and builds the academic discipline and critical thinking skills that prepare students for the internationally recognised Cambridge IGCSE programme.",
                 "image": "/images/class-1.jpg",
                 "imageAlt": "Secondary students working in a well-equipped science laboratory",
                 "overlayColor": "#63616e",
@@ -223,82 +219,79 @@
                 "accentText": "text-purple-gray-600",
                 "subjects": [
                     {
-                        "name": "Core Sciences",
-                        "desc": "Biology, Chemistry, and Physics with dedicated laboratory sessions."
+                        "name": "Bible (Grades 7–9)",
+                        "desc": "Students complete systematic New and Old Testament surveys, developing a coherent biblical worldview through the study of Christian theology, church history, evidences for the Christian faith, and practical Christian living — applied across academic disciplines."
                     },
                     {
-                        "name": "Mathematics",
-                        "desc": "Rigorous problem-solving and algebraic reasoning through Additional Mathematics."
+                        "name": "History & Geography (Grades 7–9)",
+                        "desc": "Grade 7 surveys the full social sciences spectrum — history methodology, world geography, anthropology, sociology, economics, and political science. Grade 8 is a comprehensive study of American History from European exploration to the present, with emphasis on colonisation, the Civil War, industrialisation, and modern America."
                     },
                     {
-                        "name": "English Language & Literature",
-                        "desc": "Critical textual analysis and academic writing skills."
+                        "name": "English Language Arts (Grades 7–9)",
+                        "desc": "Students advance from Language Arts 700–800 to English I and II, engaging with literary fiction, nonfiction, poetry, and drama. Course content includes grammar and sentence structure mastery, vocabulary development through Greek and Latin roots, and production of essays, literary critiques, and research papers — with readings from well-known American and British authors."
                     },
                     {
-                        "name": "Humanities",
-                        "desc": "History, Geography, and Economics with global case studies."
+                        "name": "Mathematics (Grades 7–9)",
+                        "desc": "Grade 7 consolidates pre-algebra skills — integers, fractions, proportional reasoning, equations, data analysis, and geometry. Grades 8–9 advance through Algebra I Fundamentals and Algebra I, covering linear equations, functions, inequalities, polynomials, quadratic expressions, and probability and statistics."
                     },
                     {
-                        "name": "Modern Languages",
-                        "desc": "Mandarin, Malay, and French language programmes."
-                    },
-                    {
-                        "name": "Co-Curricular Activities (CCA)",
-                        "desc": "Structured extra-curricular portfolio — sports, arts, clubs — supporting holistic development."
+                        "name": "Science (Grades 7–9)",
+                        "desc": "General Science I (Grade 7) covers the scientific method, astronomy, weather, climate, and human anatomy. General Science II (Grade 8) advances into matter, energy, electricity, magnetism, and ecology. Grade 9 students proceed to Integrated Physics & Chemistry or Biology — covering taxonomy, cellular biology, genetics, chemistry of life, human anatomy, and ecological systems."
                     }
                 ],
+                "subjectNote": "In addition to the five core subjects, the Ignitia curriculum offers a range of elective courses for secondary students — including Computer Science, French, Spanish, Music Appreciation, Music Theory, Psychology, Personal Financial Literacy, Physical Education, and more — allowing students to pursue personal interests and develop a well-rounded academic portfolio.",
                 "outcomes": [
-                    "Cambridge IGCSE qualifications across up to 10 subjects",
-                    "Strong analytical and independent research skills",
-                    "Leadership and communication capabilities",
-                    "A breadth of academic and co-curricular achievements"
+                    "Mastery of five core subjects through Grades 7–9 via Ignitia",
+                    "Strong analytical thinking, writing, and quantitative reasoning",
+                    "Biblical worldview applied across all academic disciplines",
+                    "Solid academic foundation for Cambridge IGCSE progression"
                 ],
                 "icon": "<svg fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" style=\"width:14px;height:14px;\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5\" /></svg>"
             },
             {
-                "id": "preuniversity-programme",
-                "contactHref": "/contact?programme=preuniversity",
-                "eyebrow": "Pre-University · Ages 17–18",
-                "title": "Pre-University Programme",
-                "qualification": "Cambridge A-Levels (AS & A2)",
-                "qualificationNote": "Cambridge A-Levels are among the most respected pre-university qualifications in the world, accepted for admission by universities across the UK, US, Australia, and Asia.",
-                "overview": "Our Pre-University Programme is a focused two-year track designed to maximise Cambridge A-Level results and secure admission to top universities worldwide. Students receive individualised mentorship, subject specialisation across three structured tracks, and expert university counselling throughout their final school years.",
+                "id": "igcse-programme",
+                "contactHref": "/contact?programme=igcse",
+                "eyebrow": "IGCSE · Ages 15–16",
+                "title": "Cambridge IGCSE Programme",
+                "qualification": "Cambridge IGCSE — Cambridge Assessment International Education",
+                "qualificationNote": "Cambridge IGCSE is one of the most widely recognised international qualifications for students aged 14–16, accepted by universities and employers in over 160 countries. It provides a thorough grounding in subject content and promotes intellectual engagement.",
+                "overview": "Our Cambridge IGCSE Programme is a focused two-year track across Grades 10 and 11, offering students a broad choice of subjects across Sciences, Mathematics, Languages, and Humanities. Students develop strong subject knowledge, critical thinking, and examination skills — earning internationally recognised qualifications that open doors to further education worldwide.",
                 "image": "/images/class-2.jpg",
-                "imageAlt": "Pre-university students engaged in a seminar discussion",
+                "imageAlt": "IGCSE students engaged in focused academic study",
                 "overlayColor": "#a09ead",
                 "accentBg": "bg-purple-gray-400",
                 "accentText": "text-purple-gray-600",
                 "subjects": [
                     {
-                        "name": "Sciences Track",
-                        "desc": "Mathematics, Physics, Chemistry, and Biology combinations."
+                        "name": "Sciences",
+                        "desc": "Students may choose from Biology, Chemistry, and Physics — covering core theoretical knowledge alongside practical and experimental skills. Each subject builds a rigorous scientific foundation and develops analytical thinking."
                     },
                     {
-                        "name": "Humanities & Social Sciences",
-                        "desc": "Economics, Literature, History, and Psychology."
+                        "name": "Mathematics",
+                        "desc": "Cambridge IGCSE Mathematics covers number, algebra, geometry, trigonometry, statistics, and probability — developing strong quantitative reasoning and problem-solving skills essential for further study."
                     },
                     {
-                        "name": "Business & Commerce Track",
-                        "desc": "Business Studies, Economics, and Accounting."
+                        "name": "English Language & Literature",
+                        "desc": "English Language develops reading, writing, and communication skills for academic and professional contexts. English Literature engages students with a range of texts — fiction, poetry, and drama — building critical interpretation and essay writing skills."
                     },
                     {
-                        "name": "General Paper",
-                        "desc": "Critical thinking, essay writing, and current affairs analysis."
+                        "name": "Humanities",
+                        "desc": "Students may choose from History, Geography, and Economics — exploring the forces that shape human societies, environments, and economies through evidence-based inquiry and analytical writing."
                     },
                     {
-                        "name": "Project Work",
-                        "desc": "Collaborative research and presentation skills across disciplines."
+                        "name": "Modern Languages",
+                        "desc": "IGCSE language courses develop reading, writing, listening, and speaking proficiency — providing internationally recognised language qualifications that enhance academic and career prospects."
                     },
                     {
-                        "name": "University Counselling",
-                        "desc": "Dedicated guidance for local and international university applications."
+                        "name": "Additional Electives",
+                        "desc": "A range of additional IGCSE subjects may be offered depending on student interest and availability, allowing students to tailor their subject combination to personal strengths and aspirations."
                     }
                 ],
                 "outcomes": [
-                    "Cambridge A-Level qualifications (AS and A2)",
-                    "University admission to local and overseas institutions",
-                    "Scholarship application support and portfolio preparation",
-                    "Leadership credentials and independent research experience"
+                    "Cambridge IGCSE qualifications across multiple subjects",
+                    "Internationally recognised credentials accepted in 160+ countries",
+                    "Strong subject knowledge, critical thinking, and examination readiness",
+                    "Solid preparation for further education and career pathways"
                 ],
                 "icon": "<svg fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" style=\"width:14px;height:14px;\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z\" /></svg>"
             }
@@ -310,8 +303,8 @@
         "intro": "We don't just teach — we shape the whole child. Here is what sets our programmes apart from the rest.",
         "features": [
             {
-                "title": "Cambridge-Aligned Curriculum",
-                "body": "All three programmes are built on the globally recognised Cambridge framework, ensuring our qualifications are accepted and respected by universities worldwide.",
+                "title": "Proven, Structured Curriculum",
+                "body": "Primary and secondary students follow the Ignitia mastery-based programme by Alpha Omega Publications through Grade 9. From Grade 10, students complete the globally recognised Cambridge IGCSE framework — earning qualifications accepted by universities and employers in over 160 countries.",
                 "iconBg": "bg-sage",
                 "accentLine": "bg-sage",
                 "icon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25\" /></svg>"
@@ -338,8 +331,8 @@
                 "icon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z\" /></svg>"
             },
             {
-                "title": "University Counselling",
-                "body": "Our dedicated university counsellors guide every pre-university student through applications to local and international universities, including scholarship opportunities.",
+                "title": "IGCSE Examination Guidance",
+                "body": "Our experienced teachers provide dedicated support throughout the Cambridge IGCSE examination process — from subject selection and coursework guidance to examination preparation and results review.",
                 "iconBg": "bg-purple-gray-700",
                 "accentLine": "bg-purple-gray-700",
                 "icon": "<svg class=\"w-6 h-6\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.5\" d=\"M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.562.562 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z\" /></svg>"
@@ -360,10 +353,10 @@
                 "suffix": "+"
             },
             {
-                "value": "98%",
-                "label": "University Placement",
-                "numericValue": 98,
-                "suffix": "%"
+                "value": "160+",
+                "label": "Countries Recognise IGCSE",
+                "numericValue": 160,
+                "suffix": "+"
             },
             {
                 "value": "12:1",

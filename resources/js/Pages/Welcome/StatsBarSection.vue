@@ -46,9 +46,9 @@ defineExpose({
                     <dd
                         class="order-1 font-display font-bold text-purple-gray-800 tabular-nums"
                         style="font-size: 2.75rem; line-height: 1;"
-                        :aria-label="`${stat.numericValue}${stat.suffix} ${stat.label}`"
+                        :aria-label="`${stat.prefix ?? ''}${stat.numericValue}${stat.suffix} ${stat.label}`.trim()"
                     >
-                        {{ Math.round(display[i].value) }}{{ stat.suffix }}
+                        {{ stat.prefix ?? '' }}{{ Math.round(display[i].value).toLocaleString('en-MY') }}{{ stat.suffix }}
                     </dd>
                 </div>
             </dl>

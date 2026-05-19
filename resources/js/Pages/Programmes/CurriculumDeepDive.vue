@@ -122,6 +122,10 @@ defineProps({
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Electives note -->
+                                <p v-if="programme.subjectNote" class="mt-3 text-xs text-purple-gray-500 leading-relaxed italic border-l-2 border-purple-gray-200 pl-3">
+                                    {{ programme.subjectNote }}
+                                </p>
                             </div>
 
                             <!-- Key Outcomes -->
