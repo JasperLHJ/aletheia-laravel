@@ -27,7 +27,7 @@ let scrollTriggerInstances = [];
 const subNavItems = [
     { id: 'primary-programme', label: 'Primary', dotClass: 'bg-sage' },
     { id: 'secondary-programme', label: 'Secondary', dotClass: 'bg-purple-gray-500' },
-    { id: 'preuniversity-programme', label: 'Pre-University', dotClass: 'bg-purple-gray-400' },
+    { id: 'igcse-programme', label: 'IGCSE', dotClass: 'bg-purple-gray-400' },
 ];
 
 function onScroll() {
@@ -35,7 +35,7 @@ function onScroll() {
     showSubNav.value = window.scrollY > window.innerHeight * 0.6;
 
     // Track which programme section is in view
-    const sections = ['preuniversity-programme', 'secondary-programme', 'primary-programme'];
+    const sections = ['igcse-programme', 'secondary-programme', 'primary-programme'];
     for (const id of sections) {
         const el = document.getElementById(id);
         if (!el) continue;
